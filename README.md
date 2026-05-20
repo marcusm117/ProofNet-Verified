@@ -2,7 +2,7 @@
 
 **ProofNet-Verified (ProofNet-V)** is an audited, corrected, and verified version of the [ProofNet](https://github.com/zhangir-azerbayev/ProofNet) dataset that is upgraded to be compatible with `Lean v4.28.0`.
 
-[ProofNet](https://github.com/zhangir-azerbayev/ProofNet) is a benchmark for theorem proving and autoformalization of undergraduate-level mathematics. It originally consists of 371 data points, each consisting of a formal theorem statement in `Lean 3`, a natural language theorem statement, and a natural language proof. The problems are primarily drawn from popular undergraduate pure mathematics textbooks and cover topics such as real and complex analysis, linear algebra, abstract algebra, and topology. We intend for ProofNet to be a challenging benchmark that will drive progress in autoformalization and automatic theorem proving
+[ProofNet](https://github.com/zhangir-azerbayev/ProofNet) is a benchmark for theorem proving and autoformalization of undergraduate-level mathematics. It originally consists of **371** data points, each consisting of a formal theorem statement in `Lean 3`, a natural language theorem statement, and a natural language proof. The problems are primarily drawn from popular undergraduate pure mathematics textbooks and cover topics such as real and complex analysis, linear algebra, abstract algebra, and topology. We intend for ProofNet to be a challenging benchmark that will drive progress in autoformalization and automatic theorem proving
 
 [ProofNet#](https://huggingface.co/datasets/PAug/ProofNetSharp) is a cleaner version of ProofNet compatible with `Lean v4.7.0` to `Lean v4.16.0-rc2`, correcting 118 errors in previous Lean 4 implementations of ProofNet like [ProofNet-lean4](https://github.com/rahul3613/ProofNet-lean4).
 
@@ -10,20 +10,20 @@ We gratefully acknowledge the authors of these projects for their effort and mak
 
 Based on ProofNet and ProofNet#, we made the following modifications:
 
-1. Filter out 4 non-proof problems that have inconsistent natural language statement and formal statements, resulting in 367 problems in total.
+1. Filter out 4 non-proof problems that have inconsistent natural language statement and formal statements, resulting in **367** problems in total.
 
 - Axler|exercise_1_6
 - Axler|exercise_1_7
 - Rudin|exercise_1_14
 - Rudin|exercise_1_19
 
-2. Upgrade the formal statements to be compatible with Lean v4.28.0, so that more automated proof search tools like [Grind](https://lean-lang.org/doc/reference/latest/The--grind--tactic/), [Canonical](https://github.com/chasenorman/CanonicalLean), and [Lean-SMT](https://github.com/ufmg-smite/lean-smt) are available.
+2. Upgrade the formal statements to be compatible with `Lean v4.28.0`, so that more automated proof search tools like [Grind](https://lean-lang.org/doc/reference/latest/The--grind--tactic/), [Canonical](https://github.com/chasenorman/CanonicalLean), and [Lean-SMT](https://github.com/ufmg-smite/lean-smt) are available.
 
 3. Audit the benchmark for both errors in the ground-truth formalizations and ambiguity in the informal statements, identifying **204/367 (55.6%)** errors in **ProofNet** and **97/367 (26.4%)** errors in **ProofNet#**.
 
 4. Confirm each error by proving the negation of incorrect formalizations, providing trivialized proofs of formalization that are provably true but unfaithful to the informal statement, or giving detailed reasoning for why a formalization is unfaithful or an informal statement is ambiguous.
 
-5. Correct these errors and verify all 367 formal statements by providing **formal proofs** for each. Additionally, the faithfulness of these corrections is assessed by both human reviewers and an AI agent until they reach a consensus.
+5. Correct these errors and **verify all 367** formal statements by providing **formal proofs** for each. Additionally, the faithfulness of these corrections is assessed by both human reviewers and an AI agent until they reach a consensus.
 
 ## Citation
 
