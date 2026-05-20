@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-205.lean",
+  "stem": "proofnet-205",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement says \"every subspace of V invariant under T has even dimension.\" The standard mathematical meaning of \"T-invariant\" is T(U) ⊆ U. The CORRECTED formalization uses `Submodule.map T U ≤ U`, which directly mirrors this. The ORIGINAL uses `Submodule.map T U = U` (strict equality, i.e., T(U) = U), which is a strictly stronger hypothesis. Thus, the ORIGINAL theorem is IMPLIED BY the informal claim (since T(U) = U ⇒ T(U) ⊆ U ⇒ even dimension), but it does not immediately imply the informal claim — though under the given hypotheses (no eigenvalues ⇒ T injective ⇒ T|_U bijective in finite dim), the two become equivalent, this equivalence requires non-trivial extra reasoning. So the original is \"weaker\" as a direct translation. The corrected file's own comment explicitly acknowledges this: \"the ≤ formulation is a more literal translation of the informal statement... The equivalence with = U is a non-trivial consequence of the other hypotheses, not something the reader of the informal statement is expected to silently assume.\" Additionally, the ORIGINAL uses `finrank U` (missing ring argument) vs CORRECTED `finrank ℝ U`; Mathlib's `Module.finrank (R M : Type*)` requires both arguments explicitly, so this is also problematic, but the primary semantic issue is the hypothesis mismatch. The error type is a misunderstanding of the informal statement — the author misread \"invariant\" as strict equality instead of the standard ⊆ convention."
+}

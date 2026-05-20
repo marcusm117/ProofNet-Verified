@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-162.lean",
+  "stem": "proofnet-162",
+  "q1_informal_status": "ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "false",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "The informal statement (Rudin 3.20) concerns a subsequence {p_{n_l}}, where n_l denotes a strictly increasing index function and l is the running index. The corrected formalization encodes this correctly via a `StrictMono φ : ℕ → ℕ` and `p ∘ φ`. The original formalization misinterprets the notation, encoding the \"subsequence\" as `λ n => p (l * n)` for a fixed `l : ℕ`. This is not equivalent: (1) it only captures arithmetic-step subsequences, not arbitrary ones (so it doesn't imply the informal claim), and (2) it includes the case `l = 0`, where `λ n => p 0` is a constant sequence (not a subsequence at all). The `l = 0` case makes the original provably false: e.g., `p n = 1/(n+1)` on ℝ is Cauchy with `p 0 = 1`, so `hpl` holds with `r = 1`, but `p → 0 ≠ 1`. Thus the original is incomparable with the informal statement and is provably false. The error stems from misreading the subscript notation `n_l` as multiplication rather than as a subsequence index function."
+}

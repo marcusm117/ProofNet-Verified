@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-314.lean",
+  "stem": "proofnet-314",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED theorem statements are literally identical. Both state: given a family of nonempty topological spaces `X : ι → Type*` with their topologies, if `Π i, X i` is T2Space, then each `X i` is T2Space. The only differences between the two files are in the preamble: ORIGINAL uses `open Topology` and `noncomputable section`, while CORRECTED uses `open scoped Topology`. These preamble differences do not change the semantic content of the theorem. The informal statement is mathematically true (product Hausdorff implies each factor Hausdorff when the factors are nonempty, since each factor embeds homeomorphically via picking fixed coordinates in the other factors) and unambiguous. The formalization is faithful."
+}

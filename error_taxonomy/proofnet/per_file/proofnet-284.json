@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-284.lean",
+  "stem": "proofnet-284",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement says \"a is a primitive root mod p iff -a is a primitive root mod p\" when p = 4t+1. A primitive root mod prime p has order p-1 (the order of (ZMod p)^*). Mathlib's `IsPrimitiveRoot a k` asserts that `a^k = 1` and that `k` divides any `l` with `a^l = 1` — i.e., `a` has order exactly `k`. So the correct formalization uses `IsPrimitiveRoot a (p-1)`, as in the CORRECTED version. The ORIGINAL uses `IsPrimitiveRoot a p`, which requires `a^p = 1`. By Fermat's Little Theorem, `a^p = a` in `ZMod p`, so this would force `a = 1`; but then `a^1 = 1` requires `p ∣ 1`, which is false for `p ≥ 2`. Hence `IsPrimitiveRoot a p` is always false in `ZMod p` for prime `p`, making the original's conclusion `False ↔ False = True` — vacuously true, independent of the `4t+1` hypothesis. The original is a strictly weaker (vacuous) statement than the intended claim; it's implied by the informal claim trivially but fails to express its content. Error type: misunderstanding of Mathlib's `IsPrimitiveRoot` API (wrong second argument)."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-268.lean",
+  "stem": "proofnet-268",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal phrase \"disturb no common element\" means no element is moved by BOTH σ and τ, correctly formalized as ∀ a, ¬(σ a ≠ a ∧ τ a ≠ a) in the corrected version. The original formalization uses a biconditional σ a = a ↔ τ a ≠ a, which is strictly stronger: it says σ fixes a iff τ moves a, disallowing elements fixed by both. This excludes, e.g., the conclusion itself (σ = τ = 1 forces both to fix every a, contradicting h1 when α is nonempty). Combined with h2 (τ = σ⁻¹, forcing σ and τ to have identical fixed-point sets), the original's hypotheses can only both hold when α is empty — making the original vacuously true. Since the original's premise is stronger, the original statement is weaker (implied by the informal, but not equivalent). The addition of [Fintype α] is a minor extra assumption but not the main issue. The core error is a misreading of the natural-language phrase \"disturb no common element\" as \"exactly one disturbs each element\" rather than \"not both disturb any element\". Mathlib's Equiv.Perm has (f*g) x = f (g x), so τ ∘ σ = id and τ * σ = 1 are equivalent statements."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-48.lean",
+  "stem": "proofnet-48",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement is Jordan's theorem: any transitive subgroup G of the symmetric group on a finite set A with |A|>1 contains a derangement. The CORRECTED formalization captures this with an explicit `G : Subgroup (Equiv.Perm α)`, where `h_tran` asserts G acts transitively and the conclusion seeks a derangement σ ∈ G. The ORIGINAL formalization drops the subgroup G entirely: `h_tran` asserts the whole `Equiv.Perm α` is transitive (which is vacuously true for any nonempty α), and the conclusion merely asks for a derangement in the full symmetric group Sym(α). The original is strictly weaker: the informal implies the original (take G = Sym(A)), but the original does not imply the informal (it gives no information about arbitrary transitive subgroups). The original statement is itself true (derangements exist in Sym(α) for |α|>1, e.g., any n-cycle), so it is provable. The primary error is missing_premise — the subgroup G, an explicit component of the informal statement, was omitted from the formalization."
+}

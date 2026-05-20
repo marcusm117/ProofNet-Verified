@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-67.lean",
+  "stem": "proofnet-67",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "The informal statement is a well-known true theorem about polynomials (related to Gauss's lemma). The critical difference between ORIGINAL and CORRECTED is in the hypothesis: ORIGINAL has `(f*g).coeff = a` while CORRECTED has `(f * g).coeff n = a`. Since `Polynomial.coeff : R[X] → ℕ → R` (verified in Mathlib/Algebra/Polynomial/Basic.lean), `(f*g).coeff` has type `ℕ → ℚ` (a function), while `a : ℤ` is a scalar. There is no coercion from `ℤ` to `ℕ → ℚ`, so the equality `(f*g).coeff = a` is ill-typed — the bound variable `n` is declared but never applied to `.coeff`. This is clearly a Lean syntax/typo error: the author understood the informal statement correctly (as evidenced by the overall structure) but forgot to apply `n` to `coeff`. Since the original statement does not typecheck, it is incomparable with the informal statement as a well-formed proposition, and its provability is undetermined. The error type is misunderstanding_of_lean (a syntactic error, not a semantic misreading of the math or Mathlib API)."
+}

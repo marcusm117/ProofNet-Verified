@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-19.lean",
+  "stem": "proofnet-19",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks to prove that null(T-λI) is *invariant* under S, meaning S(W) ⊆ W (the standard definition of an invariant subspace). The corrected formalization uses `≤` (Submodule containment), which faithfully encodes invariance. The original uses `=`, which asserts the stronger claim that S restricted to W is surjective onto W. This is strictly stronger (equality implies containment, but not vice versa) and is provably false in general: take S = 0, which trivially commutes with T; then Submodule.map S (ker (T - c•id)) = ⊥, which is not equal to ker(T - c•id) whenever T has a nontrivial c-eigenspace. The error is misinterpreting the standard meaning of \"invariant under S\" as set equality rather than containment — a misunderstanding of the informal statement's terminology."
+}

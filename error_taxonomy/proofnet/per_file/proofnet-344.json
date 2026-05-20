@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-344.lean",
+  "stem": "proofnet-344",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asserts that if a_n ≥ 0 and Σa_n converges, then Σ √(a_n)/n converges. The CORRECTED formalization faithfully encodes this as the series Σ_{i∈range n} sqrt(a i)/(i+1) with the nonnegativity premise hnneg. The ORIGINAL has two errors: (1) it drops the nonnegativity premise a_n ≥ 0, and (2) crucially, in the conclusion λ n => ∑ i ∈ range n, sqrt(a i)/n, the 'n' in the denominator is bound by the OUTER lambda (the partial sum upper bound), not the summation index 'i'. This makes the ORIGINAL's conclusion express (1/n)·∑_{i<n} √(a_i), which is a Cesaro mean rather than the intended series with 1/(i+1) weights. The ORIGINAL's statement is incomparable to the informal: different conclusion (Cesaro mean vs weighted series) and weaker premise (no nonneg). However, the ORIGINAL theorem happens to be provable: convergence of Σa_i implies a_i → 0, hence √(a_i) → 0 (Real.sqrt is continuous at 0 and maps negatives to 0), and by Cesaro's theorem the mean → 0. The primary error is misunderstanding how to translate the informal expression √(a_n)/n — the writer misidentified which variable corresponds to 'n' in the formula."
+}

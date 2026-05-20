@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-230.lean",
+  "stem": "proofnet-230",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "(true, weaker, Misunderstanding of MathLib),\n\nIn Mathlib, `Subgroup.index` returns 0 for subgroups of infinite index\n(since `Nat.card` of an infinite type is 0). This means any normal subgroup\nK ≤ H with infinite index trivially satisfies `K.index ≤ n.factorial`\n(as 0 ≤ n!)."
+}

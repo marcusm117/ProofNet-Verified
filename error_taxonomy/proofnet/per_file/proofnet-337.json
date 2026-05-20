@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-337.lean",
+  "stem": "proofnet-337",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asserts: for every nonzero x ∈ ℝ, there is no nonzero y with x·y = 0. The corrected formalization captures this with `∀ x, x ≠ 0 → ¬ ∃ y, y ≠ 0 ∧ x*y = 0`. The original, `¬ ∀ x, ∃ y, y ≠ 0 ∧ x*y = 0`, places the negation OUTSIDE the universal, which is logically equivalent to `∃ x, ∀ y, (y = 0 ∨ x*y ≠ 0)` — i.e., merely that SOME x has this property, rather than all nonzero x. The original also drops the `x ≠ 0` premise (as even visible in the altered comment block). The corrected (∀ nonzero x, P(x)) implies the original (∃ x, P(x), via x=1), but not vice versa, so the original is strictly weaker. The original is still provably true over ℝ (x = 1 is a witness). The primary error is a structural misunderstanding of the quantifier/negation scoping in the informal statement."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-131.lean",
+  "stem": "proofnet-131",
+  "q1_informal_status": "ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "true",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "The original informal statement says 'if ∏ X_α is regular, then so is X_α' — but 'regular' in topology is ambiguous: it can mean just the separation property (for any point and closed set not containing it, there exist disjoint open neighborhoods) or 'regular + T1' (= T3). Mathlib's RegularSpace is the separation property only (no T1 requirement). The corrected NL clarifies '(separation property only)'. Without this clarification, a reader could reasonably interpret 'regular' as T3, making the original informal ambiguous. The formal statements are identical between original and corrected, but the original NL was genuinely ambiguous."
+}

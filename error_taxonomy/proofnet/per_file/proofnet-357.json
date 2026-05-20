@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-357.lean",
+  "stem": "proofnet-357",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks to prove g(x) → 0 as x → +∞. The CORRECTED formalization correctly uses `Tendsto (λ x => f (x + 1) - f x) atTop (𝓝 0)`. The ORIGINAL instead writes `Tendsto (λ x => f (x + 1) - f x) atTop atTop`, which means g(x) → +∞ — the opposite claim. This conclusion is mathematically false: taking f to be constant satisfies all hypotheses (Differentiable ℝ f and deriv f → 0), yet g ≡ 0 does not tend to +∞. So the original is incomparable to the informal claim (it actually contradicts it) and is provably false. Additionally the hypothesis `Differentiable ℝ f` is stronger than the corrected `DifferentiableOn ℝ f (Ioi 0)`, but this by itself would only make the statement stronger on the hypothesis side; the dominant error is the wrong target filter. This is best classified as a misunderstanding of the informal statement — they formalized \"→ 0\" as \"→ +∞\"."
+}

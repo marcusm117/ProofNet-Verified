@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-367.lean",
+  "stem": "proofnet-367",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is the classical Blaschke condition for bounded holomorphic functions on the unit disc, which is a well-known true theorem. The ORIGINAL contains a critical error: in the conclusion, it writes `∑ (1 - zeros i)` — a complex-valued sum of `1 - z_n` — rather than `∑ (1 - |z_n|)` as the informal statement asks. The absolute value bars are missing. Additionally, the original uses `Set.range f` (bounded on all of ℂ) instead of `f '' ball 0 1` for the boundedness hypothesis, uses `f ≠ 0` instead of `¬ Set.EqOn f 0 (ball 0 1)`, and does not account for zero multiplicity (which the corrected version handles via `analyticOrderAt`). The original's stated conclusion is PROVABLY FALSE under its stated hypotheses: take the Blaschke product with zeros at z_n = -(1 - 1/n²). These zeros satisfy the Blaschke condition ∑(1 - |z_n|) = ∑1/n² < ∞, but 1 - z_n = 1 + (1 - 1/n²) → 2, so the complex series ∑(1 - z_n) diverges (terms don't tend to zero). All of the original's hypotheses are satisfied by this counterexample. Since the original's conclusion is neither implied by nor implies the informal's (different quantities — complex vs real with absolute values, and different hypothesis strengths in multiple dimensions), the two are incomparable. The primary error is misreading the informal statement's |z_n| as z_n."
+}

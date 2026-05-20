@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-11.lean",
+  "stem": "proofnet-11",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks about irreducibility of x^3 + 6x + 12 over ℚ. The CORRECTED formalization uses Polynomial ℚ, which is faithful. The ORIGINAL formalization replaces ℚ with a finite field F of cardinality 2 (i.e., 𝔽₂). These are different rings and the statements are incomparable. Moreover, over 𝔽₂ the polynomial 12 + 6X + X^3 reduces to X^3 (since 12 ≡ 0 and 6 ≡ 0 mod 2), which factors as X·X·X and is NOT irreducible. So the ORIGINAL statement is provably false. The error is a misunderstanding of the informal statement — the formalizer changed the base ring from ℚ to 𝔽₂ (possibly confusing this with another part of Artin's exercise 11.4.1)."
+}

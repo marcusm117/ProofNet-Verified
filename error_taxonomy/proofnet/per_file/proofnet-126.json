@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-126.lean",
+  "stem": "proofnet-126",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement \"Show that the rationals ℚ are not locally compact\" is mathematically true and unambiguous: ℚ with its standard topology is not locally compact (a standard fact derivable from Baire category). Both the ORIGINAL and CORRECTED formalizations state exactly the same theorem: `¬ LocallyCompactSpace ℚ` with `sorry`. The only differences are non-semantic cosmetic changes: ORIGINAL uses `open Topology` and `noncomputable section`, while CORRECTED uses `open scoped Topology` and omits the section modifier. These do not affect the meaning or truth of the theorem statement itself. The theorem statement is logically equivalent in both versions, so the ORIGINAL is faithful."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-259.lean",
+  "stem": "proofnet-259",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement \"If a group G has no proper subgroups, prove that G is cyclic of order p, where p is a prime number\" is a standard Herstein exercise whose intended meaning (with implicit nontriviality of G) is clear. The CORRECTED version adds the hypothesis `h_nontrivial : ∃ g : G, g ≠ 1`, while the ORIGINAL omits this. Without this hypothesis, the trivial group G = {1} is a counterexample: in the trivial group, ⊤ = ⊥, so `∀ H, H = ⊤ ∨ H = ⊥` holds vacuously; G is cyclic, but |G| = 1 which is NOT prime, so the conclusion fails. Thus the original makes a STRONGER claim (weaker hypothesis, same conclusion) than the corrected version, and this stronger claim is FALSE. The cardinality formulations (`∃ Fin : Fintype G, @card G Fin = p` vs `Nat.card G = p`) are essentially equivalent, so that's not the semantic issue. The error is a missing implicit premise about nontriviality of G."
+}

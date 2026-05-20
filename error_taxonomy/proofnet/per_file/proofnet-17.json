@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-17.lean",
+  "stem": "proofnet-17",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED formalizations have identical theorem statements. Both use the same hypotheses ({F V : Type*}, [AddCommGroup V] [Field F] [Module F V] [FiniteDimensional F V], T : V →ₗ[F] V, hT : finrank F V = 1) and the same conclusion (∃ c : F, ∀ v : V, T v = c • v). The only differences are a trivial whitespace variation and the ORIGINAL adds `InnerProductSpace` to the scoped opens, which has no effect on the theorem statement. This is a faithful formalization of the classic linear algebra result that every endomorphism of a 1-dimensional vector space is scalar multiplication."
+}

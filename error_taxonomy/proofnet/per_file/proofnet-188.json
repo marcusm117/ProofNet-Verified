@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-188.lean",
+  "stem": "proofnet-188",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The only difference between the ORIGINAL and CORRECTED formalizations is that the ORIGINAL uses `Prime p`/`Prime q` (which resolves to `_root_.Prime` from `Mathlib/Algebra/Prime/Defs.lean`, defined as `p ≠ 0 ∧ ¬IsUnit p ∧ ∀ a b, p ∣ a * b → p ∣ a ∨ p ∣ b`) while the CORRECTED uses `Nat.Prime p`/`Nat.Prime q` (defined as `Irreducible p` in `ℕ`). By Mathlib's `Nat.prime_iff : p.Prime ↔ _root_.Prime p`, these two notions are logically equivalent for natural numbers. None of the opened namespaces (Function, Fintype, Subgroup, Ideal, Polynomial, Submodule, Zsqrtd) redefine `Prime`, so `Prime p` unambiguously resolves to `_root_.Prime p`, which is propositionally equivalent to `Nat.Prime p`. The rest of the theorem (hypothesis `card G = p*q`, conclusion `IsSimpleGroup G → false`) is identical between the two versions. Therefore the ORIGINAL is faithful to the informal statement, and the claim (no group of prime-times-prime order is simple) is a well-known classical theorem (true)."
+}

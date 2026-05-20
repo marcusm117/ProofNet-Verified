@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-110.lean",
+  "stem": "proofnet-110",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is Munkres 13.8(b) about the collection of rational OPEN intervals $(a,b)$ (i.e., `Ioo`), which is what the CORRECTED version uses. The ORIGINAL instead uses `Ico ↑a ↑b` (half-open intervals `[a,b)`), misinterpreting the $(a,b)$ notation. Additionally, the ORIGINAL omits the \"is a basis\" aspect of the statement (the covering and intersection properties that the CORRECTED formalization makes explicit). Since the two formalizations are about different basis collections (rational Ico vs rational Ioo), they are logically incomparable — neither implies the other. The ORIGINAL's claim is still mathematically provable (the rational `Ico` topology is strictly coarser than the lower limit topology, e.g., $[\\sqrt{2}, 2)$ is not open in it), so the answer to Q3 is \"true\". The primary error is misreading $(a,b)$ as a half-open interval, which is a misunderstanding of the informal statement."
+}

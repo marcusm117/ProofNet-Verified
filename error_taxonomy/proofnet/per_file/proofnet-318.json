@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-318.lean",
+  "stem": "proofnet-318",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "adding_extra_conclusion",
+  "reasoning": "The informal statement says f can be uniquely extended to g : closure A → Y. The CORRECTED formalization uses `g : closure A → Y` with explicit uniqueness (∀ g' : closure A → Y extending f, g' = g). The ORIGINAL uses `∃! (g : X → Y)` — uniqueness over all functions on X, not just on closure A. The properties in the original only constrain g on closure A (ContinuousOn/UniformContinuousOn on closure A, agreement with f on A), leaving g's values on X \\ closure A completely unconstrained. Whenever closure A ⊊ X (e.g., X = ℝ, A = {0}), there are uncountably many g : X → Y satisfying all three properties, so the ∃! claim fails. Counterexample: X = ℝ, A = {0}, f(0) = 0; any g : ℝ → ℝ with g(0) = 0 satisfies the properties, so uniqueness fails. The original is thus mathematically false in general. Since original ⟹ informal (restricting the unique g to closure A gives a unique extension) but not vice versa, the original is strictly stronger. The error is adding an extra conclusion (uniqueness over the entire domain X → Y rather than closure A → Y), which overspecifies beyond the informal statement."
+}

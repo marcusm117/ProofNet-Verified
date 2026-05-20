@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-123.lean",
+  "stem": "proofnet-123",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Implicit premise\nIf NL has Implicit Premises: Yes\nImplicit Premises: (hAne : A.Nonempty)\nComment: The correction incorrectly added the premise that the chain had a least element. The real correct implicit premise is that it's just nonempty.\n\n\n\n\n"
+}

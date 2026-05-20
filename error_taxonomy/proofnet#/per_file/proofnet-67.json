@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-67.lean",
+  "stem": "proofnet-67",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "Wrong Formalization, Misunderstanding of Mathlib  \n\n(f*g).coeff is a function! not an integer"
+}

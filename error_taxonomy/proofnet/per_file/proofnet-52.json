@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-52.lean",
+  "stem": "proofnet-52",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks for a normal Sylow p-subgroup \"for some prime p dividing its order\" — the primality and divisibility of p are explicit constraints. The ORIGINAL formalization states `∃ (p : ℕ) (P : Sylow p G), P.Normal` without these constraints. In Mathlib, `Sylow p G` does NOT require `p` to be prime: it's defined via `IsPGroup p`, which is `∀ g, ∃ k, g ^ p^k = 1`. For `p = 1`, only the trivial subgroup satisfies `IsPGroup 1`, so `Sylow 1 G` is nonempty (containing `⊥`), and `⊥.Normal` is trivially true. Thus the ORIGINAL can be proven trivially for any finite group by taking `p = 1`, making it strictly weaker than the informal claim. The CORRECTED version correctly adds `p.Prime ∧ (p ∣ card G)` to capture the actual informal statement. Hence: Q1 is true_and_unambiguous (standard Dummit-Foote theorem, 312 = 2³·3·13); Q2 is weaker (corrected ⟹ original, not conversely); Q3 is true (trivially provable via p=1, ⊥); Q4 is misunderstanding_of_informal_statement — the formalizer dropped the explicit primality/divisibility conditions from the informal statement."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-140.lean",
+  "stem": "proofnet-140",
+  "q1_informal_status": "ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "true",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "The original informal statement says 'Prove that √(n+1) − √n → 0 as n → ∞' without specifying whether n ranges over ℕ or ℝ. The corrected NL adds 'the real function' to clarify n ∈ ℝ. The original formal has a phantom `(n : ℕ)` parameter (unused, shadowed by the lambda) and leaves the lambda's type implicit, while the corrected explicitly uses `fun n : ℝ => ...`. Although the phantom parameter doesn't change the logical content (∀ (n : ℕ), P is equivalent to P when P doesn't mention n), the ambiguity in the informal about whether this is a real or natural number limit is a genuine NL issue that needed correction."
+}

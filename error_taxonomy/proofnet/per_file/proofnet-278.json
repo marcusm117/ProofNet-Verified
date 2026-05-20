@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-278.lean",
+  "stem": "proofnet-278",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement \"all the roots of x^m - x are distinct\" is the standard way to express that the polynomial is separable (has no repeated roots). The corrected formalization captures this via `.Separable`. The original instead claims `card (rootSet ... F) = m`, i.e., that F itself contains m = p^n distinct roots. This is strictly stronger: having m distinct roots in F of a degree-m polynomial implies separability, but separability does not imply F contains all the roots. The original is provably false in general — for F = 𝔽_p (characteristic p) and n = 2, the polynomial X^(p²) - X has only p roots in 𝔽_p, not p². So original ⟹ corrected (making it \"stronger\"), but the original as a statement is false. The error is a misreading of the informal claim: interpreting \"all roots are distinct\" as \"F contains m distinct roots\" rather than \"the polynomial is separable.\""
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-102.lean",
+  "stem": "proofnet-102",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Implicit Premise\nIf NL has Implicit Premies: Yes\nImplicit Premises:  (hp : Nat.Prime p) \nComment: The NL doesn't specify positive prime. The wrong attempt allows negative primes. The final version is wrong because it's true for p = 2 or p = 3 but for trivial reasons.\n\n"
+}

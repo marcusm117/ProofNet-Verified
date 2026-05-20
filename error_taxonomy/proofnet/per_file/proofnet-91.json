@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-91.lean",
+  "stem": "proofnet-91",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement says \"finite number of proper subspaces.\" The corrected formalization encodes this with `[Finite ι]`. The original formalization drops this premise, making the claim apply to arbitrary (possibly infinite) index types ι. This makes the original statement strictly stronger than the informal claim (the original's universal over all ι implies the informal's universal over finite ι, but not vice versa). However, the stronger claim is false: take F = ℝ, V = ℝ², and let ι be the set of all 1-dimensional subspaces of ℝ² (uncountably infinite), with u i = i. Each u i is a proper subspace, but every nonzero v ∈ ℝ² lies in the line it spans, and 0 is in every subspace, so the union equals ℝ² = ⊤ in Set V. This contradicts the conclusion. Therefore the original is stronger than the informal, provably false, and the error is a missing premise ([Finite ι])."
+}

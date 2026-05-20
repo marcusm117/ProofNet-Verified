@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-12.lean",
+  "stem": "proofnet-12",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks for irreducibility of X^2+1 in F_7. The CORRECTED formalization correctly uses card F = 7 and X^2 + 1. The ORIGINAL formalization completely changes the theorem: it uses card F = 31 and X^3 - 9, which is a distinct problem (different polynomial, different degree, different field). Neither statement implies the other, so the formalizations are incomparable. The original statement happens to be a true theorem (9 is not a cube in F_31, so X^3-9 is irreducible there), but it is simply not what the informal statement asks. This is a clear misunderstanding of the informal statement."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-101.lean",
+  "stem": "proofnet-101",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "1. negation ✅\n2. reasoning ✅\n3. correction ✅\n\nError Type: Wrong Formalization \nIf NL has Implicit Premies: Maybe \nImplicit Premises: (a : (ZMod p)ˣ)\nComment: Identical error as 100."
+}

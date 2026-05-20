@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-103.lean",
+  "stem": "proofnet-103",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The theorem signatures in the ORIGINAL and CORRECTED formalizations are identical. Both declare the same hypotheses (a < 0, p ≡ q [ZMOD 4*a], ¬((p:ℤ)∣a)) and the same conclusion (legendreSym p a = legendreSym q a), with identical typeclass instances [Fact (p.Prime)] [Fact (q.Prime)]. The only difference between the two files is that the corrected one includes `open scoped NumberTheorySymbols`, which only opens a notation scope (for J(a|b) Jacobi symbol notation from JacobiSymbol.lean) and does not change the theorem statement since `legendreSym p a` is written out fully. The formalization correctly captures the informal statement from Ireland-Rosen exercise 5.37: a negative, p ≡ q (mod 4a), p ∤ a imply (a/p) = (a/q). Therefore the ORIGINAL is faithful with no error."
+}

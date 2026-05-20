@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-362.lean",
+  "stem": "proofnet-362",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "Informal statement: the power series Σ z^n/n converges on the unit circle except at z=1. This is a true, unambiguous classical result (by Dirichlet's/Abel's test).\n\nCORRECTED formalization defines the partial sum as s n = Σ_{i<n} z^(i+1)/(i+1), which is the correct power series, and asserts an iff: (∃ limit) ↔ z ≠ 1.\n\nORIGINAL formalization has two major problems:\n1. The partial sum is written as `∑ i ∈ range n, i * z / i`. With i : ℕ coerced to ℂ, for i=0 this is 0/0 = 0, and for i ≥ 1 it simplifies to z. Thus s n = (n−1)·z, which is completely unrelated to Σ z^n/n. Clearly the author misread \"z^n/n\" as \"n·z/n\".\n2. The statement structure is also different: the original takes z ≠ 1 as a hypothesis and asks only for `∃ z, Tendsto s atTop (𝓝 z)` (note: this existential rebinds z, shadowing the outer z), whereas the corrected version asserts an iff.\n\nEven setting aside the structural issue, with |z| = 1 we have ‖(n−1)·z‖ = n−1 → ∞, so the sequence s n = (n−1)·z diverges for every z on the unit circle. Hence the existential conclusion in the ORIGINAL is FALSE. So the original is provably false, and is incomparable with the corrected statement (different content altogether). The primary error is misreading the informal formula z^n/n as i*z/i."
+}

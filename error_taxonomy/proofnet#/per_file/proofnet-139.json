@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-139.lean",
+  "stem": "proofnet-139",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "Condensation point is a cluster point that has uncountably many points in the neighborhood so the clusterPt is a weaker theorem than the GT."
+}

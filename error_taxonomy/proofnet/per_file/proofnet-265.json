@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-265.lean",
+  "stem": "proofnet-265",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement is the classical result that any two nonabelian groups of order pq (with p > q primes and q | p-1) are isomorphic — true and unambiguous. The ORIGINAL formalization drops several explicit premises from the informal statement: (1) it omits the nonabelian hypotheses for both G and H (the CORRECTED version includes `hG_nonab : ∃ x y : G, x * y ≠ y * x` and similarly for H); (2) it has a typo `hH : card G = p*q` (should be `card H`), so H's order is not constrained at all. The result is a strictly stronger claim (fewer hypotheses, same/stronger conclusion) which would imply the informal statement if provable, but is in fact false: without requiring G nonabelian, G could be cyclic ℤ/pq while H is nonabelian; and with H entirely unconstrained, H could be any group whatsoever. The dominant error is missing the explicit \"nonabelian\" premise from the informal statement (plus the `card H` typo also drops an explicit premise). Minor issues also present: `instance` keyword is wrong (G ≃* H is not a class) and conclusion uses `G ≃* H` instead of `Nonempty (G ≃* H)`."
+}

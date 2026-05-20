@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-287.lean",
+  "stem": "proofnet-287",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "The informal statement is a well-known classical result from Ireland-Rosen (Exercise 5.28): for prime p ≡ 1 (mod 4), x^4 ≡ 2 (mod p) is solvable iff p = A^2 + 64B^2. This is unambiguous.\n\nThe key difference between the original and corrected formalizations is parenthesization. In Lean 4, `∃` binders have the lowest precedence and extend to the right, so the original `∃ x, x^4 ≡ 2 [MOD p] ↔ ∃ A B, p = A^2 + 64*B^2` parses as `∃ x, (x^4 ≡ 2 [MOD p] ↔ ∃ A B, p = A^2 + 64*B^2)`, not as the intended `(∃ x, x^4 ≡ 2 [MOD p]) ↔ ∃ A B, p = A^2 + 64*B^2`.\n\nLet P(x) = \"x^4 ≡ 2 [MOD p]\" and Q = \"∃ A B, p = A^2+64*B^2\". The intended statement is (∃ x, P(x)) ↔ Q. The original statement is ∃ x, (P(x) ↔ Q). If the intended statement holds: when Q is true, there exists x with P(x), so the biconditional holds for that x; when Q is false, no x satisfies P, so any x (e.g., 0) satisfies ¬P(x), giving (False ↔ False). So the intended statement implies the original. Conversely, the original doesn't imply the intended — it's almost trivially satisfiable for any prime p > 2 (take x=0 to get ¬P(0), so if Q is also false, biconditional holds). Hence the original is strictly weaker.\n\nSince the intended statement is a true classical theorem, the original (being weaker) is also provably true. The error is a Lean syntax/precedence issue — the author forgot to parenthesize the existential quantifier."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-34.lean",
+  "stem": "proofnet-34",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement says that for $x$ of infinite order, the powers $x^n$ for $n \\in \\mathbb{Z}$ are all distinct. This means: for all integers $n \\neq m$, $x^n \\neq x^m$.\n\nThe ORIGINAL formalization states `∀ n m : ℤ, x^n ≠ x^m` without the hypothesis `n ≠ m`. This is strictly stronger than the informal claim (it would imply it if it were true), but it is trivially false: taking `n = m` gives `x^n = x^m`, a contradiction. So the original statement is provably false (counterexample: `n = m = 0`, yielding `x^0 = 1 = x^0`).\n\nThe CORRECTED formalization adds the explicit hypothesis `hnm : n ≠ m`, which is the implicit premise hidden in the informal word \"distinct\". This missing premise is required for the statement to be true.\n\nQ1: The informal statement is a true, standard fact about elements of infinite order.\nQ2: The original is `stronger` than the informal claim (vacuously, since it's false) — it asserts more than \"all distinct\".\nQ3: The original is provably `false` (take n = m).\nQ4: The error is a `missing_implicit_premise` — the condition `n ≠ m` is implicit in the word \"distinct\" but was not encoded in the Lean statement."
+}

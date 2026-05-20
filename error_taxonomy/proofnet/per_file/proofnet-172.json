@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-172.lean",
+  "stem": "proofnet-172",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The original has multiple serious errors. Most critically, `g = f⁻¹` in Lean for `f : ℝ → ℝ` uses `Pi.instInv` (pointwise reciprocal): `(f⁻¹) x = (f x)⁻¹ = 1/f(x)`, NOT the function inverse as intended. With this interpretation, the theorem is provably FALSE: take f(x)=x on (1,2); then f'=1>0, g(x)=1/x is differentiable on (1,2), but g'(x)=-1/x² ≠ 1 = 1/f'(x). Additional errors: (1) `DifferentiableOn ℝ g (Set.Ioo a b)` is made a hypothesis instead of a conclusion, (2) missing the `StrictMonoOn f` conclusion required by \"f is strictly increasing\", (3) uses `deriv g x` instead of `deriv g (f x)` — the informal statement asks for g'(f(x)), (4) uses `Set.Ioo a b` as the domain of g's differentiability rather than `f '' Set.Ioo a b`. The original and corrected are structurally different enough to be incomparable. The primary error classification is misunderstanding_of_mathlib because the `f⁻¹` notation confusion is what makes the theorem false — it's a Mathlib/notation issue where the user expected function inverse but Lean provides pointwise reciprocal via Pi.Inv."
+}

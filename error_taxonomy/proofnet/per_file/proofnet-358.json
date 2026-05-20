@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-358.lean",
+  "stem": "proofnet-358",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is L'Hôpital's rule (0/0 form) at point x, which is a true and unambiguous classical result. The original formalization has two significant errors: (1) All hypotheses use the point `0` instead of `x` (DifferentiableAt ℝ f 0, deriv g 0 ≠ 0, f 0 = 0, g 0 = 0), while the conclusion is about the limit at x with derivatives at x — this introduces a mismatch between hypotheses and conclusion. (2) The filter is `𝓝 x` (full neighborhood) instead of `𝓝[≠] x` (punctured neighborhood); the latter is the correct interpretation of `lim t → x` when f(x)/g(x) = 0/0 is ill-defined, and is the convention used throughout Mathlib's LHopital.lean. The original is provably false: e.g., take x=1, f(t)=t², g(t)=t. Then hypotheses at 0 hold (f(0)=0, g(0)=0, g'(0)=1≠0, both differentiable at 0), but lim_{t→1} t²/t = 1 ≠ 2 = f'(1)/g'(1). The original is neither implied by nor implies the corrected version because the hypotheses concern a different point than the conclusion's derivatives. This is a misreading of the informal statement's single point x, which the formalizer replaced with 0 in the hypotheses."
+}

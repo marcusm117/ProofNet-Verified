@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-148.lean",
+  "stem": "proofnet-148",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement explicitly states \"$r$ is rational $(r \\neq 0)$\" — a clear, unambiguous premise that $r$ is a nonzero rational. The ORIGINAL formalization omits the `y ≠ 0` hypothesis that the CORRECTED version includes. This is a dropped explicit premise. However, by the Mathlib lemma `irrational_add_ratCast_iff : Irrational (x + q) ↔ Irrational x`, the statement without `y ≠ 0` is still provably true (adding zero to an irrational yields an irrational). So the ORIGINAL is STRONGER than the informal claim — it proves the conclusion for all rationals, not just nonzero ones, and is still a valid theorem. The error is missing_premise since an explicit hypothesis from the informal statement is absent in the formalization."
+}

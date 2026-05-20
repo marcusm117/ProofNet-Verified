@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-304.lean",
+  "stem": "proofnet-304",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement is a standard theorem from Munkres (Exercise 23.11): if p: X → Y is a quotient map where Y is connected and each fiber p⁻¹({y}) is connected, then X is connected. This is mathematically true and unambiguous.\n\nComparing the ORIGINAL and CORRECTED formalizations line by line, the theorem signatures are identical:\n- Same type parameters `{X Y : Type*}` with `[TopologicalSpace X] [TopologicalSpace Y]`\n- Same function `(p : X → Y)` with `(hq : IsQuotientMap p)`\n- Same hypotheses: `(hY : ConnectedSpace Y)` and `(hX : ∀ y : Y, IsConnected (p ⁻¹' {y}))`\n- Same conclusion: `ConnectedSpace X`\n\nAll Mathlib APIs used are valid: `IsQuotientMap` (defined in Topology/Defs/Induced.lean), `IsConnected` (defined in Topology/Connected/Basic.lean), and `ConnectedSpace` (also in Topology/Connected/Basic.lean). The only differences between the files are cosmetic: the original has `noncomputable section` and separates `open Topology` onto a separate line, while the corrected includes `Topology` in the same open statement. These differences do not affect the theorem's meaning. The original formalization is faithful to the informal statement."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-294.lean",
+  "stem": "proofnet-294",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is the transitivity of subspace topology: the topology on A (as Set Y, Y as Set X) induced from Y equals the topology induced from X via the composition. The CORRECTED version uses `IsInducing (fun a : A => (a : X))`, which states precisely that the default topology on ↥A (inherited from Y) equals the topology induced by the map to X — a faithful formalization.\n\nThe ORIGINAL version writes `∀ U : Set A, IsOpen U ↔ IsOpen (Subtype.val '' U)` where `Subtype.val : ↥A → ↥Y`. Here `IsOpen U` uses A's subspace topology from Y, and `IsOpen (Subtype.val '' U)` uses Y's subspace topology from X. The forward direction says `Subtype.val : A → Y` is an open map, so combined with the reverse direction the statement is equivalent to saying `Subtype.val : A → Y` is an open embedding — i.e., A is OPEN in Y. This is strictly different from subspace-topology transitivity (which holds for all subsets, not only open ones).\n\nCounterexample showing the original is provably false: Take X = Y = ℝ, A = {0} ⊂ ℝ. Let U = Set.univ : Set ↥A, which is open in ↥A. Then `Subtype.val '' U = {0} ⊂ ℝ` which is not open. So the biconditional fails.\n\nThe original is incomparable to the informal claim (doesn't imply it, isn't implied by it). The author misread what \"the topology A inherits as subspace of Y equals topology as subspace of X\" requires — they wrote a characterization that describes open embeddings instead of topology-equality/inducing."
+}

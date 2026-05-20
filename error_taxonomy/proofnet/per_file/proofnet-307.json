@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-307.lean",
+  "stem": "proofnet-307",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement describes a perfect map, which requires p to be closed, continuous, surjective, with compact fibers. The ORIGINAL formalization omits the `IsClosedMap p` hypothesis that is present in the CORRECTED version. The informal statement explicitly says \"closed continuous surjective map\", so the closed map condition is an explicit premise, not implicit. Without this hypothesis, the statement becomes false: Take X = ℕ ∪ {*} with the discrete topology (not compact), Y = ℕ ∪ {∞} the one-point compactification (compact), and p sending n ↦ n and * ↦ ∞. Then p is continuous (X is discrete), surjective, all fibers are singletons (hence compact), Y is compact, but X is not compact. The map p is not closed (ℕ is closed in X but its image is not closed in Y). Since the ORIGINAL has fewer hypotheses and the same conclusion, it asserts more than the informal statement — it is stronger. But it is provably false, as the counterexample shows. The error is a missing explicit premise (IsClosedMap p)."
+}

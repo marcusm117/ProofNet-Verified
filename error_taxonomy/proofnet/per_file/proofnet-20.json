@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-20.lean",
+  "stem": "proofnet-20",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The two formalizations have identical theorem statements. The only difference is that the original additionally opens the `InnerProductSpace` scoped namespace, which is purely cosmetic and does not affect the theorem. Both have the same hypothesis (∀ v : V, ∃ c : F, v ∈ eigenspace S c) — meaning every vector is an eigenvector — and the same conclusion (∃ c : F, S = c • LinearMap.id) — meaning S is a scalar multiple of the identity. This faithfully formalizes the informal statement from Axler Exercise 5.12."
+}

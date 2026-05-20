@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-24.lean",
+  "stem": "proofnet-24",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement is from Axler 6.16 and is a classical true result in the standard context (finite-dimensional inner product space, or more generally Hilbert space with closed subspace). The CORRECTED formalization adds `[CompleteSpace V]` and `hU : IsClosed (U : Set V)`, which together make `U.HasOrthogonalProjection` hold and thus enable Mathlib's `Submodule.orthogonal_eq_bot_iff`. The ORIGINAL formalization omits both premises. Without them, the statement is MATHEMATICALLY FALSE: Mathlib's own documentation at `Analysis/InnerProductSpace/Projection/Submodule.lean` explicitly provides a counterexample — take `E = ℕ →₀ ℝ` with the PiLp 2 inner product structure and `K` = sequences summing to 0; then `Kᗮ = ⊥` but `K ≠ ⊤`. The `RCLike K`, `NormedAddCommGroup V`, `InnerProductSpace K V` setting in the original does NOT imply completeness, so this counterexample applies. Since the original has fewer hypotheses than the corrected with the same conclusion, it strictly implies the corrected (stronger), but is itself false. The error is a missing implicit premise (completeness of V and closedness of U), implicitly assumed in Axler's textbook context but explicitly needed in a general Lean/Mathlib setting."
+}

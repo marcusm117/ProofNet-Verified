@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-205.lean",
+  "stem": "proofnet-205",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "DEBATABLE!!!\n\n  Yes, Submodule.map T U = U is a priori stricter than Submodule.map T U \u2264 U. But under the\n  hypothesis \u2200 c, eigenspace T c = \u22a5, they're equivalent:                                   \n                              \n  1. No eigenvalues \u27f9 0 is not an eigenvalue \u27f9 T is injective                               \n  2. T(U) \u2286 U \u27f9 T|_U : U \u2192 U is a linear map   \n  3. T injective \u27f9 T|_U is injective                                                        \n  4. Finite-dimensional \u27f9 injective endomorphism is surjective                              \n  5. \u2234 T(U) = U                                                                             \n                                                                                            \n  So there are no subspaces with T(U) \u2282 U strictly \u2014 every invariant subspace automatically \n  satisfies T(U) = U. The set of subspaces satisfying = U and \u2264 U are identical given the   \n  other hypotheses.                                                                         \n                                               \n  The formalization is faithful. The comment made the mistake of analyzing hU in isolation  \n  without considering how it interacts with hT."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-209.lean",
+  "stem": "proofnet-209",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED formalizations have byte-for-byte identical theorem statements. The only difference lies in the `open scoped` directive: ORIGINAL opens `InnerProductSpace` while CORRECTED opens `ComplexConjugate`. Both are valid scoped namespaces in Mathlib (verified in Mathlib/Analysis/InnerProductSpace/Defs.lean and the ComplexConjugate namespace). Scoped opens only affect available notations, not the logical content of the theorem. The theorem correctly states that for a finite-dimensional complex inner product space V and a normal operator T (i.e., T * adjoint T = adjoint T * T), T is self-adjoint iff every eigenvalue has zero imaginary part. This exactly captures the informal statement (Axler Exercise 7.9). No semantic error exists."
+}

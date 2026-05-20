@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-360.lean",
+  "stem": "proofnet-360",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement (from Shakarchi's Complex Analysis) implicitly assumes Ω is a region (connected open set), which is the standard convention in complex analysis textbooks when discussing \"an open set Ω\" for holomorphic functions. This is an obvious implicit premise from context.\n\nThe ORIGINAL formalization drops this connectedness hypothesis, keeping only `IsOpen Ω`. The CORRECTED formalization explicitly adds `hConn : IsPreconnected Ω`, confirming this hypothesis is essential. Mathlib's analogous theorem `AnalyticOnNhd.eq_const_of_im_eq_const` also requires `IsConnected U` as a hypothesis.\n\nWithout connectedness, the original statement is provably FALSE: take Ω = B(0,1) ∪ B(10,1), and f = 0 on the first ball, f = 1 on the second ball. Then f is holomorphic on Ω, Im(f) = 0 (constant), but f(0) ≠ f(10), contradicting the conclusion f a = f b for arbitrary a, b ∈ Ω.\n\nLogically, the original is STRONGER than the informal statement: it claims the conclusion holds for any open Ω (not just connected ones), which implies the informal version but asserts more.\n\nThe quantification pattern (explicit `a b : Ω` parameters in original vs. `∀ a b : Ω` in conclusion in corrected) is logically equivalent. The error is specifically the missing implicit premise of connectedness."
+}

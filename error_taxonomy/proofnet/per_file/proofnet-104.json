@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-104.lean",
+  "stem": "proofnet-104",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is the classic Ramanujan taxicab result: 1729 = 1³+12³ = 9³+10³ is the smallest positive integer expressible as a sum of two (different) positive integer cubes in two ways. The standard interpretation uses positive integers. The CORRECTED formalization captures this using ℕ with 0 < x,y,z,w, n > 0, within-pair distinctness (x≠y, w≠z), cross-pair distinctness, and uses sInf to express \"smallest\" (both lower bound and achievability). The ORIGINAL has multiple issues: (1) It uses ℤ instead of ℕ+ for the cube variables, allowing negative integers. With ℤ, n=91 = 3³+4³ = 6³+(-5)³ satisfies all the cross-pair inequalities but 91 < 1729, giving a direct counterexample. (2) It doesn't require n > 0, and n=0 with x=0,y=0,z=1,w=-1 is another counterexample. (3) It's missing x≠y and z≠w. (4) It only asserts a lower bound (n ≥ 1729), missing the achievability claim (that 1729 actually attains the minimum). The ORIGINAL is incomparable to the informal: it doesn't imply it (missing achievability) and isn't implied by it (broader domain forces stronger bound that actually fails). It's provably false due to the n=91 and n=0 counterexamples. The error is fundamentally a misunderstanding of the informal statement — specifically of \"smallest\" (requires both bound and achievability), \"positive integer\" (n > 0 dropped), and the standard interpretation of \"integral cubes\" in the Ramanujan context."
+}

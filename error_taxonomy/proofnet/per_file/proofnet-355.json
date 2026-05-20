@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-355.lean",
+  "stem": "proofnet-355",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The only difference between ORIGINAL and CORRECTED is `λ x => c` vs `λ _x => c`. In Lean 4, the underscore prefix on a bound variable name is purely a naming convention to suppress \"unused variable\" warnings — it has no semantic effect. Both lambdas define the exact same constant function that ignores its argument and returns c. Therefore the two formalizations are logically (and definitionally) equivalent. The informal statement is a standard true result (Rudin Exercise 5.1): |f(x) - f(y)| ≤ (x-y)² implies f is constant (since it forces f' ≡ 0). The original formalization correctly encodes \"∃ c, f = (constant function c)\", which is exactly \"f is constant\". Hence the original is faithful, the theorem is provable, and there is no error."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-361.lean",
+  "stem": "proofnet-361",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The only difference between ORIGINAL and CORRECTED is the notation: `norm z = 1` vs `‖z‖ = 1`. In Mathlib (Analysis/Normed/Group/Defs.lean line 76), `‖e‖` is defined as notation for `norm e`, so the two expressions are literally identical after notation unfolding. Both state that z is on the unit circle, s is the partial sum sequence ∑_{i<n} i·z^i, and the conclusion is that no limit y exists. The informal statement says \"the power series ∑ n z^n does not converge on any point of the unit circle\", which matches. The formalizations are logically equivalent, so the ORIGINAL is faithful."
+}

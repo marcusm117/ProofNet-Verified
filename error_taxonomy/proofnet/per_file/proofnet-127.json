@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-127.lean",
+  "stem": "proofnet-127",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "The only difference between ORIGINAL and CORRECTED is that the hypothesis `hx` uses `U ⊂ K` (strict subset) in the ORIGINAL versus `U ⊆ K` (non-strict subset) in the CORRECTED. I verified in Mathlib's `Data/Set/Basic.lean` that `⊂` on `Set` is `HasSSubset.SSubset`, i.e., strict subset (`s ⊆ t ∧ s ≠ t`). The informal statement describes \"locally compact at x\", which standardly means x has a compact neighborhood — this is the CORRECTED version with non-strict ⊆. The ORIGINAL adds the extra requirement `U ≠ K`, making its premise strictly stronger (e.g., in a one-point compact Hausdorff space the original premise fails even though the space is locally compact at x). A stronger hypothesis yields a weaker overall implication, so the ORIGINAL is weaker than the informal/CORRECTED. The ORIGINAL is still provable because the standard theorem holds under the weaker premise and thus also under the stronger one. The error is a Lean 4 notation confusion: in many mathematical traditions `⊂` denotes non-strict subset, but in Lean 4/Mathlib `⊂` is strict while `⊆` is non-strict — this is the ⊂/⊆ pitfall classic to Lean encoding."
+}

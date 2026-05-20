@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-256.lean",
+  "stem": "proofnet-256",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement requires a POSITIVE integer n such that a^n = e. The original formalization uses `∃ (n : ℕ), a ^ n = 1`, but in Lean/Mathlib ℕ includes 0, so this is trivially satisfied by n = 0 (since a^0 = 1 in any group). The corrected version adds the crucial `n > 0` conjunct to properly capture \"positive integer\". The original is thus WEAKER than the informal claim (the informal implies the original, but the original does not imply the informal since n=0 satisfies it). The original is still provably true (trivially). The error is a misunderstanding of the informal statement — the formalizer missed the \"positive\" qualifier, conflating \"positive integer\" with the Lean type ℕ."
+}

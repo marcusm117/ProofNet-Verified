@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-80.lean",
+  "stem": "proofnet-80",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement \"any two nonabelian groups of order 21 are isomorphic\" is a true and unambiguous theorem (the unique nonabelian group of order 21 is ℤ/7 ⋊ ℤ/3). The original formalization misuses `IsEmpty (CommGroup G)` to encode \"G is nonabelian\". However, `CommGroup G` in Mathlib is defined as `class CommGroup (G : Type u) extends Group G, CommMonoid G` — an inhabitant of this type is a complete commutative group structure on G (independent of the existing [Group G] instance). For any 21-element nonempty finite type, one can always construct a commutative group structure (e.g., by transporting ℤ/21ℤ via bijection), so `CommGroup G` is always inhabited and `IsEmpty (CommGroup G)` is always false. This makes the original's hypotheses unsatisfiable, rendering the theorem vacuously true — it does not actually constrain G and H to be nonabelian under their given [Group G]/[Group H] structures. The corrected version uses `∃ a b : G, a * b ≠ b * a`, which correctly expresses nonabelianness with respect to the given group structure. Since the original is vacuously true, it is weaker than the informal claim (it is implied by the informal statement, but does not imply it — a vacuous statement provides no information about actual nonabelian groups). The `instance` vs `theorem` difference and `G ≃* H` vs `Nonempty (G ≃* H)` are stylistic and not the main issue. The error type is a misunderstanding of how Mathlib's class hierarchy works: conflating the class `CommGroup` with a property/Prop about the given group structure."
+}

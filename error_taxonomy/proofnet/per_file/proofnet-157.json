@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-157.lean",
+  "stem": "proofnet-157",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement is the Cantor–Bendixson theorem for separable metric spaces: every closed set is the union of a perfect set and an at-most-countable set. This is true and unambiguous.\n\nThe corrected formalization uses `Perfect P₁`, which in Mathlib means `IsClosed P₁ ∧ Preperfect P₁`, where `Preperfect` requires every point of P₁ to satisfy `AccPt x (𝓟 P₁)`, i.e., `NeBot (𝓝[≠] x ⊓ 𝓟 P₁)` — using the punctured neighborhood. This matches the classical notion of a perfect set (closed + every point is a limit point).\n\nThe original formalization replaces `Perfect P₁` with `IsClosed P₁ ∧ P₁ = {x | ClusterPt x (𝓟 P₁)}`. But `ClusterPt x (𝓟 P₁)` is `NeBot (𝓝 x ⊓ 𝓟 P₁)` (using the full neighborhood, not punctured), and by `mem_closure_iff_clusterPt`, `{x | ClusterPt x (𝓟 P₁)} = closure P₁`. So the condition `P₁ = {x | ClusterPt x (𝓟 P₁)}` is equivalent to `closure P₁ = P₁`, i.e., `P₁` is closed — which is already assumed. The extra conjunct adds nothing.\n\nTherefore, the original formalization is equivalent to: \"A is the union of a closed set and a countable set,\" which is strictly weaker than the informal statement (the closed set is not required to be perfect). It is trivially provable by taking P₁ = A and P₂ = ∅.\n\nThe error is a confusion between Mathlib's `ClusterPt` (closure points, full neighborhood) and `AccPt` (accumulation/limit points, punctured neighborhood). This is a misunderstanding of Mathlib API."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-194.lean",
+  "stem": "proofnet-194",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks to prove that x^2 + x + 1 is irreducible over F_2. The CORRECTED formalization uses `card F = 2` and the polynomial `X^2 + X + 1`. The ORIGINAL uses `card F = 7` and the polynomial `X^2 + 1` — both the field and the polynomial are different from what the informal statement requests. These are not logically related (neither implies the other), so the original is incomparable to the informal statement. Interestingly, the original statement happens to be provably true: over F_7, the squares are {0, 1, 2, 4}, and -1 ≡ 6 is not a square, so X^2 + 1 has no roots in F_7 and is irreducible there. However, this is a different theorem from what was asked. The error is a clear misunderstanding/misreading of the informal statement."
+}

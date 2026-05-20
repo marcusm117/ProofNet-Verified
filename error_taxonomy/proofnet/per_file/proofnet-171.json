@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-171.lean",
+  "stem": "proofnet-171",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "adding_extra_case",
+  "reasoning": "The informal statement says f is continuous on (a, b) — its domain is the open interval. The CORRECTED version encodes this as `ContinuousOn f (Set.Ioo a b)`. The ORIGINAL uses `Continuous f`, which requires f to be continuous on all of ℝ — a strictly stronger hypothesis. Since `Continuous f → ContinuousOn f (Set.Ioo a b)`, the corrected statement implies the original (given the same midpoint-convexity hypothesis), but not vice versa. Hence the original is WEAKER than the informal statement. The original is still provable as a true theorem (it follows from the corrected one). The error comes from strengthening the continuity hypothesis beyond what the informal statement requires, i.e., adding the extra requirement that f be continuous outside (a,b). This is best classified as adding_extra_case."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-186.lean",
+  "stem": "proofnet-186",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The only difference between the ORIGINAL and CORRECTED formalizations is that the CORRECTED version adds `RingHom` to the `open` declarations. The theorem statement itself is identical: `theorem Artin_exercise_3_2_7 {F : Type*} [Field F] {G : Type*} [Field G] (φ : F →+* G) : Injective φ`. The informal statement \"every homomorphism of fields is injective\" is true and unambiguous (in Mathlib, `F →+* G` is a ring homomorphism which preserves 1, and any such homomorphism from a field has trivial kernel). Since `Function` is opened in both versions, `Injective φ` refers to `Function.Injective φ` unambiguously. The `open RingHom` addition in CORRECTED only affects namespace resolution within the proof body, but since the proof is `sorry` in both, the semantic content of the theorem statements is identical. The original formalization is faithful."
+}

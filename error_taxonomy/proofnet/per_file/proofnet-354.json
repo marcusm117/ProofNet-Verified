@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-354.lean",
+  "stem": "proofnet-354",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement explicitly says 'd(p, q) > δ' (strict inequality). The corrected formalization uses `dist p q > δ`, matching exactly. The original uses `dist p q ≥ δ` (non-strict), which is a weaker conclusion — it's easier to prove ≥ than >. While the full existential statements are logically equivalent (you can always shrink δ by half), the original does not literally match what the informal asks for. The original is weaker (non-strict where strict was requested)."
+}

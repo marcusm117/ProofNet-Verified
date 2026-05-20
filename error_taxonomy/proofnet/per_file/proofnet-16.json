@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-16.lean",
+  "stem": "proofnet-16",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The theorem statement in the ORIGINAL is byte-for-byte identical to the CORRECTED version. Both assert: given a family `u : ι → Submodule F V`, there exists a `Submodule F V` whose carrier equals the set intersection `⋂ i, (u i).carrier`. This is exactly the informal claim that the intersection of any collection of subspaces is itself a subspace. The only difference between the two files is the extra `InnerProductSpace` in `open scoped ...` at the top of the original, which is unused and has no semantic effect on the theorem statement. Therefore the original is faithful and provably true, with no error."
+}

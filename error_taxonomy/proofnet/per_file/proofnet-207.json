@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-207.lean",
+  "stem": "proofnet-207",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is Axler's Exercise 6.13, where Axler uses F throughout to denote either ℝ or ℂ, and Chapter 6 applies to both real and complex inner product spaces. The expression |⟨v, eᵢ⟩|² is valid in both cases (being the absolute value for reals or modulus for complex numbers). The CORRECTED formalization uses `[RCLike F] [InnerProductSpace F V]`, which correctly captures the generality of Axler's F. The ORIGINAL formalization specializes to ℂ only, via `[InnerProductSpace ℂ V]`, `Orthonormal ℂ e`, and `Submodule.span ℂ`. This is a strictly weaker claim: the corrected (universally quantified over any RCLike F) implies the original (specialize F := ℂ), but the original does not imply the real case. The original is provable (it is a true specialization of a true theorem) but does not faithfully reflect the full generality of Axler's exercise. The error is a misunderstanding of the informal statement's intended scope — interpreting F as specifically ℂ rather than as a generic RCLike field."
+}

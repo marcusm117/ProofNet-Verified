@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-250.lean",
+  "stem": "proofnet-250",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement specifies the ring $\\mathbb{Z}[x_1, x_2, \\ldots]/(x_1 x_2, x_3 x_4, x_5 x_6, \\ldots)$ where the generators are **disjoint pairs** of variables: $(x_1,x_2), (x_3,x_4), (x_5,x_6), \\ldots$. The CORRECTED version encodes this correctly with `f(i) = X(2i) * X(2i+1)`, yielding the ideal $(x_0 x_1, x_2 x_3, x_4 x_5, \\ldots)$. The ORIGINAL version uses `f(i) = X(i) * X(i+1)`, producing the ideal $(x_0 x_1, x_1 x_2, x_2 x_3, \\ldots)$ — all consecutive overlapping pairs, a fundamentally different ideal. The resulting quotient rings are different: for the corrected ring, minimal primes biject with functions $\\mathbb{N} \\to \\{0,1\\}$, while for the original ring, minimal primes biject with minimal vertex covers of the infinite path graph. These claims are logically incomparable (neither implies the other), though by coincidence both rings happen to have infinitely many minimal primes (the path graph on $\\mathbb{N}$ admits infinitely many minimal vertex covers, e.g., \"evens up to $2n$, then odds\" for each $n$). The error is a misunderstanding of the informal statement — specifically, the indexing pattern in $x_1 x_2, x_3 x_4, \\ldots$ (stride 2, disjoint) was misread as consecutive overlapping products."
+}

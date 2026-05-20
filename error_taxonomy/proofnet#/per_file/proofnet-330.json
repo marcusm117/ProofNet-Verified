@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-330.lean",
+  "stem": "proofnet-330",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "The original statement uses `ContDiff ℝ ⊤ f` where `⊤` resolves to `⊤ : WithTop ℕ∞`.\nIn current Mathlib, the type `WithTop ℕ∞` has TWO distinct \"top-like\" elements:\n\n  - `(⊤ : ℕ∞) : WithTop ℕ∞`  — denotes C^∞ (infinitely differentiable)\n  - `⊤ : WithTop ℕ∞`          — denotes C^ω (real-analytic)\n\nThese are given scoped notations in the `ContDiff` namespace\n(see Mathlib.Analysis.Calculus.ContDiff.FTaylorSeries, lines 112–114):\n\n  scoped[ContDiff] notation3 \"ω\" => (⊤ : WithTop ℕ∞)\n  scoped[ContDiff] notation3 \"∞\" => ((⊤ : ℕ∞) : WithTop ℕ∞)\n\nWithout `open scoped ContDiff`, writing `ContDiff ℝ ⊤ f` means `ContDiff ℝ ω f`,\ni.e., f is real-analytic — strictly stronger than \"infinitely differentiable\"."
+}

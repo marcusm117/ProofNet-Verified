@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-104.lean",
+  "stem": "proofnet-104",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "1. negation ✅\n2. reasoning ✅\n3. correction ✅\n\nError Type: Implicit Premise \nIf NL has Implicit Premises: Yes\nImplicit Premises: 0 < x ∧ 0 < y ∧ 0 < z ∧ 0 < w \nComment: There is also wrong formalization as even though the NL statement says positive integer, the initial formalization does not include (n > 0).\n\n"
+}

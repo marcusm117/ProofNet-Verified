@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-174.lean",
+  "stem": "proofnet-174",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "adding_extra_case",
+  "reasoning": "The informal statement restricts the hypotheses to specific domains: (a) continuity on [0,∞), (b) differentiability on (0,∞), (d) derivative monotone on (0,∞). The CORRECTED formalization faithfully captures these as `ContinuousOn f (Set.Ici 0)`, `DifferentiableOn ℝ f (Set.Ioi 0)`, and `MonotoneOn (deriv f) (Set.Ioi 0)`. The ORIGINAL instead uses `Continuous f`, `∀ x, DifferentiableAt ℝ f x`, and `Monotone (deriv f)`, which demand these properties on ALL of ℝ. These are strictly stronger hypotheses than what the informal statement supplies, so the original theorem is weaker: it can be derived from the informal claim (since the global hypotheses imply the half-line ones), but the informal claim cannot be derived from the original. The conclusion is identical. The original is still provable (true) since the informal version is true. The error is adding extra domain constraints to the hypotheses beyond what the informal statement requires."
+}

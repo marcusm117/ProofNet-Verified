@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-322.lean",
+  "stem": "proofnet-322",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement is Cantor's intersection theorem for nested decreasing compact sets — a standard true theorem in the implicit T2/metric-space context of Pugh's textbook. The CORRECTED formalization includes `[T2Space α]` and uses non-strict `⊇`. The ORIGINAL (a) omits `[T2Space α]` and (b) uses strict `⊃` (HasSSuperset, defined as strict `<` on Set). The missing T2 makes the ORIGINAL literally false: taking α = ℕ with the cofinite topology (T1 not T2), every subset is compact, and `s_n = {k ≥ n}` satisfies strict `⊃`, nonemptiness, and compactness, yet `⋂ s_n = ∅`. The ORIGINAL and CORRECTED are incomparable: ORIGINAL does not imply CORRECTED (CORRECTED allows `s_i = s_{i+1}` but ORIGINAL requires strict decrease), and CORRECTED does not imply ORIGINAL (CORRECTED requires T2 but ORIGINAL allows any topological space). The dominant error is the missing T2 hypothesis, which was implicit in Pugh's metric-space context."
+}

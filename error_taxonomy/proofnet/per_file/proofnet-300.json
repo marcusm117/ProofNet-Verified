@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-300.lean",
+  "stem": "proofnet-300",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "adding_extra_conclusion",
+  "reasoning": "The informal statement is a one-way implication: \"if there exists a continuous section f with p∘f = id, then p is a quotient map.\" The corrected formalization uses → matching this directly. The original formalization uses ↔ (biconditional), which additionally asserts the reverse: \"if p is a quotient map, then a continuous section exists.\" This reverse direction is false in general — for instance, the quotient map [0,1] → [0,1]/{0,1} ≅ S¹ is a quotient map but admits no continuous section (there is no continuous injection from S¹ into ℝ). Thus the original is logically stronger than the informal claim (the ← direction gives the informal claim, but the → direction adds an extra, false conclusion), making the original statement provably false. The error type is \"adding_extra_conclusion\" because an extra conclusion (the reverse implication) was appended."
+}

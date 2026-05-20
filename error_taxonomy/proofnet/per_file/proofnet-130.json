@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-130.lean",
+  "stem": "proofnet-130",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The theorem statements are identical between the original and corrected versions. Both state: given a topological space X with NormalSpace X and a closed set A ⊆ X, the subtype {x // x ∈ A} is a NormalSpace. The only differences are in the preamble: `open Topology` vs `open scoped Topology` and the presence of `noncomputable section` in the original. These are cosmetic and do not affect the mathematical content of the theorem. The formalization faithfully captures the informal claim that a closed subspace of a normal space is normal, and this is a true theorem in Mathlib (e.g., via `Topology.IsClosedEmbedding.normalSpace`)."
+}

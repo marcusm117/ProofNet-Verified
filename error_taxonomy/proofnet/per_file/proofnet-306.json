@@ -1,0 +1,10 @@
+{
+  "file": "proofnet-306.lean",
+  "stem": "proofnet-306",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement is a classical result from Munkres on topological groups: the connected component of the identity is a normal subgroup. Comparing the two formalizations: (1) `connectedComponent 1` in the original is elaborated the same as `connectedComponent (1 : G)` in the corrected — `1` is forced to have type `G` by `connectedComponent`'s expected argument type. (2) `open Topology` vs `open scoped Topology` is a notation-scoping difference with no semantic effect. (3) The critical comparison is `C' = C` (where `C' : Subgroup G`, `C : Set G`) vs `(H : Set G) = C`. From Mathlib's `Data/SetLike/Basic.lean:118`, there is `instance : CoeTC A (Set B) where coe := SetLike.coe`, so `Subgroup G` coerces to `Set G`. When Lean elaborates `C' = C` with mismatched types and a `CoeTC` available, the coercion is inserted automatically, yielding `(↑C' : Set G) = C` — identical to the corrected version. Both theorems assert: there exists a subgroup of G whose underlying set is C and which is normal. The corrected version just makes the coercion explicit for clarity. The two are logically equivalent, so the original is faithful.",
+  "note": "Original is sloppy: uses implicit coercion `C' = C` where C' : Subgroup G and C : Set G. The corrected version explicitly writes `(H : Set G) = C`, making the coercion visible. Definitionally equal but corrected is better practice. We adopt the corrected one."
+}

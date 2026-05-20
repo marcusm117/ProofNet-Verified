@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-366.lean",
+  "stem": "proofnet-366",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement is a classical result in complex analysis: an entire injective function must be of the form f(z) = az + b with a ≠ 0. Both the ORIGINAL and CORRECTED formalizations have semantically identical theorem statements: both use `Differentiable ℂ f` for \"entire\", `Function.Injective f` for \"injective\", and conclude `∃ (a b : ℂ), f = (λ z => a * z + b) ∧ a ≠ 0`. The only differences between them are cosmetic: indentation whitespace and some additional `open` declarations (MeasureTheory, Polynomial) in the corrected version that don't affect the theorem statement. Therefore the ORIGINAL is logically equivalent to the CORRECTED, i.e. faithful."
+}

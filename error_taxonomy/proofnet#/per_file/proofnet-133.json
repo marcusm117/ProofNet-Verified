@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-133.lean",
+  "stem": "proofnet-133",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ✅\n\nError Type: Implicit premise\nIf NL has Implicit Premises: Yes\nImplicit Premises:  (hAn : A.Nonempty) (hBn : B.Nonempty)\nComment: A and B needs to be nonempty.\n\n\n\n"
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-153.lean",
+  "stem": "proofnet-153",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED formalizations have identical theorem statements. Both use the same parameters (n : ℕ, d r : ℝ, x y z : EuclideanSpace ℝ (Fin n)), the same hypotheses (n ≥ 3, ‖x - y‖ = d, d > 0, r > 0, 2 * r > d), and the same conclusion (Set.Infinite of the set of points equidistant r from both x and y). The only differences are non-semantic: the corrected version opens an additional notation scope (InnerProductSpace) and increases maxHeartbeats — neither affects the theorem statement. The formalization faithfully captures the informal statement about infinitely many points z in ℝ^k equidistant from x and y when 2r > d > 0 and k ≥ 3."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-227.lean",
+  "stem": "proofnet-227",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement says \"either K ≤ H, or (G = HK and |K:K∩H| = p)\". The corrected formalization captures this precisely with `K ≤ H ∨ (H ⊔ K = ⊤ ∧ (K ⊓ H).relIndex K = p)`. The original formalization uses `K ≤ H ∨ H ⊔ K = ⊤ ∨ (K ⊓ H).relIndex K = p`, which (by right-associativity of ∨) is a three-way disjunction. This is strictly weaker than the corrected version: the corrected implies the original (A ∨ (B ∧ C) → A ∨ B ∨ C), but the original does not imply the corrected (e.g., only B holding satisfies the original but not the corrected). Since the stronger corrected theorem is a true theorem (Dummit-Foote 3.3.3), the weaker original is also provably true. The error is misreading the informal statement's \"or ... and ...\" structure as three disjuncts rather than a disjunction with a conjunction in the second branch."
+}

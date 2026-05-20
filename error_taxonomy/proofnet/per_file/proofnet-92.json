@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-92.lean",
+  "stem": "proofnet-92",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement asks to prove that cos(1°) is algebraic over ℚ, which is mathematically true and unambiguous. Both the original and corrected Lean formalizations have the identical theorem statement: `IsAlgebraic ℚ (cos (Real.pi / 180))`. Here `Real.pi / 180` correctly represents 1 degree in radians, so `cos(Real.pi / 180) = cos(1°)`. The `IsAlgebraic` definition from Mathlib (in `RingTheory/Algebraic/Defs.lean`) correctly expresses that there is a nonzero polynomial with rational coefficients that has this value as a root. The only differences between original and corrected are: (1) removal of `noncomputable section` declaration, and (2) addition of `set_option maxRecDepth 2048 in` before the theorem. Both are elaboration/compilation settings that do not affect the semantic meaning of the theorem statement. Therefore the original is faithful to the informal statement."
+}

@@ -1,0 +1,10 @@
+{
+  "file": "proofnet-64.lean",
+  "stem": "proofnet-64",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The only difference between the ORIGINAL and CORRECTED formalizations is that the ORIGINAL includes an extra unused implicit parameter `{R : Type*}` which never appears in the hypotheses or conclusion. Since R is universally quantified but does not appear anywhere in the statement body, the proposition \"∀ R : Type*, P\" is logically equivalent to just \"P\" (given types always exist). Therefore, the logical/mathematical content of the two formalizations is identical. The informal statement — that an integer which is a sum of two rational squares is a sum of two integer squares — is a classical, true, and unambiguous theorem. The original formalization is faithful to the informal statement, just with a harmlessly vacuous extra type parameter.",
+  "note": "Original is sloppy: contains unused `{R : Type*}` parameter not in the informal statement. Corrected version removes it — logically equivalent but cleaner."
+}

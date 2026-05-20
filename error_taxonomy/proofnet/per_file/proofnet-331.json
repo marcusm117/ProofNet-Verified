@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-331.lean",
+  "stem": "proofnet-331",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The original formalization has multiple errors compared to the corrected version: (1) `hx0 : x 0 = a` is wrong — the informal statement clearly says $x_0 = 1$, not $x_0 = a$; (2) the premise `x 2 = a` is missing entirely — the informal statement says $x_1 = x_2 = a$, and since the recurrence only defines $x_{n+1}$ for $n \\geq 2$, the value of $x_2$ is not determined by the recurrence and must be given explicitly; (3) the conclusion is weaker: `∃ c, Function.Periodic x c` allows $c = 0$, and since `Periodic f 0 := ∀ x, f(x + 0) = f(x)` holds trivially for any function, the conclusion is trivially provable. The corrected version requires `c ≠ 0`. The hypotheses are incomparable with the informal statement (since `x 0 = a` neither implies nor is implied by `x 0 = 1` in general), so the original is incomparable overall. It is trivially provable by taking $c = 0$, so it is technically \"true\". The primary classification is missing_premise since `x 2 = a` is an explicit premise that was dropped, and `x 0 = 1` was replaced with an incorrect premise."
+}

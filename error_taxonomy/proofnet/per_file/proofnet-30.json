@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-30.lean",
+  "stem": "proofnet-30",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement says \"x^2 = 1 if and only if |x| is either 1 or 2\", which is a biconditional. The CORRECTED formalization correctly encodes this as `x ^ 2 = 1 ↔ (orderOf x = 1 ∨ orderOf x = 2)`. The ORIGINAL, however, takes `hx : x ^ 2 = 1` as a hypothesis and only concludes `orderOf x = 1 ∨ orderOf x = 2`, capturing just the forward direction of the iff. This makes the original statement strictly weaker than what the informal statement asks — it is implied by the biconditional but does not imply it. The forward direction alone is mathematically provable (if x² = 1, the order divides 2, so the order is 1 or 2), so the original statement is true. The error is a misreading of the \"if and only if\" as a one-way implication."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-85.lean",
+  "stem": "proofnet-85",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "OG is weaker than GT. \n\nMisunderstanding of MathLib\n\nThe original statement concludes `Nonempty (CommRing R)`, which only asserts the\nexistence of *some* commutative-ring structure on the underlying type `R`."
+}

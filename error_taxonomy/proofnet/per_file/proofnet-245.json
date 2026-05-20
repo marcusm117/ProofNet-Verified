@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-245.lean",
+  "stem": "proofnet-245",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "adding_extra_conclusion",
+  "reasoning": "The informal statement says the image of the center of R is \"contained in\" the center of S, meaning subset (⊆). The CORRECTED formalization uses ⊆, while the ORIGINAL uses ⊂. In Lean 4/Mathlib, ⊂ on Set is defined as strict/proper subset (HasSSubset is set to (· < ·) in Mathlib/Data/Set/Basic.lean line 84), not regular subset. Thus the ORIGINAL asserts a strict containment, which is strictly stronger than the informal claim (strict subset implies subset). This additional non-equality claim constitutes an extra conclusion not in the informal statement. Moreover, the original statement is provably FALSE: take φ = id on a commutative ring R; then center R = R, and φ '' (center R) = R = center R = center S, so the image equals (not strictly contains) the center of S. Another counterexample: any surjective homomorphism between commutative rings makes both centers equal to the whole rings, and the image equals the full codomain, not strictly smaller. Hence Q1 = true_and_unambiguous (the informal subset claim is a standard true theorem), Q2 = stronger, Q3 = false, Q4 = adding_extra_conclusion (the original adds the claim that the image is not equal to the center, which was not asked)."
+}

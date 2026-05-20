@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-263.lean",
+  "stem": "proofnet-263",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement specifies \"more than three-fourths\" (strict inequality). The corrected formalization correctly uses `<` in `(0.75 : ℚ) * card G < card I`. The original uses `≤`, which weakens the premise to \"at least three-fourths\". This makes the original a stronger claim (weaker hypothesis, same conclusion). The stronger claim is false: in the dihedral group D4 of order 8, the identity automorphism satisfies φ(x) = x⁻¹ for exactly the 6 involutions plus identity = 6 elements = 0.75 × 8, so the hypothesis with `≤` holds, but D4 is not abelian. The conclusion parenthesization difference (`∀ x, φ x = x⁻¹ ∧ ∀ x y, x*y = y*x` vs `(∀ x, φ x = x⁻¹) ∧ ∀ x y, x*y = y*x`) is semantically equivalent since G is nonempty. The error is a misreading of \"more than\" as \"at least\"."
+}

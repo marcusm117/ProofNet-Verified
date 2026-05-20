@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-129.lean",
+  "stem": "proofnet-129",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement is a standard result from Munkres: in a normal space, disjoint closed sets A, B have open neighborhoods U ⊇ A, V ⊇ B with disjoint closures. The ORIGINAL and CORRECTED formalizations are logically identical: both declare [TopologicalSpace X] [NormalSpace X], disjoint closed sets A, B, and conclude ∃ U V, IsOpen U ∧ IsOpen V ∧ A ⊆ U ∧ B ⊆ V ∧ closure U ∩ closure V = ∅. The only differences are cosmetic (`open Topology` vs `open scoped Topology`, presence of `noncomputable section`), which do not affect the theorem statement. Therefore the original is faithful and provable."
+}

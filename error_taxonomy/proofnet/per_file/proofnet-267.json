@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-267.lean",
+  "stem": "proofnet-267",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "Original and corrected formalizations are identical (modulo whitespace/formatting)."
+}

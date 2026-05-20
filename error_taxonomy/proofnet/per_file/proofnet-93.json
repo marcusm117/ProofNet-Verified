@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-93.lean",
+  "stem": "proofnet-93",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED formalizations have identical theorem statements: `Irreducible (X^3 - 3*X - 1 : Polynomial ℚ)`. The only differences are in the preamble (additional `open Fintype Set Real Ideal` statements and a `noncomputable section` declaration in the original), which are purely cosmetic and do not affect the logical content of the theorem. The informal statement \"Prove that $x^3 - 3x - 1$ is irreducible over $\\mathbb{Q}$\" is correctly captured using Mathlib's standard `Irreducible` predicate from `Mathlib/Algebra/Group/Irreducible/Defs.lean`. The polynomial is indeed irreducible over ℚ (verified via rational root theorem: no rational roots for degree-3 polynomial implies irreducibility). Therefore the original is faithful and true."
+}

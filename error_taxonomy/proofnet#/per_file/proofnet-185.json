@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-185.lean",
+  "stem": "proofnet-185",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": " The Lean formalization, however, uses    \n  `Nonempty (center (G × H) ≃* (center G) × (center H))`, which asserts only the    \n  existence of an abstract group isomorphism between the two groups. Subgroup       \n  equality implies existence of an isomorphism (via the identity), but an abstract  \n  isomorphism does not imply that the two sides are the same subgroup of G × H —    \n  the MulEquiv need not respect any embedding into G × H. The Lean statement is     \n  therefore logically implied by, but does not imply, the informal claim, making it \n   strictly weaker."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-264.lean",
+  "stem": "proofnet-264",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement says \"φ is a homomorphism of G onto G'\", where \"onto\" explicitly means surjective. The corrected formalization includes `hφ : Function.Surjective φ`, matching Mathlib's `Subgroup.Normal.map` which requires surjectivity (confirmed at Mathlib/Algebra/Group/Subgroup/Basic.lean:602). The original formalization drops this surjectivity hypothesis entirely, making its statement strictly stronger: it asserts that for ANY homomorphism φ : G →* G' (not necessarily surjective) and any normal subgroup N ⊴ G, the image φ(N) is normal in G'. This stronger statement is provably false — counterexample: G = ℤ/2ℤ, G' = S₃, φ sending the nontrivial element to the transposition (1 2); N = G is normal in G, but φ(N) = {e, (1 2)} is not normal in S₃. The error is that an explicit premise (\"onto\"/surjective) from the informal statement was dropped, hence \"missing_premise\"."
+}

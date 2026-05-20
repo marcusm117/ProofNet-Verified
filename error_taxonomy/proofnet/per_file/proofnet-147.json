@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-147.lean",
+  "stem": "proofnet-147",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement says |z_j| = 1 (unit circle). The ORIGINAL formalization writes ‖z n‖ < 1 (open unit disk, strict inequality), while the CORRECTED version correctly uses ‖z n‖ = 1. The hypothesis sets {|z_j|<1} and {|z_j|=1} are disjoint subsets of ℂ, so the ORIGINAL is neither implied by nor implies the INFORMAL claim — they are incomparable. Regarding provability of the ORIGINAL: for |z_j|<1 (j=2,3,4), writing S as linear in z_1 gives z_1 = A/B where A = 3 - z_2 - z_3 - z_4 and B = 1 - z_2z_3z_4; analysis (e.g., on the symmetric slice A/B = 3/(1+z+z²) with |1+z+z²| < 3 for |z|<1) shows |A/B| > 1, so no z_1 in the open disk satisfies S = 0. Hence the ORIGINAL statement is also provably true, but it is a different theorem from the Putnam one. The error is that the author misread |z_j| = 1 as |z_j| < 1 — a misunderstanding of the informal statement."
+}

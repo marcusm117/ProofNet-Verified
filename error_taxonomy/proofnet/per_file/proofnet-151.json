@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-151.lean",
+  "stem": "proofnet-151",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement asserts the existence of r ≥ 0 and w with |w|=1 such that z = rw. The ORIGINAL formalization drops the explicit `r ≥ 0` constraint that is clearly stated in the informal problem. The CORRECTED version includes `r ≥ 0 ∧ ‖w‖ = 1 ∧ z = r * w`. Note that `norm w = 1` and `‖w‖ = 1` are identical in Lean 4 (‖·‖ is notation for norm), so this is not a semantic issue. The missing `r ≥ 0` makes the ORIGINAL strictly weaker than the informal claim: the informal statement implies the ORIGINAL (just forget that r ≥ 0), but the ORIGINAL does not imply the informal claim (we could witness with negative r and a sign-flipped w). The ORIGINAL is still provable — it's the weaker polar decomposition without the nonnegativity constraint, trivially witnessed by r = ‖z‖ (which is nonnegative anyway) and w = z/‖z‖ (or w = 1 if z = 0). Since an explicit constraint from the informal statement was dropped, this is best classified as missing_premise."
+}

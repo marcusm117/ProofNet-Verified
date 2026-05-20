@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-168.lean",
+  "stem": "proofnet-168",
+  "q1_informal_status": "nl_wrong",
+  "q2_faithfulness": "nl_wrong",
+  "q3_provability": "false",
+  "q4_error_type": "nl_wrong",
+  "reasoning": " 1. negation \u2705\n2. reasoning \u2705\n3. correction \u274c\n\nError Type: NL Wrong\nIf NL has Implicit Premises: NA\nImplicit Premises:   NA\nComment: NA\n\n\nwrong copy-paste\n\n\n"
+}

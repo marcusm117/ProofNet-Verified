@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-155.lean",
+  "stem": "proofnet-155",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is Rudin Exercise 2.24 (Bolzano-Weierstrass property ⇒ separability for metric spaces), which is a well-known true theorem. In Rudin's terminology (Def. 2.18(b)), a \"limit point\" of E is a point p such that every neighborhood of p contains a point q ≠ p with q ∈ E — i.e., exactly Mathlib's `AccPt p (𝓟 E)`, as used in the corrected version.\n\nThe original uses `∃ x : X, x ∈ closure A` instead. But any element of A itself lies in `closure A`, and `Infinite A` implies A is nonempty, so this hypothesis is trivially satisfied by EVERY metric space. The original therefore states \"every metric space is separable,\" which is mathematically false — an uncountable set with the discrete metric is a counterexample (every infinite subset is in its own closure, yet the space is not separable).\n\nSince the original's hypothesis is vacuously weaker than the informal's (strict implication: AccPt ⇒ x ∈ closure A, but not conversely), and the conclusion is the same, the original asserts more and is thus stronger (and false). The error is a misunderstanding of the informal statement's term \"limit point,\" which in Rudin's book is strictly accumulation point (AccPt), not just \"point in the closure.\""
+}

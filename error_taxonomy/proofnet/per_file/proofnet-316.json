@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-316.lean",
+  "stem": "proofnet-316",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is a true, standard theorem: every locally compact Hausdorff space is completely regular. Mathlib's `CompletelyRegularSpace` (as confirmed in `Mathlib/Topology/Separation/CompletelyRegular.lean`) is defined as: ∀ x, ∀ K closed, x ∉ K, ∃ f : X → I continuous with f x = 0 and EqOn f 1 K. The corrected formalization uses this definition directly.\n\nThe original formalization unfolds the definition but incorrectly: it writes `f '' A = {0}` instead of `EqOn f 0 A` (using the polarity-swapped form f x = 1). Set-image equality `f '' A = {0}` is strictly stronger than `EqOn f 0 A`: specifically, when A = ∅, we have `f '' ∅ = ∅ ≠ {0}`, so the condition is unsatisfiable.\n\nThe hypothesis `IsClosed A ∧ x ∉ A` is satisfied when A = ∅ for any x, so for any non-empty locally compact Hausdorff space X (e.g., ℝ), we must produce an f with `f '' ∅ = {0}`, which is impossible. Therefore the original theorem is provably false. The original is technically stronger than informal (false implies anything, and outside the A = ∅ pathology, it would imply the informal claim via f ↦ 1-f), but asserts an impossible additional condition.\n\nThis is a misunderstanding of how to formalize \"f is identically 0 on A\" — the author chose a set-equality formulation that fails for empty A, rather than using `EqOn` or a subset formulation."
+}

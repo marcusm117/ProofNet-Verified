@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-264.lean",
+  "stem": "proofnet-264",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ✅\n\nError Type: Wrong formalization\nIf NL has Implicit Premises: No\nImplicit Premises:   NA\nComment: Does not include the hypothesis that phi is surjective.\n\n\n\n\n\n\n"
+}

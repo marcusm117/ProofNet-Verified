@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-323.lean",
+  "stem": "proofnet-323",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The only difference between ORIGINAL and CORRECTED is `λ x => c` vs `λ _x => c`. In Lean 4, these are semantically identical — both denote the constant function returning `c`. The underscore prefix is purely a linter convention to suppress \"unused variable\" warnings and has no effect on the function's meaning or type. The hypothesis `∀ x y, |f x - f y| ≤ |x - y| ^ 2` and the conclusion `∃ c, f = (fun _ => c)` faithfully encode the informal statement that f is constant. The statement is mathematically true (a function with |f(t)-f(x)| ≤ |t-x|² is differentiable with derivative 0, hence constant)."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-308.lean",
+  "stem": "proofnet-308",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Wrong formalization, Misunderstanding of Mathlib\nRelation to GT: stronger\nIf NL has Implicit Premises: No\nImplicit Premises:   NO\nComment: The wrong formalization ues ClusterPt instead of AccPt, which does not use the punctured neighborhood notion of limit point. "
+}

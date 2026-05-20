@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-35.lean",
+  "stem": "proofnet-35",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement asks about the multiplicative groups ℝ \\ {0} and ℂ \\ {0}, which is faithfully captured by the corrected version using `ℝˣ` and `ℂˣ` (units of a ring, i.e., nonzero elements with multiplication). The original uses `Multiplicative ℝ` and `Multiplicative ℂ`, but in Mathlib `Multiplicative α` is a type synonym that reinterprets α's ADDITIVE structure as a multiplicative one — so `Multiplicative ℝ` is the additive group (ℝ, +) written multiplicatively, not ℝ \\ {0}. As abelian groups, (ℝ, +) and (ℂ, +) are both divisible torsion-free abelian groups of cardinality 2^ℵ₀ (equivalently, ℚ-vector spaces of dimension 2^ℵ₀), hence ARE isomorphic. So `Multiplicative ℝ ≃* Multiplicative ℂ` is nonempty, and the original `IsEmpty (...)` claim is provably false. This is a misunderstanding of Mathlib's `Multiplicative` API — the correct way to express ℝ \\ {0} as a multiplicative group is `ℝˣ`."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-88.lean",
+  "stem": "proofnet-88",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks to show that F[x]/(q(x)) is a field with p^n elements. The CORRECTED version correctly claims `IsField (Polynomial (ZMod p) ⧸ span {q})` — the quotient is a field. The ORIGINAL instead claims `IsField (Polynomial (ZMod p))` — that the polynomial ring itself is a field. This is mathematically false: a polynomial ring F[x] over a field F is never a field (x has no inverse). The original drops the `⧸ span {q}` from the IsField claim, replacing a true statement (quotient is a field) with a false one (polynomial ring is a field). The original is incomparable to the informal statement: it doesn't imply the quotient is a field (what the informal asks), and it asserts a false claim about the polynomial ring that the informal doesn't make. Since the conjunct `IsField (Polynomial (ZMod p))` is provably false, the entire original statement is provably false."
+}

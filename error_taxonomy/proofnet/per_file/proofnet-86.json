@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-86.lean",
+  "stem": "proofnet-86",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is Wolstenholme-type: for an odd prime p, if a/b = 1 + 1/2 + ... + 1/(p-1) (a universal claim over all integer representations), then p divides a. The CORRECTED formalization uses ∀ and Finset.range (p-1). The ORIGINAL has two problems: (1) it uses ∃ instead of ∀, which makes the statement trivially true — one can pick a = p, b = 1 to satisfy p ∣ a, making the implication hold vacuously regardless of the sum condition; (2) it uses Finset.range p instead of Finset.range (p-1), so the sum includes the extra term 1/p (since i ranges from 0 to p-1, giving 1/(i+1) from 1/1 up to 1/p). The ∃→implication form is strictly weaker than the ∀→implication form (a universal claim implies the existential one, but not vice versa). The original is provably true (trivially), but does not faithfully capture the intended universal claim. The primary error is a misreading of the mathematical statement's logical structure (treating \"let a, b be integers such that...\" as existential rather than as a universal hypothesis)."
+}

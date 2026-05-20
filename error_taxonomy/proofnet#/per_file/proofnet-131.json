@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-131.lean",
+  "stem": "proofnet-131",
+  "q1_informal_status": "nl_ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "true",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "NL Ambiguous\n\nRegularSpace: For any closed set s and point a \u2209 s, a and s have disjoint           \n  neighborhoods. (Bare separation axiom, no T\u2081.)\n                                                                                      \n  CompletelyRegularSpace: For any closed set K and point x \u2209 K, there exists a        \n  continuous f : X \u2192 [0,1] with f x = 0 and f = 1 on K. (Bare separation axiom, no\n  T\u2081.) "
+}

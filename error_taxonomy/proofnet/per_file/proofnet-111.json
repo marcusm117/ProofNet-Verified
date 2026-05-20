@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-111.lean",
+  "stem": "proofnet-111",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED formalizations have identical theorem statements: both assert `IsOpenMap π₁ ∧ IsOpenMap π₂` given the hypotheses `π₁ = Prod.fst` and `π₂ = Prod.snd` on topological spaces X and Y. The only differences are cosmetic preamble details: `open Topology` vs `open scoped Topology` (functionally equivalent for opening scoped notation), and the presence of `noncomputable section` in the original (which doesn't affect the theorem's content). The informal statement (Munkres Exercise 16.4) is a standard, unambiguously true theorem in topology. The original formalization faithfully captures this statement."
+}

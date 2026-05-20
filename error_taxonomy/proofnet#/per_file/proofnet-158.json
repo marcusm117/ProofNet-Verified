@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-158.lean",
+  "stem": "proofnet-158",
+  "q1_informal_status": "nl_ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "true",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "NL Ambiguous\n\nthe problem itself doesn't say anything about whether we are working with R or C!"
+}

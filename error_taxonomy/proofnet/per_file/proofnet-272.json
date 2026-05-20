@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-272.lean",
+  "stem": "proofnet-272",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The ORIGINAL formalization has a fundamental structural error. In the informal statement, each element q in the set S should satisfy (or fail to satisfy) the QR property \"∃ x, x^2 = q\". The CORRECTED version captures this with `∀ q ∈ S, ∃ x : ZMod p, x^2 = q`. However, the ORIGINAL writes `∃ x : ZMod p, x^2 = p` as a separate existential conjunct, using the prime `p` rather than ranging over elements of S. Since `(p : ZMod p) = 0` (verified via Mathlib's `ZMod.natCast_self`), this reduces to `∃ x, x^2 = 0`, trivially true. Consequently, the second conjunct `¬ ∃ x : ZMod p, x^2 = p` reduces to `¬ ∃ x, x^2 = 0`, which is FALSE (since 0² = 0). This makes the entire ORIGINAL statement provably false. Additionally, the original misses the `0 ∉ S` constraint and the `hodd` premise. The primary error is a misreading of how the QR property connects to elements of S — the formalizer treated a per-element existential claim as a single global existential about the prime p itself."
+}

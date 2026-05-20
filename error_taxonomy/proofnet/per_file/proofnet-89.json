@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-89.lean",
+  "stem": "proofnet-89",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks to show that q(x) = 1 + x + x² + ... + x^(p-1) is irreducible in ℚ[x] when p is prime — this is the classical irreducibility of the p-th cyclotomic polynomial Φ_p, which is true and unambiguous.\n\nThe CORRECTED formalization `∑ i ∈ Finset.range p, X^i` correctly expresses 1 + X + X² + ... + X^(p-1).\n\nThe ORIGINAL formalization `∑ i : Finset.range p, X^p` has two issues:\n1. It uses `:` (type ascription) instead of `∈`. With type ascription, `i` ranges over the coerced subtype of Finset.range p, and `∑ i, f i` becomes `Finset.sum Finset.univ f`.\n2. More critically, the summand is `X^p` (constant with respect to i) rather than `X^i`.\n\nSince the summand doesn't depend on i, the sum equals (Finset.univ.card) • X^p = p • X^p = (↑p : ℚ) · X^p. This is a completely different polynomial from what the informal statement describes.\n\nFor any prime p ≥ 2, (↑p : ℚ) is a nonzero rational (hence a unit in ℚ[X]), so p · X^p is an associate of X^p. Since X^p = X · X^(p-1) with neither factor being a unit for p ≥ 2, X^p is reducible. Therefore the original statement is provably FALSE.\n\nThe original is incomparable to the informal claim (different polynomial entirely), provably false, and the error stems from misformalizing the informal formula (writing X^p instead of X^i)."
+}

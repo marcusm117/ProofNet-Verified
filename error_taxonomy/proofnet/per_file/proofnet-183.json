@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-183.lean",
+  "stem": "proofnet-183",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED theorem statements are identical verbatim. The only differences are in the `open` and `open scoped` declarations (ORIGINAL opens `Filter`, CORRECTED opens `Bornology` in scoped), which are merely namespace imports and do not affect the theorem's meaning. Both formalizations capture the informal statement faithfully: D is the open unit disc (`ball 0 1`), f is holomorphic on D (`DifferentiableOn ℂ f D`), f extends continuously to the closed disc (`ContinuousOn f (closure D)`), and the conclusion states it is not the case that f(z) = 1/z on the unit sphere (boundary). This is a classical Shakarchi result — if such f existed, then z·f(z) would equal 1 on the boundary and would be holomorphic on D continuous on closure, so by maximum modulus z·f(z) = 1 throughout, but at z=0 this gives 0=1, contradiction. The statement is mathematically true and unambiguous."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-122.lean",
+  "stem": "proofnet-122",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED theorem statements are identical: both assume `[TopologicalSpace X]`, `[LocPathConnectedSpace X]`, and take `U : Set X` with `hU : IsOpen U` and `hcU : IsConnected U`, concluding `IsPathConnected U`. The only differences between the two files are cosmetic/non-semantic: the ORIGINAL uses `open Topology` versus `open scoped Topology` in the CORRECTED (neither is actually used in the theorem statement), and the ORIGINAL declares a `noncomputable section` (which is irrelevant for a `theorem`). These do not change the mathematical content of the statement. The informal statement is a standard and true theorem (Munkres Topology, the path components of an open set in a locally path connected space are open, so a connected open set has exactly one path component). Therefore the ORIGINAL is faithful."
+}

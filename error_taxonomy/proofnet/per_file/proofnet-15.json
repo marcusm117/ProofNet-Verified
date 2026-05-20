@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-15.lean",
+  "stem": "proofnet-15",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement \"Prove that -(-v) = v for every v ∈ V\" is mathematically true and unambiguous — it's the standard fact that double negation is the identity in an additive group. The ORIGINAL and CORRECTED formalizations have identical theorem statements: `theorem Axler_exercise_1_3 {F V : Type*} [AddCommGroup V] [Field F] [Module F V] {v : V} : -(-v) = v`. The only difference is that the ORIGINAL has `open scoped BigOperators InnerProductSpace` while the CORRECTED has just `open scoped BigOperators`. The extra `InnerProductSpace` scoped namespace merely opens scoped notation (like `⟪·,·⟫_𝕜`) and does not affect the semantic content of the theorem statement in any way. Both formalizations are logically equivalent, faithful to the informal statement, and provable (follows from `neg_neg`)."
+}

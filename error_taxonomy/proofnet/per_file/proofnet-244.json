@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-244.lean",
+  "stem": "proofnet-244",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement is McCoy's theorem: p(x) is a zero divisor in R[x] iff there exists nonzero b in R with b·p(x) = 0. This is a classical, unambiguous theorem (typically for commutative R, as in Dummit & Foote §7.2).\n\nThe ORIGINAL formalization encodes \"p is a zero divisor\" as `p ∣ 0`, but in Mathlib `p ∣ 0` means \"p divides 0\", defined as `∃ c, 0 = p * c`. By the simp lemma `dvd_zero : ∀ (a : α), a ∣ 0`, this is ALWAYS TRUE for any p. So the LHS of the original biconditional is trivially True.\n\nThe original therefore reduces to: `∃ b : R, b ≠ 0 ∧ b • p = 0`. Taking R = ℤ (a Ring) and p = 1, there is no nonzero b with b • 1 = 0. So the biconditional `True ↔ False` is false. The original is provably false.\n\nThe original is incomparable to the informal statement: the informal claim is true, the original is false. It is neither stronger nor weaker; it is simply a different (incorrect) encoding.\n\nThe error is a misunderstanding of Mathlib API: the author confused \"is a zero divisor\" (which would be encoded as `∃ q ≠ 0, p * q = 0`, or membership in `nonZeroDivisors`'s complement) with \"divides zero\" (`p ∣ 0`). The corrected formalization uses the proper encoding `∃ q : Polynomial R, q ≠ 0 ∧ p * q = 0` and also tightens `Ring R` to `CommRing R` (appropriate for McCoy's theorem)."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-230.lean",
+  "stem": "proofnet-230",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement is the classical Dummit & Foote exercise 4.2.8: if H has finite index n in G, then there exists a normal subgroup K ≤ H with |G:K| ≤ n!. This is true and unambiguous (the classical proof uses K = normalCore H, which is the kernel of G → Sym(G/H), having finite index dividing n!).\n\nKey Mathlib convention (verified in Mathlib/GroupTheory/Index.lean, line 54-58): `Subgroup.index` returns `0` when the index is infinite. So `K.index ≤ n.factorial` is trivially satisfied whenever K has infinite index (0 ≤ n!).\n\nThe ORIGINAL writes `K.index ≤ n.factorial` without the finiteness condition, meaning it can be satisfied by any normal subgroup K ≤ H with infinite index in G (e.g., K = {1} when G is infinite). This does NOT match the informal claim which requires |G:K| to be an actual finite number bounded by n!.\n\nThe CORRECTED adds `0 < K.index`, which correctly forces K to have finite index (by the index_eq_zero_iff_infinite lemma).\n\nFaithfulness: The original is WEAKER than the informal claim — any witness for the informal claim (K with finite index ≤ n!) is also a witness for the original, but the original can be satisfied by K with infinite index, which wouldn't satisfy the informal claim.\n\nProvability: The original is provable because the stronger (correct) statement is a true theorem (normalCore H works), and the original is implied by it.\n\nError type: This is a misunderstanding of Mathlib's convention for `Subgroup.index`, which uses 0 to encode infinite index. The author did not know this convention and thus wrote a weaker formalization."
+}

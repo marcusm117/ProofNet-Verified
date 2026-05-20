@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-101.lean",
+  "stem": "proofnet-101",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The original has multiple severe errors: (1) The exponent on the RHS is wrong — it uses `a^(p-1)` instead of `a^((p-1)/q)`, completely dropping the division by q. (2) `IsPrimitiveRoot a p` is used, but `IsPrimitiveRoot` takes the order of the root as its second argument; it should be `p-1` (the order of the multiplicative group of ZMod p), not `p`. (3) The primality hypothesis `p.Prime` is missing — only `Odd p` is given. (4) `a` is typed as ℕ rather than a unit of ZMod p. The most fundamental error is the wrong exponent on the RHS, which shows a misreading of the informal statement. Testing with p=9 (odd), a=2: LHS `IsPrimitiveRoot 2 9` in ℕ requires 2^9 = 1, which is false; RHS has prime divisor q=2 of 8, and 2^8 = 256 ≡ 4 (mod 9), so `¬ 2^8 ≡ 1 [MOD 9]` is true, making RHS true. So False ↔ True = False, showing the original is provably false."
+}

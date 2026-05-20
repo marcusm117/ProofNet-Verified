@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-325.lean",
+  "stem": "proofnet-325",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is about a single function f : [a,b] → ℝ being uniformly continuous iff it admits a modulus of continuity μ (continuous, strictly increasing, positive-valued, tending to 0 at 0+).\n\nThe ORIGINAL formalization diverges from the informal statement in multiple fundamental ways:\n\n1. It uses a family F : Set (ℝ → ℝ) instead of a single function on [a,b]. This introduces uniform-over-family quantification that is absent from the informal claim.\n\n2. The domain is all of ℝ, not the compact interval [a,b]; `hab : a ≤ b` is also missing.\n\n3. The LHS \"∀ x, ∀ ε > 0, ∃ U ∈ 𝓝 x, ∀ y z ∈ U, ∀ f ∈ F, dist (f y) (f z) < ε\" is NOT uniform continuity. It's pointwise (equi)continuity: the neighborhood U depends on x. Uniform continuity needs a single δ/entourage working for all x.\n\n4. The RHS drops essential properties of a modulus of continuity: strict monotonicity on (0,∞), continuity on (0,∞), and positivity μ(x) > 0 for x > 0. It also uses `Tendsto μ (𝓝 0)` instead of `Tendsto μ (𝓝[>] 0)`.\n\nThe resulting theorem is provably false: take F = {fun x => x²} on ℝ. The LHS holds because x² is continuous (hence equicontinuous at each point of ℝ via a singleton family), but x² is not uniformly continuous on all of ℝ, so no global modulus μ with |s² - t²| ≤ μ(|s - t|) for all s, t ∈ ℝ exists. So the iff fails.\n\nThe original is neither stronger nor weaker than the informal — it formalizes a different statement entirely, mixing equicontinuity of a family on ℝ with a weakened modulus concept. The primary error is a misunderstanding of the informal statement."
+}

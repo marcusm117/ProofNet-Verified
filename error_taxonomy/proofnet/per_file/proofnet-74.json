@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-74.lean",
+  "stem": "proofnet-74",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "The informal statement is a classical, unambiguous result from Herstein: for any group G and a,x ∈ G, the centralizer of x⁻¹ax equals x⁻¹C(a)x.\n\nThe ORIGINAL formalization has `{G : Type*} [Mul G] [Group G]` — both a standalone `[Mul G]` instance AND a `[Group G]` instance. Since `Group` already extends `DivInvMonoid → Monoid → Semigroup → Mul` (verified in Mathlib `Algebra/Group/Defs.lean`), the explicit `[Mul G]` is redundant in the abstract but semantically dangerous in Lean: the `*` in the statement will resolve to the explicit `[Mul G]` instance, while `⁻¹` resolves to the `[Group G]` instance. When these are incompatible, the equality fails. The CORRECTED version uses only `[Group G]`, ensuring `*` and `⁻¹` come from the same coherent structure.\n\nThe ground truth file explicitly proves `Herstein_exercise_2_3_17_neg`, exhibiting a counterexample via `Multiplicative Bool` with a degenerate `Mul` instance (constant `false`) and the usual xor group structure, showing that the ORIGINAL statement is provably FALSE.\n\nFaithfulness: The original quantifies over pairs of Mul and Group instances (including incompatible ones). If it held universally, it would imply the informal statement (by taking Mul = Group's derived Mul), so the original is STRONGER than the informal. But this stronger universal statement admits counterexamples, so it is provably false.\n\nError type: This is a Lean-specific typeclass resolution error — the author misunderstood that `[Group G]` already provides `Mul G` and accidentally introduced a second, unconstrained multiplication. This is a classic Lean typing encoding mistake (`misunderstanding_of_lean`)."
+}

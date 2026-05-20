@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-236.lean",
+  "stem": "proofnet-236",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement requires a normal Sylow p-subgroup for some prime p dividing |G|=351. This is true: 351 = 3^3 · 13, and Sylow's theorems force either the Sylow-13 or Sylow-3 subgroup to be normal. The ORIGINAL formalization `∃ (p : ℕ) (P : Sylow p G), P.Normal` omits the conditions `p.Prime ∧ p ∣ card G` that appear in the CORRECTED version. In Mathlib, `Sylow p G` is defined for any `p : ℕ`, not just primes (see Mathlib/GroupTheory/Sylow.lean:53). For p=1, `IsPGroup 1 H` forces H=⊥, so `Sylow 1 G = {⊥}`, and ⊥ is always normal. Hence the original claim is trivially true for ANY finite group, making it strictly weaker than the informal statement. The corrected version properly restricts p to primes dividing |G|. This error reflects a misunderstanding of the Mathlib `Sylow` API — the author apparently assumed `Sylow p G` implicitly requires p to be prime dividing the group order, which it does not. So the original is weaker than the corrected, still provably true (trivially), and the error type is misunderstanding_of_mathlib."
+}

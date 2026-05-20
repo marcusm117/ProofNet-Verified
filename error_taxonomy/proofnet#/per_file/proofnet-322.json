@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-322.lean",
+  "stem": "proofnet-322",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ✅\n\nError Type: Implicit Premise\nIf NL has Implicit Premises: Yes\nImplicit Premises:  [T2Space α]\nComment: The space being Hausdorff would also work, which is I think what textbooks usually assume."
+}

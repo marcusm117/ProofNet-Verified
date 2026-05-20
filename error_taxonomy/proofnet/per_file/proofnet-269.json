@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-269.lean",
+  "stem": "proofnet-269",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "The informal statement \"T is isomorphic to S_3\" means \"there exists an isomorphism\", which the corrected version faithfully encodes as `Nonempty (Equiv.Perm (Fin 3) ≃* Matrix.GeneralLinearGroup (Fin 2) (ZMod 2))` — a Prop statable as a theorem. The original uses `instance` with a bare `MulEquiv` type (a structure/Type, not a Prop), which requires constructing a specific isomorphism term rather than merely asserting existence. In strict type theory, providing a concrete term is stronger than proving Nonempty, though in classical logic they are equivalent in provability. The standard idiom in Mathlib to express \"X is isomorphic to Y\" as a theorem is `Nonempty (X ≃* Y)`. This is a Lean encoding issue — the informal statement is clear and both versions are provable since GL(2, Z/2Z) ≅ S_3, but the original picks the wrong Lean idiom. Classified as \"stronger\" (requires explicit construction) and the error is \"misunderstanding_of_lean\" (incorrect Lean idiom — using `instance`/term-of-Type vs `theorem`/`Nonempty`)."
+}
