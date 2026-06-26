@@ -42,6 +42,8 @@ If you find the **ProofNet-Verified** benchmark useful for your research, please
 
 ## Benchmark Audit Summary
 
+A visualization of all errors, error classifications, and our corrections can be found at [https://marcusm117.github.io/ProofNet-Verified](https://marcusm117.github.io/ProofNet-Verified).
+
 | | ProofNet | ProofNet# |
 |---|---|---|
 | Faithful | 163 (44.4%) | 270 (73.6%) |
