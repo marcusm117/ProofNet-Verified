@@ -1,6 +1,6 @@
 # ProofNet-Verified
 
-**ProofNet-Verified (ProofNet-V)** is an audited, corrected, and verified version of the [ProofNet](https://github.com/zhangir-azerbayev/ProofNet) dataset that is upgraded to be compatible with `Lean v4.28.0`.
+**ProofNet-Verified (ProofNet-V)** is an audited, corrected, and verified version of the [ProofNet](https://github.com/zhangir-azerbayev/ProofNet) dataset that is upgraded to be compatible with `Lean v4.28.0`. A visualization of all errors, error classifications, and our corrections can be found at [https://marcusm117.github.io/ProofNet-Verified](https://marcusm117.github.io/ProofNet-Verified).
 
 [ProofNet](https://github.com/zhangir-azerbayev/ProofNet) is a benchmark for theorem proving and autoformalization of undergraduate-level mathematics. It originally consists of **371** data points, each consisting of a formal theorem statement in `Lean 3`, a natural language theorem statement, and a natural language proof. The problems are primarily drawn from popular undergraduate pure mathematics textbooks and cover topics such as real and complex analysis, linear algebra, abstract algebra, and topology. We intend for ProofNet to be a challenging benchmark that will drive progress in autoformalization and automatic theorem proving
 
@@ -41,8 +41,6 @@ If you find the **ProofNet-Verified** benchmark useful for your research, please
 ```
 
 ## Benchmark Audit Summary
-
-A visualization of all errors, error classifications, and our corrections can be found at [https://marcusm117.github.io/ProofNet-Verified](https://marcusm117.github.io/ProofNet-Verified).
 
 | | ProofNet | ProofNet# |
 |---|---|---|
