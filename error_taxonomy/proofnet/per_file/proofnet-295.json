@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-295.lean",
+  "stem": "proofnet-295",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asserts that the specific collection of all rational open boxes is a basis for ℝ². The CORRECTED formalization captures this by explicitly constructing the set via Set.image2 over all Ioo intervals with rational endpoints. The ORIGINAL instead quantifies over an arbitrary set S with only the hypothesis that every element of S is some rational box — crucially missing the converse requirement that S contains all rational boxes. This makes the original a stronger (universally quantified) claim: it asserts that every subfamily of rational boxes is a basis. This stronger claim implies the informal claim (take S to be the full collection) but is provably false: e.g., S = ∅ satisfies the hypothesis trivially but is not a basis (⋃₀ ∅ ≠ univ), and S = {Ioo 0 1 × Ioo 0 1} is a single rational box but does not cover ℝ². The error is a misunderstanding of what the informal statement asks — conflating \"the collection of all rational boxes\" with \"any collection of rational boxes.\""
+}

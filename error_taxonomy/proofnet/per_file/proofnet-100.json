@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-100.lean",
+  "stem": "proofnet-100",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement is a well-known number theory theorem. The corrected version formalizes it as `IsPrimitiveRoot a (p-1) ↔ IsPrimitiveRoot (-a) ((p-1)/2)` on `(ZMod p)ˣ`, meaning \"a has order p-1 iff -a has order (p-1)/2\". The original has multiple errors: (1) it writes `IsPrimitiveRoot a p` but Mathlib's `IsPrimitiveRoot ζ k` means \"ζ has order k\" — the second argument is the order, not the modulus. For a primitive root mod p, the order is `p-1`, not `p`. (2) For any prime p, `IsPrimitiveRoot a p` is always false because Fermat's little theorem gives `a^p = a` in `ZMod p`, forcing `a = 1`, but then `a^1 = 1` contradicts the divisibility `p ∣ 1`. (3) The unfolded RHS condition `∀ k < (p-1)/2, (-a)^k ≠ 1` fails at `k = 0` (since `(-a)^0 = 1`), making the RHS always false for p ≥ 3. So the original asserts `False ↔ False` vacuously, which is provable but trivially true and weaker than the actual informal claim (which makes a non-trivial mathematical assertion). The primary error is misusing Mathlib's `IsPrimitiveRoot` API (wrong argument) and an incorrect manual unfolding."
+}

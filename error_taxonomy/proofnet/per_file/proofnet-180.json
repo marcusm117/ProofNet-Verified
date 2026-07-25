@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-180.lean",
+  "stem": "proofnet-180",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement explicitly requires $\\varphi: \\Omega \\to \\Omega$ (i.e., $\\varphi$ maps $\\Omega$ into itself), which is encoded in the CORRECTED version as `h_maps : Set.MapsTo f Ω Ω`. The ORIGINAL formalization omits this explicit premise entirely. It also omits `IsPreconnected Ω` (connectedness), which is often implicit when speaking of \"domains\" in complex analysis.\n\nWith the missing `MapsTo` hypothesis, the ORIGINAL becomes a stronger claim than the informal statement (same conclusion with fewer premises), and this stronger claim is provably FALSE. Counterexample: Ω = open unit disk, f(z) = z + z³. Then Ω is bounded and open, f is differentiable on Ω, f(0) = 0, and f'(0) = 1. However, f is not linear on Ω (the only candidate linear map would be f_lin(z) = z, but f(z) ≠ z for nonzero z). The key reason this counterexample works is precisely that f does not map Ω into Ω (e.g., f(0.9) ≈ 1.629 ∉ Ω), which is the hypothesis the ORIGINAL drops.\n\nSince \"$\\varphi: \\Omega \\to \\Omega$\" appears explicitly in the informal statement, this is a missing EXPLICIT premise, not an implicit one. Hence the error type is `missing_premise`."
+}

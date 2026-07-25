@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-270.lean",
+  "stem": "proofnet-270",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement claims $ax + xa$ commutes with $a$, i.e., $a(ax+xa) = (ax+xa)a$, which is true since both sides equal $axa$ when $a^2=0$. The CORRECTED formalization states exactly this: `a * (a * x + x * a) = (a * x + x * a) * a`. The ORIGINAL formalization has a typo in the RHS: `(x + x * a) * a` instead of `(a * x + x * a) * a` — missing `a *` before the first `x`. This changes the claim to $a(ax+xa) = (x+xa)a$, i.e., $axa = xa$ for all $x$ when $a^2=0$. This is false in general: take $R = M_2(\\mathbb{R})$ with $a = \\begin{pmatrix} 0 & 1 \\\\ 0 & 0 \\end{pmatrix}$ (so $a^2=0$) and $x = I$; then $axa = a^2 = 0$ but $xa = a \\neq 0$. The original is thus incomparable to the informal claim (actually provably false). The error is a misencoding of the informal RHS."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-298.lean",
+  "stem": "proofnet-298",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": " 1. negation \u274c\n2. reasoning \u274c\n3. correction \u274c\n\nError Type: Wrong formalization\nIf NL has Implicit Premises: No\nImplicit Premises:   NA\nComment: Original is correct.\n\n"
+}

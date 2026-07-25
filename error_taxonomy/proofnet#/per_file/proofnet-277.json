@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-277.lean",
+  "stem": "proofnet-277",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "DEBATABLE!!!\n\nThe wrong formalization's conclusion (nonzero complex \n  polynomial with integer coefficients, degree \u2264 80, having a as root) is logically\n  equivalent to the correct one (nonzero rational polynomial, natDegree \u2264 80, with    \n  aeval a q = 0). You can go between them by clearing denominators in one direction,\n  or viewing \u2124-coefficients as \u211a-coefficients in the other."
+}

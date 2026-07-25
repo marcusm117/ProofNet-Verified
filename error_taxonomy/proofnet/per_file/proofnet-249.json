@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-249.lean",
+  "stem": "proofnet-249",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "adding_extra_case",
+  "reasoning": "The informal statement is a well-known true claim from Dummit & Foote: for a prime q ≡ 3 (mod 4), ℤ[i]/(q) is a field with q² elements. The CORRECTED formalization directly states IsField and Fintype.card = q² for the canonical quotient ring `GaussianInt ⧸ span {↑q}`. The ORIGINAL formalization instead introduces an abstract type `{R : Type}` with an arbitrary Ring instance `[Ring R]` and a type-equality hypothesis `hR : R = GaussianInt ⧸ span {↑q}`. This extra universal quantification (over R and over all Ring instances on R) makes the original formally STRONGER than both the corrected and the informal statement: it claims IsField for ANY Ring structure on the quotient, not just the canonical Mathlib one. After `subst hR`, one must prove IsField for an arbitrary `[Ring (GaussianInt ⧸ span {↑q})]` parameter that is not guaranteed to coincide with the canonical instance. Since Mathlib has no general `Subsingleton (Ring X)` lemma, provability is unclear — formally the claim quantifies over all Ring structures on the type. The error is adding extra hypotheses/cases (the abstract R with its Ring instance and equation) that are not present in the informal statement."
+}

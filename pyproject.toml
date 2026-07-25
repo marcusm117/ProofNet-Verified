@@ -1,0 +1,12 @@
+[project]
+name = "proofnet-verified"
+version = "0.1.0"
+description = "Audited, corrected, and verified ProofNet benchmark for Lean 4"
+requires-python = ">=3.10"
+dependencies = [
+    "joblib",
+    "tqdm",
+]
+
+[dependency-groups]
+dev = []

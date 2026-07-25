@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-349.lean",
+  "stem": "proofnet-349",
+  "q1_informal_status": "ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "true",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "The formal statements are identical between original and corrected. The only difference is in the informal comment: the original says 'let $E$ be a dense subset' but then refers to '$p \\in P$' \u2014 inconsistent variable naming (E vs P). The corrected NL fixes this to 'let $P$ be a dense subset', making the variable consistent. Since the original NL is ambiguous/inconsistent, faithfulness is incomparable."
+}

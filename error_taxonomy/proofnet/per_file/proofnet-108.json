@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-108.lean",
+  "stem": "proofnet-108",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "Two issues make the original incomparable to the informal statement. (1) Hypotheses: the original assumes `[TopologicalSpace X]` and `IsTopologicalBasis A` — meaning A is a basis for an already-given topology. The informal asks about A satisfying basis axioms without presupposing any topology on X. The corrected version correctly spells out the basis axioms (hcover, hrefine) without assuming a pre-existing topology. (2) Conclusion: the original concludes `generateFrom A = generateFrom (sInter {T | is_topology X T ∧ A ⊆ T})`, equating two TopologicalSpace terms, where the RHS applies generateFrom to a set-of-sets (the intersection of all topologies containing A). But sInter of topologies is itself already a topology, so wrapping it in generateFrom is semantically confused. The corrected version correctly equates the set of open sets `{U | @IsOpen X (generateFrom A) U} = sInter {T | is_topology X T ∧ A ⊆ T}` — a set-level equality. The original is neither weaker nor stronger due to the mismatched hypothesis structure and confused conclusion."
+}

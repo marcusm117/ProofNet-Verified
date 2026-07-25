@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-204.lean",
+  "stem": "proofnet-204",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "Error Type: Weaker than GT\nIf NL has Implicit Premises: NO\nImplicit Premises: \nComment: invariant under T\" means T(U) ⊆ U, not T(U) = U\n\n\n\n"
+}

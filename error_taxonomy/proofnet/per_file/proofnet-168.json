@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-168.lean",
+  "stem": "proofnet-168",
+  "q1_informal_status": "incorrect",
+  "q2_faithfulness": "nl_wrong",
+  "q3_provability": "false",
+  "q4_error_type": "nl_wrong",
+  "reasoning": "The informal statement is Rudin 4.8(a): if E ⊆ ℝ is bounded and f is uniformly continuous on E, then f is bounded on E. This is a true, unambiguous mathematical claim.\n\nThe CORRECTED formalization captures this faithfully: given `h : Bornology.IsBounded E`, for all f : ℝ → ℝ, UniformContinuousOn f E → IsBounded (f '' E).\n\nThe ORIGINAL formalization is formalizing a COMPLETELY DIFFERENT problem — Rudin 4.8(b), as indicated by both the theorem name `Rudin_exercise_4_8b` and the internal comment (\"there exists a real function f such that f is uniformly continuous and is not bounded on E\"). The original states: ∃ f : ℝ → ℝ, UniformContinuousOn f E ∧ ¬ IsBounded (f '' E), with NO hypothesis that E is bounded.\n\nCompared to the informal statement (4.8a):\n- Universal ∀ vs existential ∃ quantifier\n- Bounded conclusion vs unbounded conclusion  \n- Missing the E-bounded hypothesis\nThese make the two statements incomparable — neither implies the other.\n\nProvability of the ORIGINAL: For E = ∅, f '' E = ∅ which is bounded, so ¬ IsBounded (f '' E) is false for all f. Hence the existential statement is false for the empty set. The original claim is provably false.\n\nThe error type is misunderstanding of the informal statement: the author appears to have confused Rudin 4.8(a) with 4.8(b) and formalized the wrong problem entirely."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-21.lean",
+  "stem": "proofnet-21",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "The informal statement is a classic, unambiguous linear algebra theorem. The issue in the original is Lean 4 parsing: `∀ v, ∃ c, v ∈ eigenspace S c ↔ ∃ c, v ∈ eigenspace T c` parses as `∀ v, ∃ c, (v ∈ eigenspace S c ↔ ∃ c, v ∈ eigenspace T c)` because `∃` binders extend their body as far as possible. This simplifies logically to \"∀v, (v is a T-eigenvector) → (v is an S-eigenvector)\" — only one direction of \"same eigenvectors\". The corrected version uses parentheses to form a biconditional of existentials, matching the informal \"same eigenvectors\". The original's hypothesis is strictly weaker than the corrected/informal one (SE → ES but not conversely), so the original theorem statement is stronger (claims ST=TS under weaker assumptions). The original is still mathematically provable: T having dim V distinct eigenvalues gives a basis of T-eigenvectors; the one-direction hypothesis makes each a shared eigenvector of S, so S and T are simultaneously diagonalizable and commute. The error is a misuse of Lean's operator precedence (missing parentheses), hence misunderstanding_of_lean."
+}

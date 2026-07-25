@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-42.lean",
+  "stem": "proofnet-42",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement asserts $|G:H| = |G:K| \\cdot |K:H|$ for $H \\le K \\le G$. The original formalization uses Mathlib's `Subgroup.relIndex` (defined in `Mathlib/GroupTheory/Index.lean` as `(H.subgroupOf K).index`, i.e., the index of $H$ within $K$ when $H \\le K$). The statement `H.index = K.index * H.relIndex K` corresponds exactly to $|G:H| = |G:K| \\cdot |K:H|$, and is provable via Mathlib's `relIndex_mul_index : H.relIndex K * K.index = H.index` (with `mul_comm`). The corrected version introduces a trivial wrapper `Subgroup.relindex H K := H.relIndex K` which is definitionally equal to the original. Therefore the two formalizations are logically/definitionally equivalent, and the original is faithful to the informal statement."
+}

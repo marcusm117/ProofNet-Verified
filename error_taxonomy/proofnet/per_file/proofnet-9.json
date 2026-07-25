@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-9.lean",
+  "stem": "proofnet-9",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "adding_extra_case",
+  "reasoning": "The informal statement asserts that for any ideals I, J in a ring R and any x ∈ I ∩ J, the image of x in R/IJ is nilpotent. This is true in any commutative ring, since x ∈ I ∩ J implies x·x ∈ I·J, so (image of x)² = 0 in R/IJ. The CORRECTED formalization uses only [CommRing R]. The ORIGINAL adds an extra typeclass hypothesis [NoZeroDivisors R], restricting the theorem to a special class of rings (integral domains and similar). This makes the ORIGINAL a weaker statement: it is implied by the informal claim (special case) but does not imply it (the informal result holds more generally). The original statement is still provably true within its restricted scope. The error is adding an extra hypothesis/case not present in the informal statement."
+}

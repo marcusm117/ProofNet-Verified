@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-285.lean",
+  "stem": "proofnet-285",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nTruth value: False \nRelation to GT: incomparable\nError Type: Misunderstanding of mathlib\nIf NL has Implicit Premises: No\nImplicit Premises:   NA\nComment:"
+}

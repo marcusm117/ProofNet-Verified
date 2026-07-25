@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-27.lean",
+  "stem": "proofnet-27",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement has structure \"(∃ v, ‖v‖=1 ∧ ‖Tv-λv‖<ε) → (∃ eigenvalue close)\", matching the CORRECTED version exactly. The ORIGINAL incorrectly moves the existential quantifier outside: \"∃ v, ‖v‖=1 ∧ (‖Tv-λv‖<ε → ∃ eigenvalue close)\". These are logically different: (1) For V = {0} (zero module, satisfying all instance requirements), no unit vector exists, so Original is FALSE while Informal is vacuously TRUE — Informal does not imply Original. (2) Original can be satisfied vacuously by choosing any unit vector v₀ with ‖Tv₀-λv₀‖ ≥ ε, which doesn't tell us anything about other v₁ potentially satisfying the antecedent of Informal — so Original does not imply Informal either. Hence they are incomparable. The Original is provably false via the V = {0} counterexample. The error is a misreading of the informal statement's logical structure — swapping the scope of ∃ and →."
+}

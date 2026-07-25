@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-327.lean",
+  "stem": "proofnet-327",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED formalizations have identical theorem statements. The only differences are non-semantic: the CORRECTED adds `set_option maxHeartbeats 800000` (a compilation resource setting) and `open Filter Topology Set` (namespace imports). Both formalizations encode: f has continuous third derivative (ContDiff ℝ 3 f), f^(n)(x) > 0 for all n ≤ 3 and all x (covering f, f', f'', f''' positivity), f'''(x) ≤ f(x), and conclude f'(x) < 2f(x). This is a faithful encoding of the Putnam 1999 B4 problem. Since `iteratedDeriv 0 f = f`, `iteratedDeriv 1 f = deriv f`, etc., the use of `iteratedDeriv n f` with `n ≤ 3` correctly captures all four positivity conditions. The ORIGINAL is logically equivalent to the CORRECTED and faithful to the informal statement."
+}

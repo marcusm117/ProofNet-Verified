@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-68.lean",
+  "stem": "proofnet-68",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement asks to prove $x^6+30x^5-15x^3+6x-120$ is irreducible in $\\mathbb{Z}[x]$. This is a valid, unambiguous mathematical claim, provable via Eisenstein's criterion with p=3 (all non-leading coefficients divisible by 3: 30, 0, -15, 0, 6, -120; constant -120 not divisible by 9; leading coefficient 1 not divisible by 3).\n\nThe ORIGINAL and CORRECTED theorem statements are identical: both assert `Irreducible (X^6 + 30*X^5 - 15*X^3 + 6*X - 120 : Polynomial ℤ)`. The only differences are (1) the corrected version imports two additional tactic files (`Mathlib.Tactic.ComputeDegree` and `Mathlib.Tactic.IntervalCases`) which are helper tactics for the proof but don't affect the statement, and (2) minor whitespace. Both use `sorry` as the proof placeholder. Since the theorem statement itself is unchanged and faithfully expresses the informal claim, the original is faithful."
+}

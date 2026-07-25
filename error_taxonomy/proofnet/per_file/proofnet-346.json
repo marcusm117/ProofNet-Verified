@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-346.lean",
+  "stem": "proofnet-346",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement (Rudin Exercise 3.21) is a classical true theorem requiring closed, nonempty, bounded sets in a complete metric space, nested, with diameter tending to 0. The ORIGINAL formalization drops THREE explicitly stated premises: (1) closedness `IsClosed (E n)`, (2) nonemptiness `(E n).Nonempty`, (3) boundedness `IsBounded (E n)`. Additionally, it uses `⊃` which in Lean/Mathlib denotes STRICT superset (per Mathlib/Order/RelClasses.lean), whereas the CORRECTED uses `⊇` (non-strict, matching Rudin's conventional notation). The ORIGINAL is mathematically FALSE: counterexample E_n = (0, 1/n) in ℝ is strictly nested, bounded, with diam→0, but not closed—and has empty intersection. Another counterexample: E_n = ℝ \\ {1,...,n} is closed and strictly nested, but unbounded so Metric.diam = 0 trivially (since `(⊤ : ℝ≥0∞).toReal = 0`), yet the intersection has uncountably many points. The original's hypotheses neither imply nor are implied by the informal hypotheses (original has strict superset, informal has closedness/nonempty/boundedness), making them incomparable. The dominant error is the dropping of three explicit premises."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-29.lean",
+  "stem": "proofnet-29",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asserts that ZMod n, equipped with the specific residue class multiplication, fails to be a group (e.g., because 0 has no multiplicative inverse for n > 1). The corrected formalization captures this precisely: it says that it's not the case that every element has a two-sided multiplicative inverse under the standard multiplication of ZMod n.\n\nThe original formalization uses `IsEmpty (Group (ZMod n))`. In Mathlib, `Group` is a type class that extends `DivInvMonoid`, `Monoid`, `Mul`, etc., meaning `Group (ZMod n)` is the type of ALL possible group structures on the underlying type `ZMod n`, not specifically the one induced by the ring multiplication. Since `ZMod n` is a nonempty (finite) type for n ≥ 1, we can always transport a group structure onto it (for instance, by using the already-existing additive group structure, renamed as multiplication, or via any bijection with a known group of the same cardinality). Therefore `Group (ZMod n)` is a nonempty type, and `IsEmpty (Group (ZMod n))` is provably FALSE.\n\nIf `IsEmpty (Group (ZMod n))` were true, it would imply that the specific ring multiplication does not form a group (so original implies informal), making the original STRONGER than the informal claim. However, since the stronger claim is actually false, the original is provably false.\n\nThe error stems from misinterpreting \"not a group under multiplication of residue classes\" as \"no group structure exists\" rather than \"the specific multiplication operation doesn't form a group.\" This is a misunderstanding of the informal statement."
+}

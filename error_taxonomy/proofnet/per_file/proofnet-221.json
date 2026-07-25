@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-221.lean",
+  "stem": "proofnet-221",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement says: for a subgroup H of (ℚ,+) such that 1/x ∈ H for every nonzero x ∈ H, we have H = {0} or H = ℚ. This is a true, classical result.\n\nThe ORIGINAL formalization puts {x : ℚ} as an implicit parameter at the theorem level, so x is universally quantified at the outer scope: ∀ H, ∀ x, (x ∈ H → 1/x ∈ H) → H = ⊥ ∨ H = ⊤. This means the theorem only requires the hypothesis to hold for one arbitrary x (as implicitly chosen by whomever invokes the theorem). Since for any H one can pick x = 0 (where 0 ∈ H always and 1/0 = 0 ∈ H holds) or any x ∉ H (vacuous), the hypothesis is trivially satisfiable. Hence the original is equivalent to \"every AddSubgroup of ℚ is ⊥ or ⊤\", which is false (counterexample: H = ℤ as AddSubgroup of ℚ — take x = 1/2, hypothesis is vacuously true, but ℤ ≠ ⊥, ℤ ≠ ⊤).\n\nThe CORRECTED version properly places the universal quantifier ∀ ⦃x⦄ inside the hypothesis together with x ≠ 0, matching the informal meaning.\n\nQ2: The original (being false) vacuously implies the informal (true), but the informal does not imply the original, making it formally \"stronger\" (asserts more than asked — effectively asserting all subgroups of ℚ are trivial).\n\nQ3: The original is provably false (counterexample ℤ above).\n\nQ4: The error is that the full premise \"∀ nonzero x ∈ H, 1/x ∈ H\" is missing — the ∀ quantifier was incorrectly scoped outside the hypothesis and the x ≠ 0 condition was dropped, dropping the explicit universal premise of the informal statement."
+}

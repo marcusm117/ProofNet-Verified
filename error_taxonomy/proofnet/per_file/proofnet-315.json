@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-315.lean",
+  "stem": "proofnet-315",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The theorem statements in the original and corrected formalizations are character-for-character identical. Both have the same signature: index type `ι`, family of topological spaces `X : ι → Type*`, hypothesis that each `X i` is nonempty, hypothesis that the product `Π i, X i` is a NormalSpace, and conclusion that each `X i` is a NormalSpace. This faithfully captures the informal statement from Munkres. The only differences are in the preamble: `open Topology` vs `open scoped Topology` and the presence of `noncomputable section`. Neither of these affects the theorem's semantic content since no Topology-scoped notation appears in the statement. The informal statement is a true and well-known result in general topology (normality is preserved under taking \"slices\" of a nonempty product via closed embeddings when each factor is nonempty)."
+}

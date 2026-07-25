@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-41.lean",
+  "stem": "proofnet-41",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement explicitly says \"nonempty collection of normal subgroups\". The CORRECTED formalization encodes this via `[Nonempty I]`, while the ORIGINAL omits this hypothesis entirely. This makes the ORIGINAL stronger than the informal: it asserts the conclusion even for empty index types. However, the ORIGINAL is still provably true in Mathlib — `normal_iInf_normal` in `Mathlib/Algebra/Group/Subgroup/Basic.lean` requires no `Nonempty` assumption, since `⨅` over an empty type gives `⊤`, which is normal (via the `normal_top` instance). So the informal statement is true and unambiguous; the ORIGINAL is \"stronger\" faithfulness-wise (implies the informal but asserts more); the ORIGINAL is provably true; and the error is a dropped explicit premise (\"nonempty\")."
+}

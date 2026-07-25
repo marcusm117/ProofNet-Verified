@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-247.lean",
+  "stem": "proofnet-247",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement (Dummit & Foote Exercise 8.2.4) asks: if R is a domain satisfying Bezout (h1) and ACCP-style condition—nonzero elements with a_{i+1} | a_i eventually stabilize up to units (h2)—then R is a PID. The CORRECTED formalization faithfully captures this with `∀ i, a i ≠ 0 ∧ a (i + 1) ∣ a i` (descending divisibility with nonzero condition). The ORIGINAL instead writes `∀ i j, i < j → a i ∣ a j`, which reverses the direction to ASCENDING divisibility and drops the nonzero requirement. This corresponds to DCC on principal ideals (since a_i | a_j for i<j means (a_j) ⊆ (a_i)), not ACCP. In an integral domain, DCC on principal ideals forces R to be a field (consider (a) ⊇ (a²) ⊇ ...; stabilization gives a^n = r·a^{n+1}, hence ra = 1 by cancellation). So ORIGINAL's hypotheses imply R is a field, which is trivially a PID, making the ORIGINAL theorem mathematically true but strictly WEAKER than the intended statement: it only applies to fields, while the intended result applies to all Bezout+ACCP domains (e.g., ℤ). Since DCC ⇒ field ⇒ ACCP, ORIGINAL's hypotheses imply CORRECTED's hypotheses, so informal ⇒ original but not vice versa. The primary error is misreading the direction of divisibility from the informal statement. (The redundant `[IsCancelMulZero R]` is harmless since IsDomain already extends it.)"
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-293.lean",
+  "stem": "proofnet-293",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The theorem statements in the ORIGINAL and CORRECTED formalizations are identical: both assert `IsTopologicalBasis {S : Set ℝ | ∃ a b : ℚ, a < b ∧ S = Ioo ↑a ↑b}`. The only differences between the two files are: (1) `open Topology` vs `open scoped Topology` (a stylistic difference in how the namespace is opened, with no effect on this statement since no Topology notations like 𝓝 appear in the theorem), (2) the presence of `noncomputable section` in the original (irrelevant for a `theorem` declaration), and (3) whitespace. The Mathlib `IsTopologicalBasis` predicate (defined in `Mathlib/Topology/Bases.lean`) precisely captures the informal claim: it requires the collection to generate the ambient topology (`eq_generateFrom : t = generateFrom s`) and the basis axioms. Since ℝ carries the standard topology by default in Mathlib, this exactly formalizes the informal statement that rational open intervals form a basis for the standard topology on ℝ. The ORIGINAL is faithful."
+}

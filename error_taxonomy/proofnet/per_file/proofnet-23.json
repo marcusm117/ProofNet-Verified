@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-23.lean",
+  "stem": "proofnet-23",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement is Axler's complex polarization identity, which is true under Axler's convention (inner product linear in the FIRST slot). Mathlib, however, uses the opposite convention: `⟪r•x, y⟫ = conj(r)·⟪x,y⟫` and `⟪x, r•y⟫ = r·⟪x,y⟫` (linear in SECOND slot, as confirmed in Mathlib/Analysis/InnerProductSpace/Defs.lean lines 245-248). Under Mathlib's convention, `‖u+iv‖² - ‖u-iv‖² = -4·Im⟪u,v⟫` (opposite sign to Axler's). The CORRECTED formalization accounts for this by writing `(‖u-Iv‖² - ‖u+Iv‖²)·I`, matching Mathlib's `inner_eq_sum_norm_sq_div_four` (Basic.lean line 522). The ORIGINAL literally transcribes Axler's formula `I·‖u+Iv‖² - I·‖u-Iv‖²`, which under Mathlib's convention evaluates to `conj(⟪u,v⟫)` rather than `⟪u,v⟫`. This makes the original statement provably false (e.g., take `v = I•u` with `u ≠ 0`: LHS = `i·‖u‖²` but RHS = `-i·‖u‖²`). The two statements express incompatible claims, so they are incomparable. The error stems from not accounting for Mathlib's inner product convention, hence `misunderstanding_of_mathlib`."
+}

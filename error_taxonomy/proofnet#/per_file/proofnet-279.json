@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-279.lean",
+  "stem": "proofnet-279",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ✅\n\nTruth value: False\nRelation to GT: incomparaboe\nError Type: Misunderstanding of Informal Math\nIf NL has Implicit Premises: no\nImplicit Premises:   \nComment: It doesn't use the bound variable of a sum."
+}

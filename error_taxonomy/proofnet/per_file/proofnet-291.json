@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-291.lean",
+  "stem": "proofnet-291",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks for the unique LARGEST topology contained in all T_α (the intersection ∩ T_α). The CORRECTED formalization correctly captures this with `T'' ⊆ T'` (T' is the maximum). The ORIGINAL has the inequality reversed: `T' ⊆ T''`, which states that T' is the SMALLEST topology contained in all T_i — namely the indiscrete topology {∅, univ}. Both statements are true theorems (both extrema exist and are unique), but they formalize existence of different mathematical objects (minimum vs maximum). They are incomparable as assertions about content. The original is still provable (the indiscrete topology {∅, univ} is in every topology since univ ∈ T and ∅ = ⋃∅ ∈ T). The error is that the author misread \"largest\" as \"smallest\" when translating the informal statement."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-181.lean",
+  "stem": "proofnet-181",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED theorem statements are character-for-character identical. The only differences are in the header (additional `open` declarations in the corrected version: MeasureTheory, Real, Set, FourierTransform, RealInnerProductSpace, Complex). Since the theorem body uses fully qualified names (Real.cos, Real.pi, Real.exp), these opens do not affect semantics. The informal statement is a standard true result: ∫_{-∞}^∞ cos(x)/(x²+a²) dx = π·e^{-a}/a for a > 0, and the formalization correctly expresses the improper integral as the symmetric limit of ∫_{-y}^{y} as y → ∞. The original is therefore faithful to the informal statement."
+}

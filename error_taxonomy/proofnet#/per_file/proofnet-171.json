@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-171.lean",
+  "stem": "proofnet-171",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "(true, weaker, Misunderstanding of MathLib)\n\nThe original formalization uses `Continuous f` (global continuity on all of ℝ),\nbut the informal statement (Rudin Exercise 4.24) only assumes f is continuous\non the open interval (a, b).  Using `Continuous f` is a strictly stronger\nhypothesis, making the original theorem logically weaker than the informal\nclaim (it applies to fewer functions)."
+}

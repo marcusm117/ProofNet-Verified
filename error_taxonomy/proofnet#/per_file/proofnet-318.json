@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-318.lean",
+  "stem": "proofnet-318",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\n(false, stronger, Misunderstanding of Informal Math Statement),\n\nError Type: Wrong formalization\nIf NL has Implicit Premises: No\nImplicit Premises:   NO\nComment: The wrong formalization breaks uniqueness as the function is defined on all of X and not just the closure of A."
+}

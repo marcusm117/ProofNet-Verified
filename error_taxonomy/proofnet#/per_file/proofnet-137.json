@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-137.lean",
+  "stem": "proofnet-137",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The OG only talks about the L2 norm while the GT is for all norms."
+}

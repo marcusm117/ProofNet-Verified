@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-134.lean",
+  "stem": "proofnet-134",
+  "q1_informal_status": "nl_ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "true",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "NL Ambiguous\n\nMunkres: \"completely regular\" = separation + T1 (= T\u2083.\u2085)             \n \nWillard, Steen & Seebach, modern conventions, Mathlib: \"completely regular\" = just the\n  separation property"
+}

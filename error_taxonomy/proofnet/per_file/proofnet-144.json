@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-144.lean",
+  "stem": "proofnet-144",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement says \"for each positive integer n\", so the corrected formalization includes `hn : n > 0`. The ORIGINAL drops this hypothesis, quantifying over all natural numbers including n=0. This makes the ORIGINAL a stronger statement than the informal one — it implies the informal claim but asserts more (it also covers n=0). At n=0, the expression evaluates to 10^10 + 10 + 1 - 1 = 10,000,000,010, which is even (ends in 0) and therefore not prime, so the stronger claim happens to still be true. Since the informal statement explicitly mentioned the positivity of n as a premise and the original dropped it, this is a \"missing_premise\" error. Faithfulness is \"stronger\" because the original's universal claim over ℕ implies the informal claim restricted to positive integers."
+}

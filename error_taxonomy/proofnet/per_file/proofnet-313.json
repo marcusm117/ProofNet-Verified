@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-313.lean",
+  "stem": "proofnet-313",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement (Munkres exercise 31.3) concerns the order topology, which in Munkres' textbook is defined on simply (linearly) ordered sets. So the intended premise is LinearOrder, as in the CORRECTED version. Mathlib indeed proves that a LinearOrder with OrderTopology is T5 (hence regular) via OrderTopology.t5Space, but this result requires [LinearOrder X] — not merely PartialOrder. The ORIGINAL weakens the premise to [PartialOrder α], which is strictly broader (LinearOrder ⟹ PartialOrder), so the original's claim implies the informal claim — making it 'stronger'. However, the stronger claim is false: counterexample — take α = {a, b, c} with only a < b (c incomparable to both). The order topology has open sets {∅, {a}, {b}, {a,b}, α}, so closed sets are {α, {b,c}, {a,c}, {c}, ∅}. The closed set {a, c} and the point b ∉ {a,c} cannot be separated by disjoint opens because the only open set containing both a and c is α. Hence the space is Hausdorff but NOT regular. The error is that the linearity of the order — implicit in Munkres' term 'order topology' — was dropped, so this is a missing implicit premise."
+}

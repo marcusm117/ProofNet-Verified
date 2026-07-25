@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-77.lean",
+  "stem": "proofnet-77",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "OG is different to GT. \n\nMisunderstanding of Mathlib. \n\nIsEmpty (CommGroup G) does not mean that is not Abelian, in fact, hG‘ is always false"
+}

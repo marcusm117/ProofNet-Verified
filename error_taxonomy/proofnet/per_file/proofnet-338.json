@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-338.lean",
+  "stem": "proofnet-338",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "adding_extra_conclusion",
+  "reasoning": "The informal statement asks to prove that disjoint closed sets A and B in a metric space are \"separated\" in Rudin's sense (Definition 2.45), meaning A ∩ closure(B) = ∅ and closure(A) ∩ B = ∅. This is what the CORRECTED version formalizes literally: `A ∩ closure B = ∅ ∧ closure A ∩ B = ∅`.\n\nThe ORIGINAL formalization instead concludes `SeparatedNhds A B`, which Mathlib defines as the existence of disjoint open neighborhoods U ⊇ A and V ⊇ B (i.e., `∃ U V, IsOpen U ∧ IsOpen V ∧ A ⊆ U ∧ B ⊆ V ∧ Disjoint U V`). This is the classical notion of \"separated by neighborhoods,\" which is strictly stronger than Rudin's \"separated\": via Mathlib's `SeparatedNhds.disjoint_closure_left` and `disjoint_closure_right` lemmas, `SeparatedNhds A B` unconditionally implies Rudin's separation, but the converse holds only in completely normal spaces.\n\nAlthough metric spaces ARE completely normal (via `instIsCountablyGeneratedUniformity` combined with `UniformSpace.completelyNormalSpace_of_isCountablyGenerated_uniformity`), so both statements are in fact provable here, the original Lean proposition is strictly stronger than the corrected one as Lean propositions: `SeparatedNhds A B → A ∩ closure B = ∅ ∧ closure A ∩ B = ∅` is a trivial consequence, but not the reverse (in general). Hence the original adds an extra conclusion (disjoint open neighborhoods) beyond what the informal statement asks (Rudin's literal definition of separated)."
+}

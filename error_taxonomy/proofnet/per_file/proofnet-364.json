@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-364.lean",
+  "stem": "proofnet-364",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is a classic, true, unambiguous result: an entire function whose Taylor expansion at every point has at least one vanishing coefficient must be a polynomial. The corrected version captures this faithfully using Differentiable ℂ f and the existence of n with iteratedDeriv n f z₀ / n! = 0 (the nth Taylor coefficient vanishing). The original formalization has multiple severe errors: (1) the power series `∑ c_i (z - z₀)^i` is declared to converge to `f z₀` (constant) instead of `f z` — so it doesn't capture analyticity at all; (2) the coefficients `c` are existentially quantified without constraint, making the premise trivially satisfiable for ANY function f by choosing c_0 = f(z₀), c_i = 0 (i ≥ 1); (3) the conclusion `f = λ z => ∑ i ∈ range n, (c i) * z ^ n` uses `z^n` (fixed exponent) instead of `z^i`, so it reduces to `f = C · z^n` — a single monomial, not a general polynomial; (4) Differentiable/analytic hypothesis is effectively missing. Since the premise is vacuous (true for any f) and the conclusion is \"f is a single monomial C·z^n\", the original statement is provably false (counterexample: f(z) = z+1 is a polynomial trivially satisfying the original premise but is not of the form C·z^n). The original would imply the informal claim (C·z^n is a polynomial) if it were true, making it logically stronger than the informal statement. The root cause is a misunderstanding of how to formalize the Taylor series and polynomial expressions."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-117.lean",
+  "stem": "proofnet-117",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED theorem statements are character-for-character identical. Both declare the same signature: `{X : Type*} [TopologicalSpace X] {A : Set X} (r : X → A) (hr : Continuous r) (h : ∀ x : A, r x = x) : IsQuotientMap r`. The only differences between the two files are in the preamble (the ORIGINAL splits `open Filter Set TopologicalSpace` and `open Topology` into two lines and adds `noncomputable section`, while the CORRECTED combines them into one line). These are purely stylistic and have no bearing on the theorem statement. The formalization faithfully encodes the informal claim that a retraction (continuous map r : X → A fixing each point of A) is a quotient map."
+}

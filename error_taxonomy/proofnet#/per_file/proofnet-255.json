@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-255.lean",
+  "stem": "proofnet-255",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "ProofNet# formalization matches the corrected ground truth."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-367.lean",
+  "stem": "proofnet-367",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Implicit Premise\nIf NL has Implicit Premises: Yes\nImplicit Premises: (hsumm : Summable fun n : ℕ => (1 - ‖zeros n‖))\nComment: The NL does not explicitly spell out the fact that the listed zeroes should appear in the sequence as many times as its order."
+}

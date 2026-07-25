@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-341.lean",
+  "stem": "proofnet-341",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Misunderstanding of informal math\nRelation to GT: stronger\nIf NL has Implicit Premises: No\nImplicit Premises:   NO\nComment: The wrong formalization only includes bounded intervals and excludes intervals like (0, infty). The correction however proves a weaker version for only bounded sets."
+}

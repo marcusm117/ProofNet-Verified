@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-363.lean",
+  "stem": "proofnet-363",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement asserts that the improper integral of sin(x)/x from 0 to infinity equals π/2, a well-known Dirichlet integral result that is mathematically true and unambiguous. Both the ORIGINAL and CORRECTED formalizations express this as the tendency of y ↦ ∫ x in 0..y, sin(x)/x towards π/2 as y → ∞ using Mathlib's interval integral notation. The only differences are: (1) `λ y =>` vs `fun y =>` (syntactic aliases in Lean 4), and (2) the corrected version adds `MeasureTheory intervalIntegral` to the `open` list. The interval integral notation `∫ x in a..b, f x` is declared at the root level in Mathlib (before `namespace intervalIntegral`), so it is available without those opens. The theorem statements are logically equivalent and semantically identical — the original is faithful to the informal statement."
+}

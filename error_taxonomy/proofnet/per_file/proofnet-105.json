@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-105.lean",
+  "stem": "proofnet-105",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement is a classical, unambiguous result from point-set topology (Munkres Exercise 13.1): a subset A is open iff every point has an open neighborhood contained in A. The ORIGINAL and CORRECTED theorem statements are character-for-character identical: same parameters (X : Type* with [TopologicalSpace X], A : Set X), same hypothesis h1 : ∀ x ∈ A, ∃ U : Set X, x ∈ U ∧ IsOpen U ∧ U ⊆ A, and same conclusion IsOpen A. The only differences lie in the preamble (`open Topology` vs `open scoped Topology`, and an extra `noncomputable section` in the original), which affect only namespace/notation scoping and not the mathematical content of the theorem. Therefore the ORIGINAL is faithful to the informal statement, and the theorem is provably true."
+}

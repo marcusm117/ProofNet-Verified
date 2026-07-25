@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-96.lean",
+  "stem": "proofnet-96",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement concerns the von Mangoldt function Λ(n), a standard number-theoretic construct where \"power of p\" conventionally means p^k with k ≥ 1. The identity Λ(n) = ∑_{d|n} μ(n/d) log d is a well-known true identity.\n\nKey semantic difference: The ORIGINAL's hypothesis `hl : ∀ p n : ℕ, p.Prime → l (p^n) = log p` applies for ALL n including n = 0. The CORRECTED correctly requires `0 < n`. \n\nThe ORIGINAL's hypotheses are inconsistent: setting n = 0 gives l(p^0) = l(1) = log p for every prime p, forcing log 2 = log 3 (false). Additionally, since 1 is not a prime power in Mathlib (confirmed: `not_isPrimePow_one` in Mathlib/Algebra/IsPrimePow.lean:52), `hl1` gives l(1) = 0, contradicting l(1) = log p.\n\nSince no function l satisfies the ORIGINAL's hypotheses, the theorem is vacuously true — hence provable but semantically weaker than the informal claim (which is a nontrivial assertion about the actual von Mangoldt function).\n\nOther differences are equivalent: `∑ d : Nat.divisors n` (subtype sum) is semantically equivalent to `∑ d ∈ Nat.divisors n` (Finset sum); `log p` = `Real.log p` via `open Real`; and the ℤ → ℝ coercion for moebius is inserted implicitly.\n\nThe error is a missing implicit premise (`0 < n`) which is conventionally part of \"power of p\" in number theory."
+}

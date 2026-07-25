@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-212.lean",
+  "stem": "proofnet-212",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks for associativity of multiplication in ZMod n. The corrected formalization captures this directly with `∀ (a b c : ZMod n), (a*b)*c = a*(b*c)`. The original instead states `∀ (a b c : ℕ), (a*b)*c ≡ a*(b*c) [ZMOD n]`, which uses `Int.ModEq` on natural-number products. This is weaker: (1) it's trivially true from Nat.mul_assoc without using the mod structure at all; (2) for n = 0, ZMod 0 = ℤ but the original only quantifies over naturals, missing negative integer representatives. The corrected statement implies the original (via casting), but not vice versa. The original is still provable (trivially), but is a misformalization of what the informal statement is asking about—it uses integer congruence of nat products rather than equality in the quotient ring ZMod n."
+}

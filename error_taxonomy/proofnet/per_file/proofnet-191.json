@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-191.lean",
+  "stem": "proofnet-191",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "adding_extra_case",
+  "reasoning": "The informal statement asks to prove IJ = I ∩ J for ideals I, J of a ring R (interpreted as a commutative ring in Artin's textbook context) such that I + J = R. The corrected formalization uses `[CommRing R]` which faithfully captures this. The original formalization adds an extra unnecessary typeclass hypothesis `[NoZeroDivisors R]`, restricting R to be an integral domain. Checking Mathlib's `mul_eq_inf_of_coprime` (in `RingTheory/Ideal/Operations.lean` line 687), the theorem holds under just `CommSemiring R` — no domain assumption is needed. Thus the original statement is strictly weaker than the informal claim: it only asserts the result for commutative rings with no zero divisors, whereas the informal statement asserts it for all commutative rings. The original is still provable (it's a special case), but it does not imply the informal claim. This is an \"adding_extra_case\" error — an extra hypothesis was added that is not present in the informal statement."
+}

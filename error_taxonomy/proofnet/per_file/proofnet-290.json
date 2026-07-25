@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-290.lean",
+  "stem": "proofnet-290",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks about unions ($\\bigcup$) of topologies not necessarily being a topology. The CORRECTED formalization correctly uses `⋃ i : I, T i` (union). The ORIGINAL uses `⋂ i : I, T i` (intersection) instead. This is a substantive mathematical difference: the intersection of a family of topologies is ALWAYS a topology (univ belongs to each T_i, so it belongs to the intersection; finite intersections and arbitrary unions in each T_i stay in the intersection). Therefore, the ORIGINAL's claim that there exists a family of topologies whose intersection fails to be a topology is mathematically false. The original and corrected statements are incomparable (different operations, different truths). The informal statement is a standard, unambiguous true claim (e.g., on X={a,b,c}, the topologies {∅,X,{a}} and {∅,X,{b}} have union {∅,X,{a},{b}} which is not closed under unions). The error is a misreading of the informal statement's operation."
+}

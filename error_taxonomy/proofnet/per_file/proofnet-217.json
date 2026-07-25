@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-217.lean",
+  "stem": "proofnet-217",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "Due to Lean 4's parsing rule (∀ extends as far right as possible), the ORIGINAL `∀ x y : A × B, x*y = y*x ↔ ...` parses as `∀ x y : A × B, (x*y = y*x ↔ ...)`, which places the ↔ inside the ∀ binder. The CORRECTED version has explicit parentheses making it `(∀ x y : A × B, x*y = y*x) ↔ ...`. Semantically, letting P = \"A and B are abelian\" and Q(x,y) = \"x*y = y*x in A×B\": the original says ∀x,y,(Q(x,y) ↔ P), while the corrected says (∀x,y,Q(x,y)) ↔ P. The original is strictly stronger (it implies the corrected, but not vice versa). The original is provably FALSE as a theorem for non-abelian A or B: take A=S₃, B=Unit; then P is false, but setting x=y=identity gives Q(x,y)=true, so True↔False=False. This is a parsing issue — the user intended to write (∀...) ↔ ... but forgot parentheses, which is a misunderstanding of Lean's ∀ parsing precedence."
+}

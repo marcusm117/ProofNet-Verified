@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-208.lean",
+  "stem": "proofnet-208",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "In Axler's \"Linear Algebra Done Right\", Chapter 7 defines inner product spaces over F = ℝ or ℂ. The informal statement, which does not specify a field, therefore refers to V over either ℝ or ℂ (captured in the corrected version by `[RCLike F]`). The ORIGINAL formalization restricts the scalar field to ℂ specifically (`[InnerProductSpace ℂ V]`), covering only the complex case. This makes the original a strict special case of the informal claim — it is implied by the general claim but does not imply it, so the original is WEAKER. The complex case itself is a true theorem (e.g., for dim V = 2 over ℂ, one can easily construct normal operators whose sum is not normal), so provability is \"true\". The error type is misunderstanding_of_informal_statement — the author interpreted Axler's V as being over ℂ only, rather than over F ∈ {ℝ, ℂ}."
+}

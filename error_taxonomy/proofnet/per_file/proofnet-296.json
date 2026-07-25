@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-296.lean",
+  "stem": "proofnet-296",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The theorem statements in the ORIGINAL and CORRECTED formalizations are literally identical. Both state: given topological spaces X and Y, where Y has a LinearOrder and OrderTopology, and given continuous functions f, g : X → Y, the set {x | f x ≤ g x} is closed in X. This faithfully captures the informal statement from Munkres. The only differences are in the file preamble: the original uses `open Topology` (vs `open scoped Topology`) and declares `noncomputable section`, but these do not affect the semantic content of the theorem itself. This is exactly Mathlib's `isClosed_le` theorem, which is provably true."
+}

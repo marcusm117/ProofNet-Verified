@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-46.lean",
+  "stem": "proofnet-46",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement from Dummit & Foote explicitly asks for a *nontrivial* subgroup $A$ of $H$ with $A \\unlhd G$ and $A$ abelian. The CORRECTED formalization captures this with `∃ A ≤ H, A ≠ ⊥ ∧ A.Normal ∧ ∀ a b : A, a*b = b*a`. The ORIGINAL formalization drops the `A ≠ ⊥` conjunct, giving `∃ A ≤ H, A.Normal ∧ ∀ a b : A, a*b = b*a`. Without the nontriviality requirement, the claim becomes trivially true: one can always pick $A = \\bot$ (the trivial subgroup), which is contained in $H$, is normal in $G$, and is (vacuously) abelian. Thus the original is strictly weaker than the informal statement and provable only in the trivial sense. The statement is mathematically correct and unambiguous (a classical fact about solvable groups via the derived series). The original statement is provably true but strictly weaker. The error is dropping an explicit condition (\"nontrivial\") that was stated in the informal problem."
+}

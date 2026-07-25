@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-335.lean",
+  "stem": "proofnet-335",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement is the standard triangle inequality for complex numbers, which is true and unambiguous. In the original formalization, `norm (∑ i ∈ range n, f i) ≤ ∑ i ∈ range n, norm (f i)` uses the function `norm` directly, while the corrected formalization uses the notation `‖·‖`. These are literally the same: in `Mathlib/Analysis/Normed/Group/Defs.lean`, the notation is defined as `notation \"‖\" e \"‖\" => norm e`. Thus the two statements are definitionally equal (identical up to notational desugaring), and the original is faithful to the informal statement. Since `f : ℕ → ℂ` and ℂ has a normed field structure, `norm (f i)` equals `Complex.abs (f i)`, matching the informal `|z_i|`."
+}

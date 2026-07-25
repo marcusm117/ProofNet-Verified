@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-119.lean",
+  "stem": "proofnet-119",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement says: if X is an infinite set, then (the whole space) X is connected in the cofinite topology. The corrected formalization captures this as `[Infinite X] → IsConnected (Set.univ : Set (CofiniteTopology X))`. The original formalization instead asserts `∀ (s : Set (CofiniteTopology X)), Infinite s → IsConnected s`, i.e., every infinite subset of any X (with cofinite topology) is connected as a subspace. Logically, the original is strictly stronger than the corrected: specializing s = univ and using that Infinite univ ↔ Infinite X recovers the corrected theorem, but the corrected doesn't imply the original (it says nothing about arbitrary subsets). The original statement is actually provably true: in the cofinite topology on X, the subspace topology on any subset s is the cofinite topology on s, and any infinite set with its cofinite topology is connected (while if X is finite, no subset is infinite so the implication is vacuous). The formalizer misread the informal statement — replacing \"X is connected\" with \"every infinite subset is connected\" — which is a misunderstanding of what the mathematical statement asks for."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-59.lean",
+  "stem": "proofnet-59",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement specifies an \"integral domain,\" which by standard mathematical convention (and per Dummit & Foote) is a commutative ring with no zero divisors. The corrected formalization uses `[CommRing R] [IsDomain R]`, matching this convention. The original uses `[Ring R] [IsDomain R]`; in Mathlib, `IsDomain` is defined over any `Semiring` and does not imply commutativity — the docstring at `Mathlib/Algebra/Ring/Defs.lean:425` explicitly instructs: \"To obtain an integral domain use `[CommRing α] [IsDomain α]`.\" Thus the Original drops the commutativity premise inherent in \"integral domain,\" yielding a more general (stronger) statement. The statement is still provable: `sq_eq_one_iff` in `Mathlib/Algebra/Ring/Commute.lean:176` holds under `[Ring R] [NoZeroDivisors R]`, and `IsDomain` implies `NoZeroDivisors` via `IsCancelMulZero`. So the Original is stronger than the informal claim but still true. The error is dropping the (explicit, by terminology) commutativity requirement."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-234.lean",
+  "stem": "proofnet-234",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement requires H to be CHARACTERISTIC in K (fixed by all automorphisms of K), not merely NORMAL in K. The ORIGINAL uses `(H.subgroupOf K).Normal` instead of `(H.subgroupOf K).Characteristic` used in the CORRECTED version. Since Characteristic ⇒ Normal (verified in Mathlib's `Mathlib/Algebra/Group/Subgroup/Basic.lean` line 242-243: `normal_of_characteristic`), the original's hypothesis is strictly weaker than the informal's, making the original's overall claim STRONGER than the informal statement. The original is provably FALSE because normality is not transitive — the classic counterexample is G = D₄, K = {1, r², s, r²s} ≅ V₄, H = ⟨s⟩: H is normal in K (K is abelian), K is normal in G (index 2), but H is not normal in G since rsr⁻¹ = r²s ∉ H. This counts as a misunderstanding of the informal statement: the author conflated \"characteristic\" with \"normal\", which are distinct, well-established group-theoretic notions."
+}

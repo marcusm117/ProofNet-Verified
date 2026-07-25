@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-150.lean",
+  "stem": "proofnet-150",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "unknown",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement (for a nonempty set A of reals bounded below, inf A = -sup(-A)) is true and unambiguous. The ORIGINAL uses `Min A = Max minus_A`, but in Lean 4 / Mathlib `Min` and `Max` are typeclasses providing binary min/max operations on types (class Min (α : Type u) where min : α → α → α), NOT the infimum/supremum of a set. The correct API for set infimum/supremum is `sInf`/`sSup` (from `InfSet`/`SupSet`), as shown in the CORRECTED version `sInf A = - sSup minus_A`. Additionally, the original is missing the crucial negation sign on the RHS. The expression `Min A = Max minus_A` is not semantically the same as the informal claim; it's either ill-typed or, via coercion, becomes a statement equating types rather than real numbers. This is a clear misuse of Mathlib API for expressing inf/sup of a set."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-31.lean",
+  "stem": "proofnet-31",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement \"A iff B iff C\" (with A: xy=yx, B: y⁻¹xy=x, C: x⁻¹y⁻¹xy=1) is the standard chained biconditional meaning all three are equivalent, formalized as (A↔B)∧(B↔C), which is the corrected version. The original writes (A↔B)↔C. In any group, A↔B is a tautology (provable directly), so (A↔B)↔C reduces to True↔C, i.e., just C. Universally quantified over x, y ∈ G, this amounts to requiring G to be abelian, which fails for nonabelian groups (e.g., S₃ with x=(12), y=(13) gives x⁻¹y⁻¹xy ≠ 1). Thus the original implies the informal (the informal is a tautology) but the original is strictly stronger and actually false in general. The error is misreading the chain of iffs in the informal English as a nested biconditional rather than a conjunction of biconditionals — a misunderstanding of the informal statement."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-120.lean",
+  "stem": "proofnet-120",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is clear and mathematically true: X, Y connected topological spaces, A ⊊ X, B ⊊ Y implies (X×Y)\\(A×B) is connected. The CORRECTED formalization directly encodes this via univ sets. The ORIGINAL instead introduces arbitrary subsets A₁ ⊊ A₂, B₁ ⊊ B₂ with IsConnected A₂, IsConnected B₂, and asks about (A₂×B₂)\\(A₁×B₁). This is a strict generalization: specializing A₂ = univ, B₂ = univ recovers the corrected statement (so original ⟹ corrected), but the corrected does not directly imply the more general original. The original is mathematically provable (the generalization holds by the same argument: pick a ∈ A₂\\A₁, b ∈ B₂\\B₁, then the \"cross\" {a}×B₂ ∪ A₂×{b} is connected and every point in (A₂×B₂)\\(A₁×B₁) connects to it through a slice). So the original is \"stronger\" than what the informal statement asks. The author appears to have misinterpreted the role of X, Y in the informal statement — treating them as arbitrary connected subsets (A₂, B₂) of ambient types rather than as the topological spaces themselves. Note also the duplicate hypothesis names (hA, hB appear twice) which is valid Lean 4 but stylistically odd."
+}

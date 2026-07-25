@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-285.lean",
+  "stem": "proofnet-285",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement (a standard exercise from Ireland-Rosen) is true and unambiguous under the standard convention that Fermat primes p = 2^n + 1 have n ≥ 2 (or equivalently p ≥ 5). The ORIGINAL formalization writes `IsPrimitiveRoot 3 p`, which has two major Mathlib API problems: (1) `3` has no type ascription, so it will be elaborated as `3 : ℕ` by default — in ℕ, `IsPrimitiveRoot 3 p` requires `3^p = 1`, which is false for any p ≥ 1; (2) even if the element were in `ZMod p`, the exponent should be `p - 1` (the order of `(ZMod p)ˣ`), not `p` — by Fermat's Little Theorem `3^p = 3 ≠ 1` in `ZMod p` for p > 3. The CORRECTED version uses `IsPrimitiveRoot (3 : ZMod p) (p - 1)` and adds `hn : 2 ≤ n` to exclude the degenerate case n = 1 (p = 3). Under any reasonable interpretation of Lean's type elaboration, the original is provably false, and it is not logically comparable to the informal claim. The fundamental error is misuse of the `IsPrimitiveRoot` API (wrong underlying monoid and wrong exponent)."
+}

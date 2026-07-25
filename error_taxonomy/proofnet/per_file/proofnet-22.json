@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-22.lean",
+  "stem": "proofnet-22",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is from Axler's \"Linear Algebra Done Right\" (Exercise 6.2), where $\\mathbf{F}$ denotes the scalar field, which may be either $\\mathbb{R}$ or $\\mathbb{C}$. The CORRECTED formalization captures this by using a generic type `F` with `[RCLike F]`, which correctly covers both the real and complex cases. The ORIGINAL formalization fixes the field to `ℂ` (complex numbers only), which is strictly a specialization. Since any proof of the corrected (general `RCLike F`) statement specializes to give the complex version, but a proof of only the complex version does not yield the real version, the original is logically weaker than the informal statement. The original statement is nevertheless mathematically true (it is the classic Pythagorean-orthogonality characterization in complex inner product spaces). The error is a misunderstanding of what $\\mathbf{F}$ means in Axler's convention — it should be any `RCLike` field, not specifically `ℂ`. (Additionally, the original has a redundant `[Module ℂ V]` instance which is already provided by `InnerProductSpace ℂ V` via `NormedSpace`, but this is not the semantic issue.)"
+}

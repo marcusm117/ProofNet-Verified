@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-36.lean",
+  "stem": "proofnet-36",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "In Lean 4, `∀` has very low precedence and extends to the right through `↔`. So the ORIGINAL `∀ x y : G, f x * f y = f (x*y) ↔ ∀ x y : G, x*y = y*x` actually parses as `∀ x y : G, (f x * f y = f (x*y) ↔ ∀ x y : G, x*y = y*x)`, not as the intended `(∀ x y, f x * f y = f(x*y)) ↔ (∀ x y, x*y = y*x)` shown in the CORRECTED version. Mathlib consistently parenthesizes the left-hand `∀` when it should be bounded (e.g., `forall_swap : (∀ x y, p x y) ↔ ∀ y x, p x y`), confirming this parsing. Letting P(x,y) := \"f x * f y = f(xy)\" and Q := \"G is abelian\": the original reads ∀ x y, (P(x,y) ↔ Q), which implies the corrected (∀ x y, P(x,y)) ↔ Q (since G is nonempty), but the converse fails — so the original is strictly STRONGER. The original is also provably FALSE: for any non-abelian group (e.g., S₃), take x = y = 1; then P(1,1) is true (1·1 = 1) but Q is false, so the biconditional fails. The informal statement is the standard clear claim (inverse map is hom iff G abelian), which is true and unambiguous. The error is Lean-specific: missing parentheses around the left `∀`-quantifier scope."
+}

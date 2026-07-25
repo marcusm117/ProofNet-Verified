@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-219.lean",
+  "stem": "proofnet-219",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "adding_extra_conclusion",
+  "reasoning": "The informal statement asks to prove A × B ≅ B × A for groups A and B, which is a true, unambiguous, well-known fact (provable via MulEquiv.prodComm in Mathlib). The original formalization declares `instance ... : A × B ≃* B × A`, which is a Type (not a Prop) requiring a concrete multiplicative equivalence as data. The corrected version uses `theorem ... : Nonempty (A × B ≃* B × A)`, which is the Prop-level existence claim. A term of `A × B ≃* B × A` always produces `Nonempty (A × B ≃* B × A)` via `⟨·⟩`, but the reverse requires Classical.choice. So the original is strictly stronger (it provides the isomorphism as data rather than just asserting existence). Both are provable. The extra content (providing the specific isomorphism rather than just existence) makes this 'adding_extra_conclusion' in spirit — the original demands more than the Prop-level existence claim that matches the informal 'prove ≅'. Additionally, using `instance` for this is nonstandard but orthogonal to the semantic difference."
+}

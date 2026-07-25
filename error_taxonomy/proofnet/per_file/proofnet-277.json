@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-277.lean",
+  "stem": "proofnet-277",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is mathematically true and unambiguous: a satisfies a polynomial of degree 5 over ℚ(√2,√5,√7,√11), which has degree at most 2^4=16 over ℚ, giving a total degree bound of 5·16=80.\n\nThe ORIGINAL formalization has several errors making it incomparable to the informal statement:\n\n1. **Most salient: missing sqrt on 11** — The original hypothesis uses `+ 11` as the constant term instead of `+ sqrt 11`. This changes the polynomial entirely (only three square roots instead of four), so the set of valid `a` values is different from what the informal specifies.\n\n2. **Wrong conclusion formulation** — Uses `Polynomial ℂ` with a hand-rolled condition `∃ a b : ℤ, p.coeff n = a / b` on coefficients instead of `Polynomial ℚ` with `aeval`. The condition `a / b` in ℂ with integer a, b doesn't cleanly capture \"rational coefficients\" (e.g., b could be 0 making a/b = 0 in ℂ). Also has variable shadowing issues.\n\n3. **Strict vs. non-strict degree bound** — `p.degree < 80` corresponds to natDegree ≤ 79, while the informal asks for degree ≤ 80.\n\n4. **Missing nonzero condition** — Not explicit, but `a ∈ p.roots` implicitly requires `p ≠ 0`.\n\nBecause of the wrong polynomial in the hypothesis, the hypotheses of the two statements are about different objects, so they are incomparable.\n\nThe original statement is still PROVABLE: under its hypothesis, `a` is algebraic over ℚ of degree at most 5·2³=40 < 80, so a polynomial of degree < 80 with rational coefficients having `a` as a root exists.\n\nThe dominant error is misreading the informal statement (dropping the sqrt on 11), which is best classified as misunderstanding_of_informal_statement."
+}

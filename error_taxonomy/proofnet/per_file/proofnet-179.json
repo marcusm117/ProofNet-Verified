@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-179.lean",
+  "stem": "proofnet-179",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "adding_extra_conclusion",
+  "reasoning": "The informal statement asks to prove that two primitives F₁, F₂ of f on a region Ω differ by a constant (implicitly, on Ω, which is where primitives are defined). The corrected formalization reflects this with `∀ x ∈ Ω, F₁ x = F₂ x + c`. The original formalization uses `∀ x, F₁ x = F₂ x + c`, which quantifies over all of ℂ — thus making a claim about F₁ and F₂ outside Ω, where these functions are totally unconstrained (they're just typed ℂ → ℂ with hypotheses only on Ω). This makes the original stronger than the informal claim, and actually FALSE: e.g., take Ω = open unit disk, f ≡ 0, F₁ ≡ 0, and F₂ = 0 on Ω but F₂(x) = 1 for |x| ≥ 1. F₂ is differentiable on Ω (locally constant) with deriv F₂ = 0 = f on Ω, yet no single constant c satisfies F₁ = F₂ + c on all of ℂ. Other minor differences (the missing `ContinuousOn f Ω` hypothesis and redundant `Nonempty Ω` in the corrected version) are not the decisive error, since continuity of f is automatic for complex-differentiable primitives and `Nonempty Ω` follows from `IsConnected Ω` (Mathlib defines `IsConnected s := s.Nonempty ∧ IsPreconnected s`). The decisive error is the over-broad quantifier in the conclusion — adding_extra_conclusion."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-364.lean",
+  "stem": "proofnet-364",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Misunderstanding of Mathlib\nRelation to GT: incomparable\nIf NL has Implicit Premises: No\nImplicit Premises:   NO\nComment: The wrong formalization says that the series is converging to f evaluated at center point f z_0 (instead of f z), which is trivial since the constant function satisfies this for any function."
+}

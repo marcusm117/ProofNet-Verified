@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-266.lean",
+  "stem": "proofnet-266",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement has three premises: (1) A is a normal subgroup, (2) b has prime order p, (3) b ∉ A, and the conclusion A ∩ ⟨b⟩ = {e}. The ORIGINAL formalization drops the explicit premise b ∉ A. Without this premise, the statement is provably false: take G = ℤ/2ℤ, A = G (normal), and b the non-identity element (prime order 2). Then b ∈ A, so A ⊓ ⟨b⟩ = ⟨b⟩ = ⊤ ≠ ⊥, contradicting the conclusion. The original is logically stronger than the informal claim (it would imply it, since it asserts the conclusion under strictly fewer hypotheses), but it is provably false. The error is dropping the explicit premise b ∉ A that appears in the informal statement."
+}

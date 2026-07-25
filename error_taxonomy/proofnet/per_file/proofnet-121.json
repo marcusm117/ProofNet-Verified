@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-121.lean",
+  "stem": "proofnet-121",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement concerns $S^1$, the unit circle, which lives in $\\mathbb{R}^2 \\cong \\mathbb{C}$. The corrected formalization correctly uses `Metric.sphere (0 : ℂ) 1 : Set ℂ`. The original uses `Metric.sphere (0 : ℝ) 1 : Set ℝ`, which is $\\{-1, 1\\} = S^0$, a two-point discrete space, not the circle. I verified via Mathlib (Analysis/Normed/Group/BallSphere.lean) that `Neg` is defined on `sphere (0 : E) r` for any seminormed add comm group, so the original compiles, but it formalizes a statement about $S^0$. On $S^0$, the claim is false: take $f(-1) = 0$, $f(1) = 1$ (continuous because the space is discrete); neither choice of $x$ gives $f(x) = f(-x)$. The original and corrected are incomparable because they concern different domains. The error is a misunderstanding of the informal statement—the author confused $S^1$ (the 1-sphere, unit circle in $\\mathbb{R}^2$) with a 1-radius sphere in $\\mathbb{R}$."
+}

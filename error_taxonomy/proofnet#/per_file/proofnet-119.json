@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-119.lean",
+  "stem": "proofnet-119",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "1. negation ✅\n2. reasoning ✅\n3. correction ❌ \n\nError Type: Wrong Formalization\nIf NL has Implicit Premises: no\nImplicit Premises: \nComment: Doesn't enforce s to have the cofinite topology. Correction is stronger than GT because it proves for any subset.\n\n\n"
+}

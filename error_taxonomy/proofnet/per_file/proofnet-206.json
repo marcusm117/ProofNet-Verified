@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-206.lean",
+  "stem": "proofnet-206",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement uses 1-indexed sums (j=1 to n), so j takes values 1, 2, ..., n. This is a well-known Cauchy-Schwarz-like inequality that is true. The corrected formalization properly handles the index shift by using `(i + 1)` since `Fin n` ranges over {0, 1, ..., n-1}. The ORIGINAL uses `i` directly without shifting, making the coefficients 0, 1, ..., n-1 instead of 1, 2, ..., n. This makes the original statement provably false: taking n=1, a_0=1, b_0=1 gives LHS = (1·1)² = 1, but RHS = (0·1²) · (1²/0) = 0·0 = 0 (Lean's division-by-zero convention), so 1 ≤ 0 fails. The original is not faithful (it has a different mathematical content due to the index mismatch) and is not even a weaker/stronger variant — it's a genuinely different (and false) statement. The error is misreading how to translate the 1-indexed informal math into Lean's 0-indexed Fin n."
+}

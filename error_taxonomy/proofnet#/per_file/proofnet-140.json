@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-140.lean",
+  "stem": "proofnet-140",
+  "q1_informal_status": "nl_ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "true",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "NL Ambiguous, \\sqrt{n+1}-\\sqrt{n} could be sequence or real function"
+}

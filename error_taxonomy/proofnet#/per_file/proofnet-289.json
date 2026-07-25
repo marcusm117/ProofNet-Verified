@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-289.lean",
+  "stem": "proofnet-289",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "T∞ does not always form a topology on X, but the lean formalization means the just the union axiom fails"
+}

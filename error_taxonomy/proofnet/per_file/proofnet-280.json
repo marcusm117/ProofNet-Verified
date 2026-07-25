@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-280.lean",
+  "stem": "proofnet-280",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement says \"gcd = 1 or 2 depending on whether a is odd or even.\" While the wording could be read two ways, only one interpretation is mathematically true (odd→2, even→1). The ORIGINAL chose the false interpretation (odd→1, even→2), making it provably false and incomparable to the corrected version which uses the correct pairing."
+}

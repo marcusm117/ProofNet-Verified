@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-202.lean",
+  "stem": "proofnet-202",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement uses the standard Axler convention: a subspace U is invariant under T if T(U) ⊆ U (i.e., u ∈ U implies Tu ∈ U). The CORRECTED formalization correctly uses `Submodule.map T (U i) ≤ U i` for hypothesis and the corresponding ≤ for the conclusion. The ORIGINAL formalization incorrectly uses equality `=` on both sides, which is a strictly stronger condition than the intended invariance. The original's hypothesis (T(U_i) = U_i) is strictly stronger than the informal hypothesis (T(U_i) ⊆ U_i), AND the original's conclusion (T(sum) = sum) is strictly stronger than the informal conclusion (T(sum) ⊆ sum). Since both the hypothesis and conclusion are strengthened, neither statement implies the other — they are incomparable. The original is still a provably true theorem: since `Submodule.map` preserves finite sups (it is a SupHom), if each T(U_i) = U_i, then T(∑ U_i) = ∑ T(U_i) = ∑ U_i. The error is a misunderstanding of the informal mathematical definition of \"invariant under T\"."
+}

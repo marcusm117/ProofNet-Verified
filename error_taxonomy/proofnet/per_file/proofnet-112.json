@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-112.lean",
+  "stem": "proofnet-112",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED theorem statements are literally identical. Both state: given `U A : Set X` with `hU : IsOpen U` and `hA : IsClosed A`, prove `IsOpen (U \\ A) ∧ IsClosed (A \\ U)`. The only differences are cosmetic preamble items: `open Topology` vs `open scoped Topology` and the presence of `noncomputable section`, neither of which affects the semantic content of the theorem. The informal statement (\"if U is open and A is closed, then U-A is open and A-U is closed\") is faithfully encoded, mathematically true, and unambiguous. Therefore the original is faithful and there is no error."
+}

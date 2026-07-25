@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-201.lean",
+  "stem": "proofnet-201",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The only difference between the two formalizations is the `[FiniteDimensional F V]` hypothesis, which is present in the corrected version but missing in the original. The informal statement explicitly says \"Suppose that V is finite dimensional\", so this is an explicit premise that was dropped in the original. Without this premise, the original asserts the existence of such a subspace U for any vector space V (not necessarily finite-dimensional), which is a stronger claim than the informal statement. This stronger claim is actually still provable: since F is a Field, `Submodule.exists_isCompl` (in Mathlib/LinearAlgebra/Basis/VectorSpace.lean) guarantees every submodule has a complement. Taking U as a complement of `ker L` yields both `U ⊓ ker L = ⊥` and `range L = range (L.domRestrict U)`. So the original is a stronger but still true statement, differing from the informal by dropping an explicit premise."
+}

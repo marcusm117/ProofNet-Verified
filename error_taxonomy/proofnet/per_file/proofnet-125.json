@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-125.lean",
+  "stem": "proofnet-125",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement uses C_1 ⊃ C_2 ⊃ ..., which denotes a descending nested sequence (C_{n+1} ⊆ C_n). The CORRECTED formalization correctly encodes this as `C (n + 1) ⊆ C n`. The ORIGINAL uses `C n ⊆ C (n + 1)`, which is the OPPOSITE direction — an ascending sequence.\n\nFor any ascending sequence of nonempty sets, the intersection is automatically nonempty (any element of C_0 lies in every C_n). So the RHS of the original iff is vacuously true for all X. Thus the original theorem reduces to `countably_compact X ↔ True`, i.e., the claim \"every topological space is countably compact\", which is FALSE (e.g., ℝ with the standard topology is not countably compact).\n\nFaithfulness: The original (quantified over all X) implies the corrected — if every X is countably compact, then in particular the true Munkres theorem's iff holds. But the corrected does not imply the original. So the original is strictly stronger.\n\nProvability: The original is provably false (counterexample: any non-countably-compact space such as ℝ).\n\nError type: The subset direction was reversed, which is a misreading of `⊃` in the informal statement."
+}

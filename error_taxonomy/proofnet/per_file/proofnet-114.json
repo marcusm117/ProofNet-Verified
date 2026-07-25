@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-114.lean",
+  "stem": "proofnet-114",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement from Munkres 19.6a concerns a general product space $\\prod X_\\alpha$ indexed by an arbitrary (possibly infinite) index set. The corrected formalization uses `{ι : Type*} {f : ι → Type*}` allowing any index type, matching the informal statement and the general Mathlib lemma `tendsto_pi_nhds` in Topology/Constructions.lean. The original instead uses `{n : ℕ} {f : Fin n → Type*}`, restricting the index set to finite types of the form `Fin n`. This makes the original statement strictly weaker: the corrected (arbitrary `ι`) implies the original by specializing `ι := Fin n`, but the original (only finite index sets) does not imply the corrected. The original statement is still provably true — it is a valid special case of the general theorem. The error stems from the formalizer misreading Munkres' arbitrary product notation as referring to a finite product."
+}

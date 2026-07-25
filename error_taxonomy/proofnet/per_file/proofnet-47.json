@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-47.lean",
+  "stem": "proofnet-47",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement says G has \"composite order n\", which by standard mathematical convention means n > 1 and n is not prime. The original formalization only captures \"not prime\" via `¬ (card G).Prime`, omitting the `n ≠ 1` condition that is implicit in the word \"composite\". The corrected formalization adds `hG_ne_one : card G ≠ 1` to fully capture the composite assumption.\n\nSince the original has strictly weaker hypotheses than the informal statement (it allows card G = 1 in addition to composite cases), the original is a STRONGER claim: Original ⟹ Informal, but Informal ⇏ Original.\n\nThe original is still provable because Mathlib's `IsSimpleGroup` extends `Nontrivial G` (verified in Mathlib/GroupTheory/Subgroup/Simple.lean line 38). For the extra case card G = 1, G is the trivial group, which is not `Nontrivial`, hence not simple, so `¬ IsSimpleGroup G` holds vacuously. For composite |G|, the intended group-theoretic argument applies. Prime cases are excluded by hypothesis.\n\nThe error is missing_implicit_premise: the condition `n ≠ 1` is implicit in \"composite\" and was not made explicit (the word \"composite\" is in the informal statement but the derived n ≠ 1 condition wasn't encoded)."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-158.lean",
+  "stem": "proofnet-158",
+  "q1_informal_status": "ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "true",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "The informal statement explicitly specifies \"in $\\mathbb{C}$\", so the sequence $\\{s_n\\}$ should be complex-valued. The CORRECTED formalization correctly uses `f : ℕ → ℂ` with norm `‖f n‖` and a real limit `a : ℝ` for the absolute values. The ORIGINAL uses `f : ℕ → ℝ` with real absolute value `|f n|`, which handles only real-valued sequences. Since ℝ embeds into ℂ, the complex statement implies the real statement, making the ORIGINAL a strictly weaker claim (a special case of the informal statement). The ORIGINAL's own comment block actually omits \"in $\\mathbb{C}$\", confirming the author misread/worked from an incomplete informal statement. The ORIGINAL is still a true theorem, just not the one being asked for."
+}

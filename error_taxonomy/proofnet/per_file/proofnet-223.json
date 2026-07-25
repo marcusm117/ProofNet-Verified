@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-223.lean",
+  "stem": "proofnet-223",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The original formalization differs from the corrected/informal statement in multiple significant ways: (1) The ∃ quantifier's scope extends past the ↔ in Lean 4, so the original actually asserts \"∃ p : ZMod n, ((Prime p ∧ H = ⟨p⟩) ↔ (H is maximal))\" rather than the intended \"(∃ prime p dividing n, H = ⟨x^p⟩) ↔ (H is maximal)\". (2) The type of p is ZMod n instead of ℕ. (3) The divisibility condition p ∣ n is missing. (4) The constraint n ≥ 1 (ℕ+ in corrected) is missing — original allows n = 0. (5) The generator x and group G setup are missing; ZMod n is used instead (and closure {p} is not the same as closure {x^p}). The original is incomparable with the informal statement. Moreover, the original is provably false: take n = 2 and H = {0} ≤ ZMod 2. Then H is maximal, so we need ∃ p ∈ ZMod 2 with Prime p ∧ H = ⟨p⟩. But Prime 0 is false (0 = 0 fails) and Prime 1 is false (1 is a unit); no prime exists in ZMod 2. Hence the existential fails, the biconditional cannot be satisfied, and the original theorem is false. The overall error is a misunderstanding of the informal statement — the author restructured the claim incorrectly (wrong quantifier scope, wrong type for p, missing divisibility and size constraints)."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-180.lean",
+  "stem": "proofnet-180",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Wrong formalization\nIf NL has Implicit Premises: No\nImplicit Premises:   NA\nComment: There is a missing premise (h_maps : Set.MapsTo f Ω Ω) but it is actually included in the NL.\n\n\n\n\n\n\n\n\n"
+}

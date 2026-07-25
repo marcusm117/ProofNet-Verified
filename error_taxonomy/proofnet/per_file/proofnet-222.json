@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-222.lean",
+  "stem": "proofnet-222",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement explicitly requires G to be a finite group. The ORIGINAL formalization drops the `[Fintype G]` instance that appears in the CORRECTED version. This makes the original's claim STRONGER than the informal statement (it asserts the result for all groups, not just finite ones). Regarding the parenthesization difference: in the original, `K = M ∨ K = ⊤ ∧ H ≤ M` parses as `K = M ∨ (K = ⊤ ∧ H ≤ M)` due to ∧ binding tighter than ∨, and the whole ∀-body is `∀ K, M ≤ K → (K = M ∨ (K = ⊤ ∧ H ≤ M))`. This is logically equivalent to the corrected conjunction `(∀ K, ...) ∧ H ≤ M` — taking K=⊤ forces H ≤ M, and the disjunction structure still forces M to be maximal. So the parens do not change meaning. The only real error is the missing finiteness premise. Without finiteness, the statement is FALSE: the Prüfer p-group ℤ(p^∞) is an infinite group with proper subgroups (e.g., {0}) but no maximal subgroups at all, since its subgroup lattice is a strictly ascending chain. Thus the original statement is provably false, and the error is a missing explicit premise from the informal statement."
+}

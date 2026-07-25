@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-204.lean",
+  "stem": "proofnet-204",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement says \"every subspace of V with dimension dim V - 1 is invariant under T.\" The standard meaning of \"U is invariant under T\" is T(U) ⊆ U (encoded in Mathlib as `Submodule.map T U ≤ U` or equivalently `MapsTo T U U`), as used in the corrected version. The original instead requires `Submodule.map T U = U`, which is a stronger condition (T maps U onto itself). This strengthens the hypothesis, making the theorem logically weaker: for example, T = 0 satisfies the corrected hypothesis (0 ⊆ U) but not the original's equality (for dim V ≥ 2), even though T = 0 = 0·id is a valid scalar multiple of identity. Hence Corrected ⟹ Original but not vice versa — Original is weaker. The original is still provably true (the stronger hypothesis implies the weaker invariance condition, so the corrected theorem gives the conclusion). The error is a misunderstanding of the informal notion of \"invariant\" (which means containment, not equality)."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-305.lean",
+  "stem": "proofnet-305",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "adding_extra_case",
+  "reasoning": "The informal statement is the 1D Brouwer fixed point theorem (continuous self-map of [0,1] has a fixed point), which is classically true and unambiguous. The CORRECTED formalization uses `I : Set ℝ := Icc 0 1`, relying on canonical Mathlib instances: `Subtype.topologicalSpace` for `TopologicalSpace ↥I` (subspace topology from ℝ) and the `compactSpace_Icc` instance for `CompactSpace ↥I`. Under these canonical instances, `Continuous f` means continuity w.r.t. the standard topology, and the theorem is true. The ORIGINAL adds `[TopologicalSpace I] [CompactSpace I]` as explicit instance binders. In Lean 4, local instance binders take priority over globally registered instances during typeclass resolution, so `Continuous f` in the original refers to continuity w.r.t. the abstract topology instance. This universally quantifies the theorem over all possible compact topologies on I. This makes the original strictly stronger than informal (original ⟹ informal by instantiating with subspace topology, but not conversely). However, the stronger statement is FALSE: take the indiscrete topology on I (which is compact), and f(x) = x + 1/2 mod 1 — every function is continuous under indiscrete topology, and this f has no fixed point. The error is adding extra instance hypotheses not in the informal statement, which inadvertently generalizes the theorem to a false statement."
+}

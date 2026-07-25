@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-303.lean",
+  "stem": "proofnet-303",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The two formalizations have identical theorem statements: same implicit type X with TopologicalSpace instance, same sets A, C, same hypotheses (IsConnected C, C ∩ A ≠ ∅, C ∩ Aᶜ ≠ ∅), and same conclusion (C ∩ frontier A ≠ ∅). The only differences are in the preamble: original uses `open Topology` vs corrected's `open scoped Topology`, and original has `noncomputable section`. These preamble differences do not affect the semantic meaning of the theorem statement. The `frontier` in Mathlib (defined in Mathlib/Topology/Defs/Basic.lean) correctly corresponds to Munkres's boundary operator Bd A. The complement Aᶜ in Set X is semantically identical to X-A. The informal statement is a standard true theorem from Munkres's topology textbook (Exercise 23.6). Therefore the original is faithful, provable, and has no error."
+}

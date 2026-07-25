@@ -1,0 +1,10 @@
+{
+  "file": "proofnet-241.lean",
+  "stem": "proofnet-241",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The only difference between ORIGINAL and CORRECTED is parenthesization: ORIGINAL parses as `∀ R, (R.toSubgroup = X ∧ Nonempty (Sylow p H))` while CORRECTED parses as `(∀ R, R.toSubgroup = X) ∧ Nonempty (Sylow p H)`. These two propositions differ only if `Sylow p H` is empty (then ORIGINAL is vacuously true, CORRECTED is false). However, Mathlib provides an unconditional instance `Sylow.nonempty : Nonempty (Sylow p G)` (in Mathlib/GroupTheory/Sylow.lean line 177) that requires neither primality of p nor finiteness of G. Therefore `Sylow p H` is always nonempty, and both formalizations are provably equivalent. Moreover, in the ORIGINAL, the inner `Nonempty (Sylow p H)` is trivially derivable from the bound variable R itself (via `⟨R⟩`), so in the nonempty case it reduces to `∀ R, R.toSubgroup = X`, matching the corrected. Both capture the informal statement's existence-and-uniqueness claim. The ORIGINAL is faithful.",
+  "note": "Original is a correct formalization but sloppy: the ∀ accidentally scopes over the ∧ Nonempty conjunct due to Lean's binding precedence. We adopt the corrected version which cleanly separates uniqueness (∀ R, R = P∩H) from existence (Nonempty)."
+}

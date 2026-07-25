@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-345.lean",
+  "stem": "proofnet-345",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is the classical theorem that the Cauchy product of two absolutely convergent series is absolutely convergent — true and unambiguous. The CORRECTED formalization expresses this as ∃ y, Tendsto (fun n => ∑ i ∈ range n, |∑ j ∈ range (i+1), a j * b (i-j)|) atTop (𝓝 y), i.e., ∑|c_i| converges where c_i is the Cauchy product term. The ORIGINAL has two problems: (1) it omits the absolute value |·| around the Cauchy product term, so it would be about ordinary (not absolute) convergence; (2) it has a stray `λ i =>` inside the sum, whose binder shadows the outer `∑ i`. This makes the summand a constant function of type ℕ → ℝ (not depending on the outer i), so the sum becomes `n • c` in Pi type and the Tendsto is in ℕ → ℝ under product topology, not ℝ. The types don't match, so the statement is incomparable to the informal claim. The original statement is provably false: take a = b = (1, 0, 0, ...) — both absolute-value series converge (finite support), but c(0) = a(0)·b(0) = 1 ≠ 0, so n · c(0) = n diverges pointwise, meaning no limit y : ℕ → ℝ exists. The primary error is failing to express \"absolutely convergent\" (missing |·|) and mis-encoding the Cauchy product term using a shadowing lambda."
+}

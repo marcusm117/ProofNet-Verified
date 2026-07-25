@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-365.lean",
+  "stem": "proofnet-365",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The ORIGINAL and CORRECTED theorem statements are character-for-character identical in their type signatures: same hypotheses (`a : ℝ`, `ha : 0 < a`), same conclusion (`Tendsto (λ y => ∫ x in -y..y, x * Real.sin x / (x ^ 2 + a ^ 2)) atTop (𝓝 (Real.pi * (Real.exp (-a))))`). The only differences are in `open` directives (CORRECTED additionally opens `MeasureTheory`, `Real`, `Set`, and scoped `FourierTransform`, `RealInnerProductSpace`, `Complex`, `Interval`), but since all names in the statement are fully qualified (`Real.sin`, `Real.pi`, `Real.exp`), these namespace openings do not change the semantic meaning. The informal statement is a classical contour-integration exercise with the well-known value π·e^(-a), interpreted here via the symmetric limit of ∫_{-y}^{y}, which is a standard formalization choice. Hence the original is faithful and provable (matching the golden truth)."
+}

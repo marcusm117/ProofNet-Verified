@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-301.lean",
+  "stem": "proofnet-301",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks to show the restricted map q : A → p(A) is open — the codomain is p(A) with its subspace topology. The corrected formalization uses `Set.MapsTo.restrict p A (p '' A) (Set.mapsTo_image p A)` which has type `↥A → ↥(p '' A)`, correctly capturing the restricted codomain. The original uses `p ∘ Subtype.val : A → Y`, which maps into the full space Y rather than the restricted codomain p(A). IsOpenMap for A → Y means: for open U ⊆ A, p(U) is open in Y. IsOpenMap for A → p(A) means: for open U ⊆ A, p(U) is open in the subspace p(A). The former implies the latter (since p(A) is open in Y under the given hypotheses, making openness in Y equivalent to openness in the subspace), but the original proves a strictly stronger statement than what the informal asks — it proves openness in the ambient space Y rather than in the restricted codomain p(A). The formalization doesn't match the informal's stated target."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-297.lean",
+  "stem": "proofnet-297",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement asserts uniqueness of continuous extensions: if g and g' both extend f continuously from A to closure A (with Y Hausdorff), then g = g' on closure A. The corrected formalization captures this with `gExt : ∀ x : A, g x = f x` for g, and requires g' to also extend f via `∀ x : A, g' x = f x`. The original formalization omits both of these extension hypotheses entirely. In the original, f is declared but never related to g, and g' is only required to be continuous — not to extend f. Thus the original's conclusion \"∀ continuous g' : closure A → Y, g x = g' x\" claims that any two continuous functions on closure A are equal, which is mathematically false (counterexample: X = Y = ℝ, A = (0,1), g(x) = x, g'(x) = x+1 are both continuous on [0,1] but distinct). The original is strictly stronger than the informal claim (it implies the informal via dropping premises and restricting quantification) but is mathematically false. The error is missing_premise: the extension hypotheses for both g and g' were dropped."
+}

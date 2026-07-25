@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-232.lean",
+  "stem": "proofnet-232",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement says \"abelian group of order pq\". The corrected uses [CommGroup G] as expected. The original uses [Group G], dropping the explicit abelian premise. Without the abelian hypothesis, the claim is false: S_3 has order 6 = 2·3 (distinct primes) but is not cyclic. The original statement implies the informal (every commutative group is a group, so if all groups of order pq are cyclic, so are the abelian ones), making it strictly stronger than the informal claim. However, the original is provably false (counterexample: S_3). The abelian property was explicitly stated in the informal statement, so this is a missing_premise error, not a missing_implicit_premise."
+}

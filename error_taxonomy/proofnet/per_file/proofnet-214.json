@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-214.lean",
+  "stem": "proofnet-214",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement explicitly says \"for some positive integer n\", so positivity of n is an explicit premise. The ORIGINAL uses `n : ℕ` (allowing n = 0), while the CORRECTED uses `n : ℕ+` (positive). For n = 0, the ORIGINAL's hypothesis becomes `orderOf x = 0` (x has infinite order) and the conclusion becomes `x⁻¹ = x^((0:ℕ) - 1 : ℤ) = x^(-1 : ℤ) = x⁻¹`, which is trivially true by `zpow_neg_one`. For n ≥ 1, the ORIGINAL's `x ^ (n - 1 : ℤ)` and CORRECTED's `x ^ (n - 1 : ℕ)` coincide because n - 1 ≥ 0, and Mathlib has `zpow_natCast_sub_one` showing `a ^ (n - 1 : ℤ) = a ^ n / a`. Thus the ORIGINAL implies the informal (and the corrected), and is itself provable as a theorem (covering one extra trivially-true case). This makes the ORIGINAL strictly stronger than the informal statement. The error is dropping the explicit positivity premise by choosing `n : ℕ` instead of `n : ℕ+` (or adding `0 < n`)."
+}

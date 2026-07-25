@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-342.lean",
+  "stem": "proofnet-342",
+  "q1_informal_status": "ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "true",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "The original informal statement says 'Prove that lim_{n→∞} √(n²+n) − n = 1/2' without specifying the domain of n. The corrected NL adds 'for the real function f(n) = √(n²+n) − n' to clarify n ∈ ℝ. Without this clarification, n could be interpreted as ranging over ℕ (discrete sequence) or ℝ (continuous limit), which are different mathematical statements with different formalizations (Filter.atTop on ℕ vs ℝ). The formal uses `n : ℝ`, which is one valid interpretation but the informal was ambiguous about this. The formal statements are identical between original and corrected, but the original NL was genuinely ambiguous."
+}

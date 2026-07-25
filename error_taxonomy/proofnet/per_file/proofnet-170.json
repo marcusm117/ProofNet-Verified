@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-170.lean",
+  "stem": "proofnet-170",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal IVP condition \"if f(a) < c < f(b), then f(x)=c for some x between a and b\" is conventionally symmetric under swapping a and b (since \"between a and b\" is unordered). The CORRECTED formalization captures this by using a disjunction: (f a < c ∧ c < f b) ∨ (f b < c ∧ c < f a) under the assumption a < b. The ORIGINAL only includes the first disjunct (f a < c ∧ c < f b), making its hf hypothesis strictly weaker than the corrected version. A weaker hypothesis yields a stronger theorem claim. Counterexample: f(x) = -x for x < 0 and f(x) = -x - 1 for x ≥ 0 is strictly decreasing (so original's hf is vacuously true since f(a) > f(b) whenever a < b), has all rational level sets as singletons/empty (closed), yet is discontinuous at 0. Hence the ORIGINAL theorem is provably false. The error is that the second disjunct of the IVP premise — the case f(b) < c < f(a) — was dropped, which is a missing premise from the informal statement."
+}

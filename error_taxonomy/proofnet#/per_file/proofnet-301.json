@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-301.lean",
+  "stem": "proofnet-301",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The original formalization proves `IsOpenMap (p ∘ Subtype.val : A → Y)`, i.e., images of\nopen sets in A are open in Y. The informal statement asks for something slightly weaker:\nthat the restricted map `q : A → p(A)` is an open map, meaning images are open in p(A)\nwith the subspace topology. \"Open in Y\" implies \"open in p(A)\" but not conversely in\ngeneral, so the original formalization is strictly stronger than the informal statement."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-28.lean",
+  "stem": "proofnet-28",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement asks to prove associativity of addition of residue classes in ℤ/nℤ. The ORIGINAL formalizes this using integer representatives and Int.ModEq: `(a+b)+c ≡ a+(b+c) [ZMOD n]` for all integers a, b, c and any n : ℤ. The CORRECTED uses the canonical ZMod n type with n : ℕ: `(x+y)+z = x+(y+z)`. These two formulations are logically equivalent expressions of the same mathematical fact — the ORIGINAL says associativity holds for integer representatives under the congruence relation (which by definition of residue classes is equivalent to associativity of the class operation), while the CORRECTED states it directly via the quotient type. The congruence `(a+b)+c ≡ a+(b+c) [ZMOD n]` is precisely the condition `[(a+b)+c] = [a+(b+c)]` in ℤ/nℤ, which is associativity of addition of residue classes. The choice of `n : ℤ` vs `n : ℕ` is immaterial since Int.ModEq is symmetric under negation of n (Mathlib: `neg_modEq_neg` and `modEq_neg`). Both statements are provably true: in the ORIGINAL trivially because integer addition is associative, and in the CORRECTED because ZMod n forms an additive group. The ORIGINAL is a faithful (though less canonical) formalization of the informal statement."
+}

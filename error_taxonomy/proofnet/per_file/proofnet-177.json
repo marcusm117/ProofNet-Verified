@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-177.lean",
+  "stem": "proofnet-177",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement (from Shakarchi's Complex Analysis) asserts that a holomorphic function on an open set Ω with constant modulus is constant. The classical result requires Ω to be connected; in Shakarchi's book Ω conventionally denotes a region (connected open set), so connectedness is an implicit premise. The corrected formalization includes `IsPreconnected Ω`, but the original omits it. Without connectedness, the claim is false: e.g., take Ω = B(0,1) ∪ B(3,1) (disjoint open disks) and f = 1 on the first, f = -1 on the second. Then f is holomorphic, |f| = 1 is constant, but f(0) ≠ f(3), refuting `f a = f b`. I confirmed via Mathlib (Analysis/Complex/AbsMax.lean) that the relevant theorem `eqOn_of_isPreconnected_of_isMaxOn_norm` explicitly requires `IsPreconnected U`. Therefore the original is strictly stronger (claims more by dropping a required premise) and is provably false as stated; the error is a missing implicit premise (connectedness of Ω)."
+}

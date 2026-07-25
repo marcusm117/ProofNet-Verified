@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-341.lean",
+  "stem": "proofnet-341",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement is Rudin's Exercise 2.29 (every open set in ℝ is a countable disjoint union of segments). In Rudin's context, \"segments\" must be allowed to include unbounded intervals like (-∞, a), (a, ∞), and (-∞, ∞); otherwise the theorem fails for U = ℝ. The corrected formalization correctly uses EReal endpoints to capture this, while the original restricts endpoints to ℝ, allowing only bounded open intervals (a, b). This makes the original statement STRONGER (bounded intervals are a special case of EReal-endpoint intervals, so the original condition implies the informal one), but it is provably FALSE: consider U = ℝ. Since ℝ is connected and disjoint open intervals form the connected components of their union, writing ℝ as a disjoint union of bounded open intervals would require one of them to equal ℝ, which is impossible. The error type is misunderstanding of the informal statement — specifically, failing to recognize that \"segments\" must include unbounded intervals for the classical result to hold."
+}

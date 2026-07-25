@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-317.lean",
+  "stem": "proofnet-317",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement explicitly says \"compact Hausdorff space\", establishing Hausdorff as an explicit premise. The CORRECTED formalization includes [T2Space X] as an instance parameter, while the ORIGINAL omits it. This makes the ORIGINAL's hypothesis list strictly weaker, so as a formal theorem statement it is \"stronger\" — claiming the result for all compact spaces (not just Hausdorff ones) with such a closed cover. However, the ORIGINAL is still provable: Hausdorff can be derived from the remaining hypotheses via the diagonal argument. Since X = X_1 ∪ X_2 with X_1, X_2 closed and each Hausdorff (metrizable implies T2), one can show Δ_X ∩ (X_i × X_j) = Δ_{X_i ∩ X_j} is closed in X×X for all i,j (as X_i ∩ X_j is a Hausdorff subspace and closed in X). This makes Δ_X closed in X×X, so X is Hausdorff. Then the standard proof of the theorem applies. Additionally, MetrizableSpace X in Mathlib already implies T2Space X, so the conclusion forces Hausdorff. Since the ORIGINAL drops an explicit premise (\"Hausdorff\") that appears in the informal statement, the error is missing_premise — even though the premise happens to be mathematically redundant given the other hypotheses."
+}

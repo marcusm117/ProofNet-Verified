@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-235.lean",
+  "stem": "proofnet-235",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement says \"a group of order 56 has a normal Sylow p-subgroup for some prime p dividing its order.\" The CORRECTED formalization captures this with `p.Prime ∧ (p ∣ card G) ∧ P.Normal`. The ORIGINAL drops the `p.Prime` and `p ∣ card G` conjuncts, only requiring `P.Normal`. In Mathlib, `Sylow p G` is defined for ANY natural number `p`, not just primes — `structure Sylow extends Subgroup G where isPGroup' : IsPGroup p toSubgroup; is_maximal' : ...`. For any `p` not dividing `|G|` (e.g., `p = 11` for `|G| = 56`), by Lagrange's theorem the only `p`-subgroup is trivial `⊥`, and `⊥` is always normal via the `normal_bot` instance. Similarly, for `p = 0`, `Sylow 0 G` is the whole group `⊤`, which is also normal. So the ORIGINAL statement is trivially provable (for any finite group, regardless of order) by witnessing `p = 11` and `P = ⊥`. The hypothesis `card G = 56` is never even needed. This makes the ORIGINAL strictly WEAKER than the CORRECTED. The error is that the explicit conditions \"prime p dividing its order\" from the informal statement — which are essential conditions on the witness `p` — were dropped, effectively missing explicit premises/conditions on the existentially quantified variable."
+}

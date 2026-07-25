@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-283.lean",
+  "stem": "proofnet-283",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement \"If n is not a prime, show that (n-1)! ≡ 0 (mod n), except when n=4\" is the classical Wilson-type result, true under the standard number-theoretic convention that n is a positive integer.\n\nThe ORIGINAL formalization uses n : ℕ (natural numbers including 0), whereas the CORRECTED uses n : ℕ+ (positive naturals). This is critical: for n = 0, we have ¬Nat.Prime 0 (true, from not_prime_zero), 0 ≠ 4 (true), but the conclusion Nat.factorial (0-1) ≡ 0 [MOD 0] unfolds to 0! % 0 = 0 % 0, i.e., 1 = 0, which is FALSE. So the ORIGINAL is provably false with counterexample n = 0.\n\nAdditionally, the CORRECTED formalization phrases the result as an iff (factorial ≡ 0 ↔ n ≠ 4), while the ORIGINAL only gives the implication direction. These are structurally different, but the main fault lies in admitting n = 0.\n\nSince the ORIGINAL asserts something false (at n = 0) while the CORRECTED is true, they are incomparable. The error is that the ORIGINAL fails to include the implicit positivity premise that \"n is a positive integer\" (or equivalently use ℕ+), which is a standard implicit convention in number theory problems but is needed here for the statement to be true."
+}

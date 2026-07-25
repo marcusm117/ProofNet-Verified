@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-275.lean",
+  "stem": "proofnet-275",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement says \"any positive integer n\". The corrected formalization captures this as `hn : n > 0`. The original drops this hypothesis entirely, allowing n = 0. Regarding the p-hypothesis: `Nat.Prime p` (original) and `p ≠ 0` (corrected) are equivalent under `[Field F]` and `CharP F p` (by `CharP.char_is_prime_or_zero`, since a field is Nontrivial). So the only real difference is the missing `n > 0`. The original is therefore STRONGER than the informal claim (it covers n = 0 too). However, when n = 0, m = p^0 = 1, and (a+b)^1 = a^1 + b^1 trivially holds, so the stronger original statement is still provable (true). The error is dropping the explicit \"positive integer n\" premise — a missing_premise."
+}

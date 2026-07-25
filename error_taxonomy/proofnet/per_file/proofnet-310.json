@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-310.lean",
+  "stem": "proofnet-310",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement (Munkres 29.4) is a standard, true, and unambiguous theorem: [0,1]^ω is not locally compact in the uniform topology (metric ρ(x,y) = sup_n |x_n - y_n|). The CORRECTED version uses `ℕ →ᵇ I` (BoundedContinuousFunction), which Mathlib equips with the uniform metric `dist f g = ⨆ x, dist (f x) (g x)` — this correctly encodes the uniform topology on [0,1]^ω (since ℕ is discrete and I is bounded, every function is continuous and bounded). The ORIGINAL version uses `ℕ → I` with a generic `[TopologicalSpace (ℕ → I)]` hypothesis. This fails to encode the uniform topology: the hypothesis is universally quantified, so the statement asserts \"for every topology on ℕ → I, the space is not locally compact\" — which is mathematically false (e.g., with the indiscrete topology or even Pi.topologicalSpace via Tychonoff, the space is compact hence locally compact). The types and quantification structures differ fundamentally, making the two statements incomparable. The error is a misunderstanding of Mathlib's API: the idiomatic way to express the uniform topology on ℕ → I is via `ℕ →ᵇ I` or `UniformFun ℕ I`, not via a generic TopologicalSpace hypothesis on the plain function type."
+}

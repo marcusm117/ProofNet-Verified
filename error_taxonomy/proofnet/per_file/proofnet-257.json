@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-257.lean",
+  "stem": "proofnet-257",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement clearly refers to \"three consecutive integers\", which is the standard Herstein exercise 2.2.3 and is mathematically unambiguous. The ORIGINAL formalization uses `ℕ` (natural numbers) instead of `ℤ` (integers) as in the CORRECTED version. Since ℕ ⊆ ℤ, the hypothesis \"∃ n : ℕ, ...\" implies \"∃ n : ℤ, ...\" but not vice versa. Therefore, the ORIGINAL's implication \"H_ℕ → abelian\" is weaker than the informal/CORRECTED's \"H_ℤ → abelian\": knowing the corrected theorem lets us derive the original (by specializing), but not the reverse (since the integer n could be negative). The original statement is still a true theorem — the classical proof (showing b^n commutes with a from P(n), P(n+1), and b^(n+1) commutes with a from P(n+1), P(n+2), then deducing ba = ab) works for natural starting points as well. Other cosmetic issues (using `instance` instead of `theorem`, the convoluted `{P : ℕ → Prop} {hP : P = ...}` implicit-argument encoding, `CommGroup G` vs `∀ a b, a*b = b*a`) do not change the logical content meaningfully. The primary semantic error is misreading \"integers\" (ℤ) as \"naturals\" (ℕ), which is a misunderstanding of the informal statement."
+}

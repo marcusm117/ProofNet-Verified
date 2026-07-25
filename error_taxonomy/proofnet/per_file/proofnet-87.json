@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-87.lean",
+  "stem": "proofnet-87",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement (from Herstein's book) concerns two-sided ideals in M_2(ℝ), which is the standard meaning of \"ideal\" in classical non-commutative ring theory. M_2(ℝ) is a simple ring, so this classical statement is true and unambiguous.\n\nIn Mathlib, `Ideal R` is defined as `Submodule R R` — a LEFT ideal (as explicitly documented in `Mathlib/RingTheory/Ideal/Defs.lean` line 38-39). `TwoSidedIdeal` is a separate structure for two-sided ideals (defined in `Mathlib/RingTheory/TwoSidedIdeal/Basic.lean`).\n\nThe original formalization uses `Ideal` (= left ideal), making it a claim about left ideals. This is STRONGER than the informal claim: since every two-sided ideal is a left ideal, proving \"all left ideals are trivial\" would imply \"all two-sided ideals are trivial\", but not vice versa.\n\nHowever, this stronger statement is FALSE. Counterexample: the set of 2×2 real matrices with zero second column, i.e., `{[[a, 0], [b, 0]] : a, b ∈ ℝ}`, is a non-trivial left ideal of M_2(ℝ) — it is closed under left multiplication by any matrix, but is neither (0) nor all of M_2(ℝ).\n\nThe corrected version properly uses `TwoSidedIdeal`, aligning with the classical meaning. The error is a misunderstanding of Mathlib's API: confusing `Ideal` (left ideal in Mathlib's non-commutative setting) with the classical mathematical notion of \"ideal\" (two-sided ideal in Herstein's book)."
+}

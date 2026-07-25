@@ -1,0 +1,8 @@
+# Mark upstream ProofNet / ProofNet# source data as vendored so that GitHub's
+# Linguist excludes it from the repository language stats. The repository's
+# main language is Lean 4 (proofnet-verified/), and Python (scripts/).
+data/proofnet/** linguist-vendored
+data/proofnet#/** linguist-vendored
+
+# Exclude HTML viewer pages from the language bar.
+*.html linguist-vendored

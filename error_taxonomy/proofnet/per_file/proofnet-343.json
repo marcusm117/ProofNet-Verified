@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-343.lean",
+  "stem": "proofnet-343",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement (Rudin Ex. 3.5) is a standard and correct claim about limsup in extended reals: limsup(a_n+b_n) ≤ limsup a_n + limsup b_n, provided the RHS is not ∞−∞. The corrected formalization uses EReal coercions with `Filter.atTop`, and uses two disjunctive hypotheses (h1 excludes ⊥+⊤, h2 excludes ⊤+⊥) to exactly exclude the ∞−∞ indeterminate form — this is precisely `EReal.limsup_add_le` from Mathlib (Topology/Instances/EReal/Lemmas.lean:265). The original formalization is broken in multiple ways: (1) `limsup a` is used without a filter argument; since `Filter.limsup : (β→α)→Filter β→α`, this is a partial application yielding a function `Filter ℕ → ℝ`, so `limsup a + limsup b` is compared pointwise as functions; (2) it uses ℝ-valued limsup which returns the junk value 0 for sequences unbounded above (via `Real.sInf_empty`) or below (`Real.sInf_of_not_bddBelow`), rather than ±∞; (3) the hypothesis `limsup a + limsup b ≠ 0` is not a correct translation of \"not of the form ∞ − ∞\". The statement is provably false: taking a_n = n, b_n = −1, at filter `pure 0` the hypothesis holds (0 + (−1) = −1 ≠ 0), but at filter `atTop` the pointwise conclusion requires 0 ≤ 0 + (−1) = −1, which fails. Thus the original is incomparable to the informal claim (it is mathematically false under its stated hypothesis, while the informal claim is true). The core error stems from misusing Mathlib's limsup API — assuming the ℝ-valued Filter.limsup behaves like the EReal version and encoding the \"not ∞−∞\" condition as a spurious `≠ 0`."
+}

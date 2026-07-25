@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-233.lean",
+  "stem": "proofnet-233",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks for a normal subgroup that is NOT characteristic (Normal ∧ ¬Characteristic). The CORRECTED version faithfully encodes this. However, the ORIGINAL swaps the two properties, asserting the existence of a characteristic subgroup that is NOT normal (Characteristic ∧ ¬Normal). These two assertions are incomparable as logical statements. Moreover, in Mathlib (Mathlib/Algebra/Group/Subgroup/Basic.lean line 242), `normal_of_characteristic` is an instance that derives `H.Normal` from `H.Characteristic`. Therefore, the ORIGINAL's claim \"characteristic and not normal\" is provably false — no such subgroup can exist in any group. The error is a clear misreading of the informal statement: the authors swapped which property holds and which is negated."
+}

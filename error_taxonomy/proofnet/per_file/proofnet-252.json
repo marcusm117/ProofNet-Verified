@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-252.lean",
+  "stem": "proofnet-252",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "faithful",
+  "q3_provability": "true",
+  "q4_error_type": "none",
+  "reasoning": "The informal statement asks to prove that $x^4+4x^3+6x^2+2x+1$ is irreducible in $\\mathbb{Z}[x]$. This is mathematically true: substituting $y = x+1$ gives $y^4 - 2y + 2$, which is irreducible by Eisenstein's criterion at $p=2$. The original and corrected formalizations have identical theorem statements: `Irreducible (X^4 + 4*X^3 + 6*X^2 + 2*X + 1 : Polynomial ℤ)`. The only differences are environmental (an extra import in the corrected version and `noncomputable section` in the original), which don't affect the semantic content. The original is faithful to the informal statement."
+}

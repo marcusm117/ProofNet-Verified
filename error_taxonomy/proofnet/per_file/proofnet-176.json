@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-176.lean",
+  "stem": "proofnet-176",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement (Shakarchi Exercise 1.13a) is a classical complex analysis result that implicitly assumes Ω is a domain (connected open set). Without connectedness, the result is mathematically false: take Ω = B(0,1) ∪ B(3,1) and f equal to 0 on one disk and i on the other — then Re(f) ≡ 0 but f is not constant across components. This is confirmed by Mathlib's `AnalyticOnNhd.eq_const_of_re_eq_const` in `Mathlib/Analysis/Complex/OpenMapping.lean` which requires `IsConnected U` explicitly. The CORRECTED version properly adds `IsPreconnected Ω`. The ORIGINAL omits this hypothesis, making it logically stronger than the informal statement (it asserts f(a) = f(b) for ANY open Ω, not just connected ones). Since a counterexample exists for non-connected Ω, the ORIGINAL as stated is provably false. The error is a missing implicit premise (connectedness) which is standard context for such complex analysis theorems."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-198.lean",
+  "stem": "proofnet-198",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asks to show that ω = (-1 + √3 i)/2 is a cube root of unity, i.e., ω³ = 1. Indeed, ω = e^(2πi/3) since |ω| = 1 and arg(ω) = 2π/3, so ω³ = e^(2πi) = 1. The corrected formalization correctly has the conclusion ω^3 = 1. The ORIGINAL formalization, however, states ω^3 = -1, which is mathematically false (and contradicts the actual informal claim). The two statements are incomparable as logical claims about ω³ (different concrete values), and the original is provably false because ω³ actually equals 1. The error is a misreading of the conclusion in the informal statement (writing -1 where the informal clearly says \"its cube equals 1\")."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-72.lean",
+  "stem": "proofnet-72",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement asserts: \"there is an integer m > 0 such that a^m = e for all a ∈ G\". The original formalization drops the explicit constraint `m > 0` from the existential, asserting only `∃ (m : ℕ), ∀ (a : G), a ^ m = 1`. Since in Lean `ℕ` includes 0, and `a^0 = 1` holds in any group, the original statement is trivially true by taking m = 0 — regardless of whether G is finite. This makes the original strictly weaker than the informal claim (the informal implies the original, but not conversely). The corrected version properly includes `m > 0 ∧ ∀ (a : G), a ^ m = 1`. The error is dropping the explicitly stated `m > 0` constraint from the informal statement, which weakens the theorem to a triviality. The original is still provable (take m = 0 or m = 1). Error type: missing_premise (an explicit condition from the informal statement was dropped)."
+}

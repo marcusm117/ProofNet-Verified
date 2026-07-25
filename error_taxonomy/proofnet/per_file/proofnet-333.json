@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-333.lean",
+  "stem": "proofnet-333",
+  "q1_informal_status": "ambiguous",
+  "q2_faithfulness": "nl_ambiguous",
+  "q3_provability": "true",
+  "q4_error_type": "nl_ambiguous",
+  "reasoning": "The informal statement specifies a \"total ordered set\", which in Mathlib corresponds to `LinearOrder` (which extends `PartialOrder` with the totality axiom `le_total`). The ORIGINAL uses `PartialOrder α` instead, which drops the totality premise. Since every `LinearOrder` is a `PartialOrder`, the ORIGINAL quantifies over a strictly larger class of types, making it STRONGER than the informal/CORRECTED claim (ORIGINAL implies CORRECTED, but not conversely in general). The ORIGINAL statement is still provable: given a nonempty `s` pick `e ∈ s`, then `x ≤ e` (from `h₁`) and `e ≤ y` (from `h₂`), so `x ≤ y` by transitivity — no totality needed. Hence Q3 = true. The error is the dropping of an explicit premise (totality) that appears in the informal statement, so Q4 = missing_premise."
+}

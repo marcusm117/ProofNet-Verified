@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-312.lean",
+  "stem": "proofnet-312",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": "The informal statement is from Munkres Exercise 31.1. In Munkres's convention, \"regular\" includes T1 (one-point sets closed), and \"pair of points\" implicitly means distinct points. The informal statement is true and unambiguous under these standard Munkres conventions.\n\nThe ORIGINAL formalization has two issues:\n1. It uses Mathlib's `RegularSpace` without `T1Space`. Mathlib's `RegularSpace` alone does not include T1 (verified in Mathlib/Topology/Separation/Regular.lean line 79: it only asserts the regularity axiom for closed sets and points). Munkres's \"regular\" corresponds to `RegularSpace + T1Space` (essentially T3).\n2. It is missing the hypothesis `x ≠ y`.\n\nThe original is STRONGER than the corrected: it has weaker hypotheses (no T1) and a stronger conclusion (includes the x = y case), so the original implies the corrected.\n\nThe original is PROVABLY FALSE: when x = y, for any neighborhoods U ∋ x and V ∋ x, we have x ∈ closure U ∩ closure V, so the intersection cannot be empty. Additionally, without T1, indiscrete-like spaces provide counterexamples where closures of any non-empty open set equal the whole space.\n\nError type: both the T1 premise (implicit in Munkres's definition of \"regular\") and the `x ≠ y` premise (implicit in \"pair of points\") are missing implicit premises."
+}

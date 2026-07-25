@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-254.lean",
+  "stem": "proofnet-254",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "adding_extra_case",
+  "reasoning": "The informal statement asserts that for all positive integers n (n ∈ ℤ⁺, hence n ≥ 1), ℝⁿ ≅ ℝ as ℚ-vector spaces. This is true since dim_ℚ(ℝ) = 2^ℵ₀ and dim_ℚ(ℝⁿ) = n · 2^ℵ₀ = 2^ℵ₀ for n ≥ 1.\n\nThe ORIGINAL formalization uses `{ι : Type*} [Fintype ι]` which includes ι = Empty (Mathlib provides `instance : Fintype Empty` in Mathlib/Data/Fintype/OfMap.lean). When ι = Empty, (ι → ℝ) is the zero vector space (a singleton), which is NOT linearly equivalent to ℝ as a ℚ-vector space (ℝ has nontrivial elements). So the original statement is provably FALSE.\n\nThe CORRECTED formalization uses `{n : ℕ+}` (where `PNat := {n : ℕ // 0 < n}`), correctly enforcing n ≥ 1 and using Fin n, which matches the informal constraint n ∈ ℤ⁺.\n\nThe original is stronger than the informal (quantifies over all Fintypes, which includes the Empty type case absent from the informal statement), making it false. The error is adding the extra case ι = Empty that was excluded by the positivity constraint n ∈ ℤ⁺ in the informal statement. The `Nonempty (...)` wrapper in the corrected version is mathematically equivalent since classically an equivalence exists iff we can construct one."
+}

@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-220.lean",
+  "stem": "proofnet-220",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "stronger",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement says \"σ(g) = g if and only if g = 1\" and requires G to be finite. The original formalization has two errors: (1) it omits the `[Finite G]` instance, and (2) it encodes the fixed-point condition as `σ g = 1 → g = 1` instead of `σ g = g ↔ g = 1`. The original's `hs` is trivially true for every group automorphism (since automorphisms are injective and send 1 to 1), providing no actual constraint. Thus the original has strictly weaker premises than the informal, making it a logically stronger (but false) statement. Counterexample: G = S₃ with σ = id satisfies all of the original's hypotheses but G is not abelian. Since the original still has an hs but misreads its content (turning a biconditional about fixed points into an implication about the kernel), the primary error is a misunderstanding of the informal statement."
+}

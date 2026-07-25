@@ -1,0 +1,9 @@
+{
+  "file": "proofnet-356.lean",
+  "stem": "proofnet-356",
+  "q1_informal_status": "true_and_unambiguous",
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "missing_implicit_premise",
+  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Missing premise, Misunderstanding of informal math\nRelation to GT: incomparable\nIf NL has Implicit Premises: No\nMissing Premises: (hgDiff : Differentiable ℝ g)\nComment: Even though NL statement mentions the derivative of g, it doesn't explicitly state that g is differentiable everywhere on R. "
+}
