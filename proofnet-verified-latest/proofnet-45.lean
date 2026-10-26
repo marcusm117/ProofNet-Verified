@@ -11,5 +11,5 @@ Prove that subgroups of a solvable group are solvable.
 -/
 
 theorem Dummit_Foote_exercise_3_4_5a {G : Type*} [Group G]
-  (H : Subgroup G) [IsSolvable G] : IsSolvable H := by
+  (H : Subgroup G) [Group.IsSolvable G] : Group.IsSolvable H := by
   sorry

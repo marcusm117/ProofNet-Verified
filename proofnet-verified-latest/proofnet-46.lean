@@ -10,7 +10,7 @@ open scoped BigOperators
 Prove that if $H$ is a nontrivial normal subgroup of the solvable group $G$ then there is a nontrivial subgroup $A$ of $H$ with $A \unlhd G$ and $A$ abelian.
 -/
 
-theorem Dummit_Foote_exercise_3_4_11 {G : Type*} [Group G] [IsSolvable G]
+theorem Dummit_Foote_exercise_3_4_11 {G : Type*} [Group G] [Group.IsSolvable G]
   {H : Subgroup G} (hH : H ≠ ⊥) [H.Normal] :
   ∃ A ≤ H, A ≠ ⊥ ∧ A.Normal ∧ ∀ a b : A, a*b = b*a := by
   sorry

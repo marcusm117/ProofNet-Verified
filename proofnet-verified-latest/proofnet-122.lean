@@ -11,6 +11,6 @@ Let $X$ be locally path connected. Show that every connected open set in $X$ is 
 -/
 
 theorem Munkres_exercise_25_4 {X : Type*} [TopologicalSpace X]
-  [LocPathConnectedSpace X] (U : Set X) (hU : IsOpen U)
+  [LocallyPathConnectedSpace X] (U : Set X) (hU : IsOpen U)
   (hcU : IsConnected U) : IsPathConnected U := by
   sorry

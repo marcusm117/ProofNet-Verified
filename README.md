@@ -6,7 +6,7 @@
  - HuggingFace: https://huggingface.co/datasets/marcusm117/ProofNet-Verified
  - Visualization: https://marcusm117.github.io/ProofNet-Verified/
 
-**ProofNet-Verified (ProofNet-V)** is an audited, corrected, and verified version of the [ProofNet](https://github.com/zhangir-azerbayev/ProofNet) dataset that is upgraded to be compatible with `Lean v4.28.0`. A visualization of all errors, error classifications, and our corrections can be found at [https://marcusm117.github.io/ProofNet-Verified](https://marcusm117.github.io/ProofNet-Verified).
+**ProofNet-Verified (ProofNet-V)** is an audited, corrected, and verified version of the [ProofNet](https://github.com/zhangir-azerbayev/ProofNet) dataset. The latest project environment targets `Lean v4.34.0`; the verified Lean 4.28 snapshot remains available in `data/archive/`. A visualization of all errors, error classifications, and our corrections can be found at [https://marcusm117.github.io/ProofNet-Verified](https://marcusm117.github.io/ProofNet-Verified).
 
 [ProofNet](https://github.com/zhangir-azerbayev/ProofNet) is a benchmark for theorem proving and autoformalization of undergraduate-level mathematics. It originally consists of **371** data points, each consisting of a formal theorem statement in `Lean 3`, a natural language theorem statement, and a natural language proof. The problems are primarily drawn from popular undergraduate pure mathematics textbooks and cover topics such as real and complex analysis, linear algebra, abstract algebra, and topology. We intend for ProofNet to be a challenging benchmark that will drive progress in autoformalization and automatic theorem proving
 
@@ -23,7 +23,7 @@ Based on ProofNet and ProofNet#, we made the following modifications:
 - Rudin|exercise_1_14
 - Rudin|exercise_1_19
 
-2. Upgrade the formal statements to be compatible with `Lean v4.28.0`, so that more automated proof search tools like [Grind](https://lean-lang.org/doc/reference/latest/The--grind--tactic/), [Canonical](https://github.com/chasenorman/CanonicalLean), and [Lean-SMT](https://github.com/ufmg-smite/lean-smt) are available.
+2. Upgrade the project environment to `Lean v4.34.0`, so that more automated proof search tools like [Grind](https://lean-lang.org/doc/reference/latest/The--grind--tactic/), [Canonical](https://github.com/chasenorman/CanonicalLean), and [Lean-SMT](https://github.com/ufmg-smite/lean-smt) are available.
 
 3. Audit the benchmark for both errors in the ground-truth formalizations and ambiguity in the informal statements, identifying **205/367 (55.9%)** errors in **ProofNet** and **99/367 (27.0%)** errors in **ProofNet#**.
 
@@ -136,9 +136,11 @@ theorem Artin_exercise_2_2_9 {G : Type*} [Group G] {a b : G}
 
 ### Prerequisites
 
-- [Lean 4](https://lean-lang.org/lean4/doc/setup.html) (v4.28.0, managed via `elan`)
+- [Lean 4](https://lean-lang.org/lean4/doc/setup.html) (v4.34.0, managed via `elan`)
 - [Lake](https://github.com/leanprover/lean4/tree/master/src/lake) (bundled with Lean)
 - [uv](https://docs.astral.sh/uv/) (for Python scripts)
+
+The latest statements use Mathlib and Canonical `v4.34.0`, with Lean-SMT pinned to [`2956f2966ff443b27a86fe2a4fb82dc56efafc51`](https://github.com/ufmg-smite/lean-smt/commit/2956f2966ff443b27a86fe2a4fb82dc56efafc51). The archived and original Lean 4.28 datasets remain unchanged.
 
 ### Building
 
@@ -160,7 +162,7 @@ uv sync
 uv run python scripts/verify_compilation.py
 ```
 
-This runs `lake env lean` on each file with 48 parallel workers (configurable via `--jobs`, e.g. `--jobs 64`). Use `--dir data/archive/proofnet-verified-4.28` for the archived statements or `--dir data/proofnet/proofnet-4.28` for the original formalizations.
+This runs `lake env lean` on each file with 48 parallel workers (configurable via `--jobs`, e.g. `--jobs 64`). The latest statements use the repository's Lean 4.34 environment. For the archived statements (`--dir data/archive/proofnet-verified-4.28`) or original formalizations (`--dir data/proofnet/proofnet-4.28`), also pass `--cwd /path/to/lean-4.28-project` pointing to a Lake project with Lean and Mathlib 4.28; overriding `--lean-version` alone does not change the dependency versions.
 
 ### Regenerating JSONL
 
