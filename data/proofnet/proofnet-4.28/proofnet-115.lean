@@ -12,7 +12,7 @@ Define $f_{n}:[0,1] \rightarrow \mathbb{R}$ by the equation $f_{n}(x)=x^{n}$. Sh
 -/
 
 theorem Munkres_exercise_21_6a
-  (f : ℕ → I → ℝ )
-  (h : ∀ x n, f n x = x ^ n) :
+  (f : ℕ → I → ℝ)
+  (h : ∀ x n, f n x = ↑x ^ n) :
   ∀ x, ∃ y, Tendsto (λ n => f n x) atTop (𝓝 y) := by
   sorry

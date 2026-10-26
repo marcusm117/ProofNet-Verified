@@ -1,7 +1,7 @@
 import Mathlib
 
 open Topology Filter Real Complex TopologicalSpace Finset
-open scoped BigOperators
+open scoped BigOperators InnerProductSpace
 noncomputable section
 
 /-Informal Statement
@@ -13,5 +13,5 @@ theorem Rudin_exercise_1_18a
   (n : ℕ)
   (h : n > 1)
   (x : EuclideanSpace ℝ (Fin n)) -- R^n
-  : ∃ (y : EuclideanSpace ℝ (Fin n)), y ≠ 0 ∧ (inner ℝ x y) = (0 : ℝ) := by
+  : ∃ (y : EuclideanSpace ℝ (Fin n)), y ≠ 0 ∧ ⟪x, y⟫_ℝ = 0 := by
   sorry

@@ -11,7 +11,7 @@ Show that if $X$ is a countable product of spaces having countable dense subsets
 -/
 
 theorem Munkres_exercise_30_10
-  {X : ℕ → Type*} [∀ i, TopologicalSpace (X i)]
+  {ι : Type*} [Countable ι] {X : ι → Type*} [∀ i, TopologicalSpace (X i)]
   (h : ∀ i, ∃ (s : Set (X i)), Countable s ∧ Dense s) :
   ∃ (s : Set (Π i, X i)), Countable s ∧ Dense s := by
   sorry

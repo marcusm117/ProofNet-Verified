@@ -10,5 +10,5 @@ If $z_1, \ldots, z_n$ are complex, prove that $|z_1 + z_2 + \ldots + z_n| \leq |
 -/
 
 theorem Rudin_exercise_1_12 (n : ℕ) (f : ℕ → ℂ) :
-  norm (∑ i ∈ range n, f i) ≤ ∑ i ∈ range n, norm (f i) := by
+  ‖∑ i ∈ range n, f i‖ ≤ ∑ i ∈ range n, ‖f i‖ := by
   sorry

@@ -12,5 +12,5 @@ Assume that $f \colon \mathbb{R} \rightarrow \mathbb{R}$ satisfies $|f(t)-f(x)| 
 
 theorem Pugh_exercise_3_1 {f : ℝ → ℝ}
   (hf : ∀ x y, |f x - f y| ≤ |x - y| ^ 2) :
-  ∃ c, f = λ _x => c := by
+  ∃ c, f = λ x => c := by
   sorry

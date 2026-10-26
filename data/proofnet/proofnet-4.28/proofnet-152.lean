@@ -10,5 +10,5 @@ If $x, y$ are complex, prove that $||x|-|y|| \leq |x-y|$.
 -/
 
 theorem Rudin_exercise_1_13 (x y : ℂ) :
-  |(norm x) - (norm y)| ≤ norm (x - y) := by
+  |‖x‖ - ‖y‖| ≤ ‖x-y‖ := by
   sorry

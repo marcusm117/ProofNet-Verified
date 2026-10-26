@@ -11,6 +11,6 @@ Let $G$ be a topological group; let $C$ be the component of $G$ containing the i
 -/
 
 theorem Munkres_exercise_25_9 {G : Type*} [TopologicalSpace G] [Group G]
-  [IsTopologicalGroup G] (C : Set G) (hC : C = connectedComponent (1 : G)) :
-  ∃ H : Subgroup G, (H : Set G) = C ∧ H.Normal := by
+  [IsTopologicalGroup G] (C : Set G) (h : C = connectedComponent 1) :
+  ∃ C' : Subgroup G, C' = C ∧ C'.Normal := by
   sorry

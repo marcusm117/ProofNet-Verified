@@ -11,8 +11,8 @@ Suppose $T \in \mathcal{L}(V)$. Prove that if $U_{1}, \ldots, U_{m}$ are subspac
 -/
 
 theorem Axler_exercise_5_1 {F V : Type*} [AddCommGroup V] [Field F]
-  [Module F V] {T : V →ₗ[F] V} {n : ℕ} (U : Fin n → Submodule F V)
-  (hU : ∀ i : Fin n, Submodule.map T (U i) ≤ U i) :
-  Submodule.map T (∑ i : Fin n, U i : Submodule F V) ≤
+  [Module F V] {L : V →ₗ[F] V} {n : ℕ} (U : Fin n → Submodule F V)
+  (hU : ∀ i : Fin n, Submodule.map L (U i) ≤ U i) :
+  Submodule.map L (∑ i : Fin n, U i : Submodule F V) ≤
   (∑ i : Fin n, U i : Submodule F V) := by
   sorry
