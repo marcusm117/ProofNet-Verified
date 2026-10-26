@@ -5,5 +5,7 @@
   "q2_faithfulness": "faithful",
   "q3_provability": "true",
   "q4_error_type": "none",
-  "reasoning": "The ORIGINAL and CORRECTED formalizations are mathematically identical. Both declare a group G with the hypothesis that every subgroup is normal (a Hamiltonian/Dedekind group), and assert that for any a, b ∈ G, there exists an integer j such that b*a = a^j * b. The only differences are cosmetic: the ORIGINAL includes `noncomputable section` and has slight whitespace differences around `:=`, but these do not affect the theorem statement. The formalization faithfully captures Herstein's exercise 2.5.23."
+  "reasoning": "The ORIGINAL and CORRECTED formalizations are mathematically identical. Both declare a group G with the hypothesis that every subgroup is normal (a Hamiltonian/Dedekind group), and assert that for any a, b ∈ G, there exists an integer j such that b*a = a^j * b. The only differences are cosmetic: the ORIGINAL includes `noncomputable section` and has slight whitespace differences around `:=`, but these do not affect the theorem statement. The formalization faithfully captures Herstein's exercise 2.5.23.",
+  "duration_ms": 14779,
+  "cost_usd": 0.0608795
 }

@@ -2,8 +2,10 @@
   "file": "proofnet-22.lean",
   "stem": "proofnet-22",
   "q1_informal_status": "true_and_unambiguous",
-  "q2_faithfulness": "weaker",
-  "q3_provability": "true",
-  "q4_error_type": "misunderstanding_of_informal_statement",
-  "reasoning": "The informal statement is from Axler's \"Linear Algebra Done Right\" (Exercise 6.2), where $\\mathbf{F}$ denotes the scalar field, which may be either $\\mathbb{R}$ or $\\mathbb{C}$. The CORRECTED formalization captures this by using a generic type `F` with `[RCLike F]`, which correctly covers both the real and complex cases. The ORIGINAL formalization fixes the field to `ℂ` (complex numbers only), which is strictly a specialization. Since any proof of the corrected (general `RCLike F`) statement specializes to give the complex version, but a proof of only the complex version does not yield the real version, the original is logically weaker than the informal statement. The original statement is nevertheless mathematically true (it is the classic Pythagorean-orthogonality characterization in complex inner product spaces). The error is a misunderstanding of what $\\mathbf{F}$ means in Axler's convention — it should be any `RCLike` field, not specifically `ℂ`. (Additionally, the original has a redundant `[Module ℂ V]` instance which is already provided by `InnerProductSpace ℂ V` via `NormedSpace`, but this is not the semantic issue.)"
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "The original is false, not merely a weaker specialization to complex scalars. Its separate [Module ℂ V] binder supplies the scalar action in a • v, while [InnerProductSpace ℂ V] supplies an independently compatible inner product and norm; Lean does not require those two module structures to agree. In the current GT refutation, V is an L2 complex two-space, u=(1,0) and v=(0,1) are orthogonal, and a transported, unrelated complex action makes I • v = -u. Thus the claimed norm inequality would give 1 ≤ 0. Axler_exercise_6_2_neg refutes the exact original type without sorryAx. The corrected statement quantifies over RCLike F and obtains the coherent action from InnerProductSpace F V, covering both real and complex spaces. The original both restricts the scalar field and changes the relationship between the structures, so it is classified as incomparable rather than as a harmless special case. The root cause is independently quantified Lean instances, not a false mathematical orthogonality theorem.",
+  "duration_ms": 148343,
+  "cost_usd": 0.43268500000000004
 }

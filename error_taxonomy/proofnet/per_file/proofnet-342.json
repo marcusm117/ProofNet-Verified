@@ -5,5 +5,8 @@
   "q2_faithfulness": "nl_ambiguous",
   "q3_provability": "true",
   "q4_error_type": "nl_ambiguous",
-  "reasoning": "The original informal statement says 'Prove that lim_{n→∞} √(n²+n) − n = 1/2' without specifying the domain of n. The corrected NL adds 'for the real function f(n) = √(n²+n) − n' to clarify n ∈ ℝ. Without this clarification, n could be interpreted as ranging over ℕ (discrete sequence) or ℝ (continuous limit), which are different mathematical statements with different formalizations (Filter.atTop on ℕ vs ℝ). The formal uses `n : ℝ`, which is one valid interpretation but the informal was ambiguous about this. The formal statements are identical between original and corrected, but the original NL was genuinely ambiguous."
+  "reasoning": "The original informal statement says 'Prove that lim_{n\u2192\u221e} \u221a(n\u00b2+n) \u2212 n = 1/2' without specifying the domain of n. The corrected NL adds 'for the real function f(n) = \u221a(n\u00b2+n) \u2212 n' to clarify n \u2208 \u211d. Without this clarification, n could be interpreted as ranging over \u2115 (discrete sequence) or \u211d (continuous limit), which are different mathematical statements with different formalizations (Filter.atTop on \u2115 vs \u211d). The formal uses `n : \u211d`, which is one valid interpretation but the informal was ambiguous about this. The formal statements are identical between original and corrected, but the original NL was genuinely ambiguous.",
+  "duration_ms": 18355,
+  "cost_usd": 0.060428,
+  "human_override": true
 }

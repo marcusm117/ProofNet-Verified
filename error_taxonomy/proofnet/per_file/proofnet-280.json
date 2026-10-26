@@ -5,5 +5,7 @@
   "q2_faithfulness": "incomparable",
   "q3_provability": "false",
   "q4_error_type": "misunderstanding_of_informal_statement",
-  "reasoning": "The informal statement says \"gcd = 1 or 2 depending on whether a is odd or even.\" While the wording could be read two ways, only one interpretation is mathematically true (odd→2, even→1). The ORIGINAL chose the false interpretation (odd→1, even→2), making it provably false and incomparable to the corrected version which uses the correct pairing."
+  "reasoning": "The informal statement says \"gcd = 1 or 2 depending on whether a is odd or even.\" While the wording could be read two ways, only one interpretation is mathematically true (odd\u21922, even\u21921). The ORIGINAL chose the false interpretation (odd\u21921, even\u21922), making it provably false and incomparable to the corrected version which uses the correct pairing.",
+  "duration_ms": 159818,
+  "cost_usd": 0.48085025
 }

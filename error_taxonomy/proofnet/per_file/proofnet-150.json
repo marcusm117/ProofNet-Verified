@@ -3,7 +3,9 @@
   "stem": "proofnet-150",
   "q1_informal_status": "true_and_unambiguous",
   "q2_faithfulness": "incomparable",
-  "q3_provability": "unknown",
+  "q3_provability": "independent",
   "q4_error_type": "misunderstanding_of_mathlib",
-  "reasoning": "The informal statement (for a nonempty set A of reals bounded below, inf A = -sup(-A)) is true and unambiguous. The ORIGINAL uses `Min A = Max minus_A`, but in Lean 4 / Mathlib `Min` and `Max` are typeclasses providing binary min/max operations on types (class Min (α : Type u) where min : α → α → α), NOT the infimum/supremum of a set. The correct API for set infimum/supremum is `sInf`/`sSup` (from `InfSet`/`SupSet`), as shown in the CORRECTED version `sInf A = - sSup minus_A`. Additionally, the original is missing the crucial negation sign on the RHS. The expression `Min A = Max minus_A` is not semantically the same as the informal claim; it's either ill-typed or, via coercion, becomes a statement equating types rather than real numbers. This is a clear misuse of Mathlib API for expressing inf/sup of a set."
+  "reasoning": "The original typechecks but compares the types Min ↑A and Max ↑minus_A, not real infima or suprema. Min and Max are one-field structures for binary operations; the intended conclusion is sInf A = -sSup minus_A. This Mathlib API misuse makes the original incomparable to the informal statement. Provability is recorded as independent under the project's explicitly accepted exception for item 150, not as false or as proved. GT leaves the original admitted and supplies no _neg theorem. It proves the corrected real-valued theorem, constructs an equivalence Min A ≃ Max minus_A, and proves the original only conditionally on an additional typeExt premise turning equivalences into type equalities. That conditional theorem is not a proof of the unchanged original. The independence discussion is metatheoretic; the file does not contain a kernel-checked absolute independence theorem.",
+  "duration_ms": 207416,
+  "cost_usd": 0.65209225
 }

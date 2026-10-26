@@ -6,10 +6,10 @@ Compared against golden ground truth `proofnet_verified/`.
 
 | verdict | count |
 |---|---|
-| faithful | 163 |
-| weaker | 55 |
+| faithful | 162 |
+| weaker | 54 |
 | stronger | 75 |
-| incomparable | 64 |
+| incomparable | 66 |
 | nl_ambiguous | 9 |
 | nl_wrong | 1 |
 | **total** | **367** |
@@ -18,34 +18,33 @@ Compared against golden ground truth `proofnet_verified/`.
 
 | error type | count |
 |---|---|
-| misunderstanding_of_informal_statement | 94 |
-| missing_premise | 30 |
-| misunderstanding_of_mathlib | 26 |
+| misunderstanding_of_informal_statement | 95 |
+| missing_premise | 31 |
+| misunderstanding_of_mathlib | 28 |
 | missing_implicit_premise | 18 |
-| misunderstanding_of_lean | 10 |
-| adding_extra_case | 9 |
+| misunderstanding_of_lean | 16 |
 | nl_ambiguous | 9 |
 | adding_extra_conclusion | 7 |
-| nl_wrong | 1 |
+| nl_mathematically_wrong | 1 |
 
 ## Provability (unfaithful only)
 
 | provability | count |
 |---|---|
-| true | 99 |
-| false | 104 |
-| unknown | 1 |
+| true | 98 |
+| false | 106 |
+| independent | 1 |
 
 ## Unfaithful Entries
 
 - **4** | stronger | provable=true | error=missing_premise
   - The informal statement specifies that V is spanned by a "countably infinite" set, meaning the spanning set S must be both countable AND infinite. The CORRECTED formalization captures this via two hypo
 
-- **9** | weaker | provable=true | error=adding_extra_case
-  - The informal statement asserts that for any ideals I, J in a ring R and any x ∈ I ∩ J, the image of x in R/IJ is nilpotent. This is true in any commutative ring, since x ∈ I ∩ J implies x·x ∈ I·J, so 
+- **9** | weaker | provable=true | error=misunderstanding_of_informal_statement
+  - The original is provable but weaker than the informal theorem because it unnecessarily assumes [NoZeroDivisors R]. The claim about the residue of x∈I∩J being nilpotent in R/(I*J) holds in any commutat
 
 - **11** | incomparable | provable=false | error=misunderstanding_of_informal_statement
-  - The informal statement asks about irreducibility of x^3 + 6x + 12 over ℚ. The CORRECTED formalization uses Polynomial ℚ, which is faithful. The ORIGINAL formalization replaces ℚ with a finite field F 
+  - The informal statement asks about irreducibility of x^3 + 6x + 12 over ℚ. The CORRECTED formalization uses Polynomial ℚ, which is faithful. The ORIGINAL formalization replaces ℚ with a finite field F
 
 - **12** | incomparable | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement asks for irreducibility of X^2+1 in F_7. The CORRECTED formalization correctly uses card F = 7 and X^2 + 1. The ORIGINAL formalization completely changes the theorem: it uses ca
@@ -65,8 +64,8 @@ Compared against golden ground truth `proofnet_verified/`.
 - **21** | stronger | provable=true | error=misunderstanding_of_lean
   - The informal statement is a classic, unambiguous linear algebra theorem. The issue in the original is Lean 4 parsing: `∀ v, ∃ c, v ∈ eigenspace S c ↔ ∃ c, v ∈ eigenspace T c` parses as `∀ v, ∃ c, (v ∈
 
-- **22** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement is from Axler's "Linear Algebra Done Right" (Exercise 6.2), where $\mathbf{F}$ denotes the scalar field, which may be either $\mathbb{R}$ or $\mathbb{C}$. The CORRECTED formaliz
+- **22** | incomparable | provable=false | error=misunderstanding_of_lean
+  - The original is false, not merely a weaker specialization to complex scalars. Its separate [Module ℂ V] binder supplies the scalar action in a • v, while [InnerProductSpace ℂ V] supplies an independen
 
 - **23** | incomparable | provable=false | error=misunderstanding_of_mathlib
   - The informal statement is Axler's complex polarization identity, which is true under Axler's convention (inner product linear in the FIRST slot). Mathlib, however, uses the opposite convention: `⟪r•x,
@@ -119,7 +118,7 @@ The ORIGINAL formalizati
   - The informal statement asserts: if P is a Sylow p-subgroup of G and H ⊇ P is a subgroup of G, then P is a Sylow p-subgroup of H (i.e., P is a p-group and maximal among p-subgroups of H). The CORRECTED
 
 - **52** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement asks for a normal Sylow p-subgroup "for some prime p dividing its order" — the primality and divisibility of p are explicit constraints. The ORIGINAL formalization states `∃ (p 
+  - The informal statement asks for a normal Sylow p-subgroup "for some prime p dividing its order" — the primality and divisibility of p are explicit constraints. The ORIGINAL formalization states `∃ (p
 
 - **53** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement asks to prove G has a NORMAL Sylow subgroup for p, q, or r. The corrected version faithfully captures this as `(∃ (P : Sylow p G), P.Normal) ∨ ...`. The original formalization i
@@ -128,16 +127,16 @@ The ORIGINAL formalizati
   - The informal statement asks to prove that a group G of order 105 with a normal Sylow 3-subgroup is abelian — i.e., the given group's multiplication is commutative. The corrected formalization correctl
 
 - **59** | stronger | provable=true | error=missing_premise
-  - The informal statement specifies an "integral domain," which by standard mathematical convention (and per Dummit & Foote) is a commutative ring with no zero divisors. The corrected formalization uses 
+  - The informal statement specifies an "integral domain," which by standard mathematical convention (and per Dummit & Foote) is a commutative ring with no zero divisors. The corrected formalization uses
 
 - **60** | incomparable | provable=true | error=misunderstanding_of_mathlib
-  - The informal statement asks to prove that every Boolean ring is commutative — i.e., the given ring's multiplication is commutative. The corrected formalization correctly expresses this as `∀ a b : R, 
+  - The informal statement asks to prove that every Boolean ring is commutative — i.e., the given ring's multiplication is commutative. The corrected formalization correctly expresses this as `∀ a b : R,
 
 - **65** | incomparable | provable=false | error=misunderstanding_of_informal_statement
   - The informal statement asks about Z[i]/(1+i), which is indeed a field of order 2 (isomorphic to F_2). In Mathlib, GaussianInt is defined as Zsqrtd (-1), where the structure has fields `re` (first) and
 
 - **67** | incomparable | provable=true | error=misunderstanding_of_lean
-  - The informal statement is a well-known true theorem about polynomials (related to Gauss's lemma). The critical difference between ORIGINAL and CORRECTED is in the hypothesis: ORIGINAL has `(f*g).coeff
+  - Faithfulness is incomparable under the project's logical abstraction, which treats the original whole-function equality (f*g).coeff = a and the corrected pointwise equality (f*g).coeff n = a as unrela
 
 - **71** | weaker | provable=true | error=misunderstanding_of_mathlib
   - The informal statement asks to prove that a group of order 5 is abelian — i.e., the given group's multiplication is commutative. The corrected formalization correctly expresses this as `∀ a b : G, a*b
@@ -160,7 +159,7 @@ The ORIGINAL formalization has `{G : Type*} [Mul G] [Gr
   - The informal statement "any two nonabelian groups of order 21 are isomorphic" is a true and unambiguous theorem (the unique nonabelian group of order 21 is ℤ/7 ⋊ ℤ/3). The original formalization misus
 
 - **85** | weaker | provable=true | error=misunderstanding_of_mathlib
-  - The informal statement asks to prove the given ring R is commutative. The corrected formalization correctly expresses this as `∀ x y : R, x * y = y * x` — a property of the existing [Ring R]'s multipl
+  - The original is provable but weaker than the informal claim. Its conclusion CommRing R constructs a commutative ring structure on the carrier R; that structure contains its own multiplication and is n
 
 - **86** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement is Wolstenholme-type: for an odd prime p, if a/b = 1 + 1/2 + ... + 1/(p-1) (a universal claim over all integer representations), then p divides a. The CORRECTED formalization us
@@ -190,24 +189,22 @@ The ORIGINAL formalization has `{G : Type*} [Mul G] [Gr
   - The informal statement conventionally refers to positive prime divisors, and the claim is a classical true result. The CORRECTED version uses `p : ℕ` with `Nat.Prime p`, faithfully capturing this. The
 
 - **104** | incomparable | provable=false | error=misunderstanding_of_informal_statement
-  - The informal statement is the classic Ramanujan taxicab result: 1729 = 1³+12³ = 9³+10³ is the smallest positive integer expressible as a sum of two (different) positive integer cubes in two ways. The 
+  - The informal statement is the classic Ramanujan taxicab result: 1729 = 1³+12³ = 9³+10³ is the smallest positive integer expressible as a sum of two (different) positive integer cubes in two ways. The
 
 - **107** | incomparable | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement asks for the unique SMALLEST topology containing all T_α. In the subset ordering on Set (Set X), "smallest" means T' ⊆ T'' for any other topology T'' containing the family. The 
+  - The informal statement asks for the unique SMALLEST topology containing all T_α. In the subset ordering on Set (Set X), "smallest" means T' ⊆ T'' for any other topology T'' containing the family. The
 
 - **108** | incomparable | provable=true | error=misunderstanding_of_informal_statement
-  - Two issues make the original incomparable to the informal statement. (1) Hypotheses: the original assumes `[TopologicalSpace X]` and `IsTopologicalBasis A` — meaning A is a basis for an already-given 
+  - Two issues make the original incomparable to the informal statement. (1) Hypotheses: the original assumes `[TopologicalSpace X]` and `IsTopologicalBasis A` — meaning A is a basis for an already-given
 
 - **109** | incomparable | provable=false | error=misunderstanding_of_lean
-  - The informal statement is the classical Munkres Exercise 13.6: the lower-limit topology Rl and K-topology (with K = {1/n : n ≥ 1} per Munkres) on ℝ are not comparable. This is true and unambiguous.
-
-K
+  - The original is false because its helper K includes 0: K = {r : ℝ | ∃ n : ℕ, r = 1/n}, and Lean's total division gives 1/0=0. The corrected helper is named K_c and uses 1/(n+1), excluding 0; the corre
 
 - **110** | incomparable | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement is Munkres 13.8(b) about the collection of rational OPEN intervals $(a,b)$ (i.e., `Ioo`), which is what the CORRECTED version uses. The ORIGINAL instead uses `Ico ↑a ↑b` (half-o
 
 - **114** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement from Munkres 19.6a concerns a general product space $\prod X_\alpha$ indexed by an arbitrary (possibly infinite) index set. The corrected formalization uses `{ι : Type*} {f : ι 
+  - The informal statement from Munkres 19.6a concerns a general product space $\prod X_\alpha$ indexed by an arbitrary (possibly infinite) index set. The corrected formalization uses `{ι : Type*} {f : ι
 
 - **119** | stronger | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement says: if X is an infinite set, then (the whole space) X is connected in the cofinite topology. The corrected formalization captures this as `[Infinite X] → IsConnected (Set.univ
@@ -216,7 +213,7 @@ K
   - The informal statement is clear and mathematically true: X, Y connected topological spaces, A ⊊ X, B ⊊ Y implies (X×Y)\(A×B) is connected. The CORRECTED formalization directly encodes this via univ se
 
 - **121** | incomparable | provable=false | error=misunderstanding_of_informal_statement
-  - The informal statement concerns $S^1$, the unit circle, which lives in $\mathbb{R}^2 \cong \mathbb{C}$. The corrected formalization correctly uses `Metric.sphere (0 : ℂ) 1 : Set ℂ`. The original uses 
+  - The informal statement concerns $S^1$, the unit circle, which lives in $\mathbb{R}^2 \cong \mathbb{C}$. The corrected formalization correctly uses `Metric.sphere (0 : ℂ) 1 : Set ℂ`. The original uses
 
 - **123** | stronger | provable=false | error=missing_implicit_premise
   - The informal statement from Munkres is a standard theorem about nested closed connected subsets in a compact Hausdorff space. In standard mathematical convention, "Let 𝒜 be a collection..." carries an
@@ -237,16 +234,16 @@ K
   - The informal statement is mathematically true with the implicit premise that A and B are nonempty (since "f(A) = {0}" as set equality requires A to be nonempty, as f(∅) = ∅ ≠ {0}). The ORIGINAL formal
 
 - **134** | nl_ambiguous | provable=true | error=nl_ambiguous
-  - The informal statement asks to prove IsConnected X ↔ IsConnected (StoneCech X) under the assumption that X is completely regular (separation axiom only, not T₁). The CORRECTED version properly uses Ma
+  - The original informal wording says completely regular without specifying whether this includes T1; the verified wording explicitly chooses the separation property only. The human-reviewed primary clas
 
 - **135** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement says "Let $(p_n)$ be a sequence" without specifying the codomain, and asks to show that limits are preserved under rearrangement by an injection. The CORRECTED formalization enc
 
-- **137** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement is a classical true result: any norm on R^m yields a compact closed unit ball (all norms on finite-dim R-spaces are equivalent, so the closed ball is compact). The corrected for
+- **137** | weaker | provable=true | error=misunderstanding_of_lean
+  - The original is provable but weaker than the intended claim about any norm on ℝ^m. Its conclusion IsCompact (Metric.closedBall 0 1) never anchors the centre to (Fin m → ℝ). In the actual elaboration,
 
-- **138** | stronger | provable=false | error=adding_extra_case
-  - The informal statement asks for a counterexample: exhibit a connected set S whose interior is disconnected (classically in ℝ²). The corrected formalization fixes S : Set (ℝ × ℝ), providing such a coun
+- **138** | stronger | provable=false | error=misunderstanding_of_informal_statement
+  - The informal statement asks for a counterexample showing that the interior of a connected set need not be connected. The correction supplies one in ℝ×ℝ. The original instead universally quantifies ove
 
 - **139** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement asks to show that an uncountable subset E ⊂ ℝ has a *condensation point* — a point p such that every neighborhood of p meets E in an UNCOUNTABLE set (the corrected formalization
@@ -264,10 +261,10 @@ K
   - The informal statement says |z_j| = 1 (unit circle). The ORIGINAL formalization writes ‖z n‖ < 1 (open unit disk, strict inequality), while the CORRECTED version correctly uses ‖z n‖ = 1. The hypothes
 
 - **148** | stronger | provable=true | error=missing_premise
-  - The informal statement explicitly states "$r$ is rational $(r \neq 0)$" — a clear, unambiguous premise that $r$ is a nonzero rational. The ORIGINAL formalization omits the `y ≠ 0` hypothesis that the 
+  - The informal statement explicitly states "$r$ is rational $(r \neq 0)$" — a clear, unambiguous premise that $r$ is a nonzero rational. The ORIGINAL formalization omits the `y ≠ 0` hypothesis that the
 
-- **150** | incomparable | provable=unknown | error=misunderstanding_of_mathlib
-  - The informal statement (for a nonempty set A of reals bounded below, inf A = -sup(-A)) is true and unambiguous. The ORIGINAL uses `Min A = Max minus_A`, but in Lean 4 / Mathlib `Min` and `Max` are typ
+- **150** | incomparable | provable=independent | error=misunderstanding_of_mathlib
+  - The original typechecks but compares the types Min ↑A and Max ↑minus_A, not real infima or suprema. Min and Max are one-field structures for binary operations; the intended conclusion is sInf A = -sSu
 
 - **151** | weaker | provable=true | error=missing_premise
   - The informal statement asserts the existence of r ≥ 0 and w with |w|=1 such that z = rw. The ORIGINAL formalization drops the explicit `r ≥ 0` constraint that is clearly stated in the informal problem
@@ -286,39 +283,37 @@ The ORIGINAL has multiple serious e
 The corr
 
 - **158** | nl_ambiguous | provable=true | error=nl_ambiguous
-  - The informal statement explicitly specifies "in $\mathbb{C}$", so the sequence $\{s_n\}$ should be complex-valued. The CORRECTED formalization correctly uses `f : ℕ → ℂ` with norm `‖f n‖` and a real l
+  - The original informal statement does not specify whether the convergent sequence is real- or complex-valued, while the verified comment explicitly adds 'in ℂ'. This omitted scalar domain is the human-
 
 - **161** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement says "{b_n} is monotonic and bounded". In standard mathematical analysis (and specifically in Rudin's usage), "monotonic" means either monotonically increasing OR monotonically 
+  - The informal statement says "{b_n} is monotonic and bounded". In standard mathematical analysis (and specifically in Rudin's usage), "monotonic" means either monotonically increasing OR monotonically
 
 - **162** | nl_ambiguous | provable=false | error=nl_ambiguous
-  - The informal statement (Rudin 3.20) concerns a subsequence {p_{n_l}}, where n_l denotes a strictly increasing index function and l is the running index. The corrected formalization encodes this correc
+  - The original informal wording says 'some sequence {p_{n l}}', without clearly saying subsequence or defining an increasing index map. The verified comment explicitly changes this to 'some subsequence'
 
 - **163** | stronger | provable=false | error=missing_premise
   - The informal statement explicitly says "X is a nonempty complete metric space." The original formalization omits the `[Nonempty X]` typeclass, while the corrected version includes it. Without nonempti
 
-- **168** | nl_wrong | provable=false | error=nl_wrong
-  - The informal statement is Rudin 4.8(a): if E ⊆ ℝ is bounded and f is uniformly continuous on E, then f is bounded on E. This is a true, unambiguous mathematical claim.
-
-The CORRECTED formalization cap
+- **168** | nl_wrong | provable=false | error=nl_mathematically_wrong
+  - The original informal comment is mathematically wrong: it asks, for bounded E⊆ℝ, for a uniformly continuous real function that is unbounded on E. Uniform continuity on a bounded subset of ℝ implies bo
 
 - **170** | stronger | provable=false | error=missing_premise
   - The informal IVP condition "if f(a) < c < f(b), then f(x)=c for some x between a and b" is conventionally symmetric under swapping a and b (since "between a and b" is unordered). The CORRECTED formali
 
-- **171** | weaker | provable=true | error=adding_extra_case
-  - The informal statement says f is continuous on (a, b) — its domain is the open interval. The CORRECTED version encodes this as `ContinuousOn f (Set.Ioo a b)`. The ORIGINAL uses `Continuous f`, which r
+- **171** | weaker | provable=true | error=misunderstanding_of_mathlib
+  - The original is provable but weaker than the informal statement. It uses Continuous f, requiring continuity on all of ℝ, while the informal statement only assumes continuity on (a,b). The correction u
 
 - **172** | incomparable | provable=false | error=misunderstanding_of_mathlib
   - The original has multiple serious errors. Most critically, `g = f⁻¹` in Lean for `f : ℝ → ℝ` uses `Pi.instInv` (pointwise reciprocal): `(f⁻¹) x = (f x)⁻¹ = 1/f(x)`, NOT the function inverse as intende
 
 - **173** | nl_ambiguous | provable=true | error=nl_ambiguous
-  - The informal statement (Rudin Exercise 5.4) asks for a real root STRICTLY between 0 and 1, i.e., in the open interval (0, 1). The CORRECTED formalization uses `Set.Ioo (0:ℝ) 1` which matches this. The
+  - The original informal wording asks for a root 'between 0 and 1', which the human review marked ambiguous between inclusive and strict endpoints. The verified comment resolves this by saying 'strictly
 
-- **174** | weaker | provable=true | error=adding_extra_case
-  - The informal statement restricts the hypotheses to specific domains: (a) continuity on [0,∞), (b) differentiability on (0,∞), (d) derivative monotone on (0,∞). The CORRECTED formalization faithfully c
+- **174** | weaker | provable=true | error=misunderstanding_of_mathlib
+  - The original uses Mathlib's global predicates Continuous f, ∀ x, DifferentiableAt ℝ f x, and Monotone (deriv f). The informal hypotheses concern continuity on [0,∞), differentiability on (0,∞), and mo
 
 - **175** | incomparable | provable=false | error=missing_implicit_premise
-  - The informal statement is the classical Landau-Kolmogorov inequality, which is mathematically true and unambiguous given the implicit premise that the least upper bounds exist (i.e., |f|, |f'|, |f''| 
+  - The informal statement is the classical Landau-Kolmogorov inequality, which is mathematically true and unambiguous given the implicit premise that the least upper bounds exist (i.e., |f|, |f'|, |f''|
 
 - **176** | stronger | provable=false | error=missing_implicit_premise
   - The informal statement (Shakarchi Exercise 1.13a) is a classical complex analysis result that implicitly assumes Ω is a domain (connected open set). Without connectedness, the result is mathematically
@@ -330,19 +325,19 @@ The CORRECTED formalization cap
   - The informal statement asks about ∑ z^n/n^2 on the unit circle, which converges by Weierstrass M-test. The CORRECTED version correctly encodes this as `z ^ (i + 1) / (i + 1) ^ 2`. The ORIGINAL encodes
 
 - **179** | stronger | provable=false | error=adding_extra_conclusion
-  - The informal statement asks to prove that two primitives F₁, F₂ of f on a region Ω differ by a constant (implicitly, on Ω, which is where primitives are defined). The corrected formalization reflects 
+  - The informal statement asks to prove that two primitives F₁, F₂ of f on a region Ω differ by a constant (implicitly, on Ω, which is where primitives are defined). The corrected formalization reflects
 
 - **180** | stronger | provable=false | error=missing_premise
   - The informal statement explicitly requires $\varphi: \Omega \to \Omega$ (i.e., $\varphi$ maps $\Omega$ into itself), which is encoded in the CORRECTED version as `h_maps : Set.MapsTo f Ω Ω`. The ORIGI
 
 - **185** | weaker | provable=true | error=misunderstanding_of_mathlib
-  - The informal statement "the center of the product of two groups is the product of their centers" is a classical, true, and unambiguous group-theoretic fact. The canonical Mathlib formulation (as seen 
+  - The informal statement "the center of the product of two groups is the product of their centers" is a classical, true, and unambiguous group-theoretic fact. The canonical Mathlib formulation (as seen
 
 - **187** | incomparable | provable=false | error=misunderstanding_of_informal_statement
   - The informal statement is a classical result: over an infinite field, a vector space cannot be written as a finite union of proper subspaces. The corrected formalization correctly uses ⋃ (union) and i
 
-- **191** | weaker | provable=true | error=adding_extra_case
-  - The informal statement asks to prove IJ = I ∩ J for ideals I, J of a ring R (interpreted as a commutative ring in Artin's textbook context) such that I + J = R. The corrected formalization uses `[Comm
+- **191** | weaker | provable=true | error=misunderstanding_of_informal_statement
+  - The original unnecessarily adds [NoZeroDivisors R] to the informal claim that coprime ideals satisfy I*J=I⊓J. The corrected statement uses only [CommRing R] and I+J=⊤, since the ideal identity does no
 
 - **194** | incomparable | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement asks to prove that x^2 + x + 1 is irreducible over F_2. The CORRECTED formalization uses `card F = 2` and the polynomial `X^2 + X + 1`. The ORIGINAL uses `card F = 7` and the po
@@ -360,16 +355,16 @@ The CORRECTED formalization cap
   - The only difference between the two formalizations is the `[FiniteDimensional F V]` hypothesis, which is present in the corrected version but missing in the original. The informal statement explicitly
 
 - **202** | incomparable | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement uses the standard Axler convention: a subspace U is invariant under T if T(U) ⊆ U (i.e., u ∈ U implies Tu ∈ U). The CORRECTED formalization correctly uses `Submodule.map T (U i)
+  - The original and corrected declarations now both name the operator L, but retain their intentional mathematical difference. In the original, each hypothesis is Submodule.map L (U i) = U i and the conc
 
 - **203** | stronger | provable=false | error=missing_implicit_premise
   - The informal statement is from Axler's "Linear Algebra Done Right" Exercise 5.11, where the book-wide context implicitly assumes V is finite-dimensional. Under that implicit assumption the statement i
 
 - **204** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement says "every subspace of V with dimension dim V - 1 is invariant under T." The standard meaning of "U is invariant under T" is T(U) ⊆ U (encoded in Mathlib as `Submodule.map T U 
+  - The informal statement says "every subspace of V with dimension dim V - 1 is invariant under T." The standard meaning of "U is invariant under T" is T(U) ⊆ U (encoded in Mathlib as `Submodule.map T U
 
-- **205** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement says "every subspace of V invariant under T has even dimension." The standard mathematical meaning of "T-invariant" is T(U) ⊆ U. The CORRECTED formalization uses `Submodule.map 
+- **205** | incomparable | provable=false | error=misunderstanding_of_lean
+  - The original is false because finrank U is partially applied: Module.finrank takes a coefficient ring and a module as explicit type arguments. Here U is incorrectly used as the coefficient-ring type,
 
 - **206** | incomparable | provable=false | error=misunderstanding_of_informal_statement
   - The informal statement uses 1-indexed sums (j=1 to n), so j takes values 1, 2, ..., n. This is a well-known Cauchy-Schwarz-like inequality that is true. The corrected formalization properly handles th
@@ -377,11 +372,11 @@ The CORRECTED formalization cap
 - **207** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement is Axler's Exercise 6.13, where Axler uses F throughout to denote either ℝ or ℂ, and Chapter 6 applies to both real and complex inner product spaces. The expression |⟨v, eᵢ⟩|² i
 
-- **208** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - In Axler's "Linear Algebra Done Right", Chapter 7 defines inner product spaces over F = ℝ or ℂ. The informal statement, which does not specify a field, therefore refers to V over either ℝ or ℂ (captur
+- **208** | weaker | provable=true | error=misunderstanding_of_lean
+  - The original is provable only vacuously and is weaker than the intended normal-operator theorem. Its premise finrank V ≥ 2 omits the coefficient field: finrank V is a function of a further module and
 
 - **212** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement asks for associativity of multiplication in ZMod n. The corrected formalization captures this directly with `∀ (a b c : ZMod n), (a*b)*c = a*(b*c)`. The original instead states 
+  - The informal statement asks for associativity of multiplication in ZMod n. The corrected formalization captures this directly with `∀ (a b c : ZMod n), (a*b)*c = a*(b*c)`. The original instead states
 
 - **214** | stronger | provable=true | error=missing_premise
   - The informal statement explicitly says "for some positive integer n", so positivity of n is an explicit premise. The ORIGINAL uses `n : ℕ` (allowing n = 0), while the CORRECTED uses `n : ℕ+` (positive
@@ -404,10 +399,10 @@ The ORIGINAL formalization puts {x : ℚ} a
   - The informal statement explicitly requires G to be a finite group. The ORIGINAL formalization drops the `[Fintype G]` instance that appears in the CORRECTED version. This makes the original's claim ST
 
 - **223** | incomparable | provable=false | error=misunderstanding_of_informal_statement
-  - The original formalization differs from the corrected/informal statement in multiple significant ways: (1) The ∃ quantifier's scope extends past the ↔ in Lean 4, so the original actually asserts "∃ p 
+  - The original formalization differs from the corrected/informal statement in multiple significant ways: (1) The ∃ quantifier's scope extends past the ↔ in Lean 4, so the original actually asserts "∃ p
 
-- **226** | weaker | provable=true | error=adding_extra_case
-  - The informal statement is the standard Fermat's Little Theorem in the form a^p ≡ a (mod p) for all a ∈ ℤ, which holds without any coprimality assumption. The corrected formalization reflects this exac
+- **226** | weaker | provable=true | error=misunderstanding_of_informal_statement
+  - The informal Fermat's Little Theorem states a^p≡a mod p for every integer a and prime p, without a coprimality assumption. The original restricts a to ℕ and additionally assumes Nat.Coprime a p. The c
 
 - **227** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement says "either K ≤ H, or (G = HK and |K:K∩H| = p)". The corrected formalization captures this precisely with `K ≤ H ∨ (H ⊔ K = ⊤ ∧ (K ⊓ H).relIndex K = p)`. The original formaliza
@@ -419,7 +414,7 @@ The ORIGINAL formalization puts {x : ℚ} a
   - The informal statement says "abelian group of order pq". The corrected uses [CommGroup G] as expected. The original uses [Group G], dropping the explicit abelian premise. Without the abelian hypothesi
 
 - **233** | incomparable | provable=false | error=misunderstanding_of_informal_statement
-  - The informal statement asks for a normal subgroup that is NOT characteristic (Normal ∧ ¬Characteristic). The CORRECTED version faithfully encodes this. However, the ORIGINAL swaps the two properties, 
+  - The informal statement asks for a normal subgroup that is NOT characteristic (Normal ∧ ¬Characteristic). The CORRECTED version faithfully encodes this. However, the ORIGINAL swaps the two properties,
 
 - **234** | stronger | provable=false | error=misunderstanding_of_informal_statement
   - The informal statement requires H to be CHARACTERISTIC in K (fixed by all automorphisms of K), not merely NORMAL in K. The ORIGINAL uses `(H.subgroupOf K).Normal` instead of `(H.subgroupOf K).Characte
@@ -431,10 +426,10 @@ The ORIGINAL formalization puts {x : ℚ} a
   - The informal statement requires a normal Sylow p-subgroup for some prime p dividing |G|=351. This is true: 351 = 3^3 · 13, and Sylow's theorems force either the Sylow-13 or Sylow-3 subgroup to be norm
 
 - **237** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement requires that G has a *normal* Sylow 5-subgroup and a *normal* Sylow 7-subgroup. The corrected formalization captures this with `(∃ (P : Sylow 5 G), P.Normal) ∧ (∃ (P : Sylow 7 
+  - The informal statement requires that G has a *normal* Sylow 5-subgroup and a *normal* Sylow 7-subgroup. The corrected formalization captures this with `(∃ (P : Sylow 5 G), P.Normal) ∧ (∃ (P : Sylow 7
 
 - **244** | incomparable | provable=false | error=misunderstanding_of_mathlib
-  - The informal statement is McCoy's theorem: p(x) is a zero divisor in R[x] iff there exists nonzero b in R with b·p(x) = 0. This is a classical, unambiguous theorem (typically for commutative R, as in 
+  - The informal statement is McCoy's theorem: p(x) is a zero divisor in R[x] iff there exists nonzero b in R with b·p(x) = 0. This is a classical, unambiguous theorem (typically for commutative R, as in
 
 - **245** | stronger | provable=false | error=adding_extra_conclusion
   - The informal statement says the image of the center of R is "contained in" the center of S, meaning subset (⊆). The CORRECTED formalization uses ⊆, while the ORIGINAL uses ⊂. In Lean 4/Mathlib, ⊂ on S
@@ -442,19 +437,17 @@ The ORIGINAL formalization puts {x : ℚ} a
 - **247** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement (Dummit & Foote Exercise 8.2.4) asks: if R is a domain satisfying Bezout (h1) and ACCP-style condition—nonzero elements with a_{i+1} | a_i eventually stabilize up to units (h2)—
 
-- **249** | stronger | provable=false | error=adding_extra_case
-  - The informal statement is a well-known true claim from Dummit & Foote: for a prime q ≡ 3 (mod 4), ℤ[i]/(q) is a field with q² elements. The CORRECTED formalization directly states IsField and Fintype.
+- **249** | stronger | provable=false | error=misunderstanding_of_lean
+  - The original is stronger than the informal claim and false. Its arbitrary [Ring R] instance is not identified with the canonical quotient ring operations by the bare carrier-type equality R = Gaussian
 
 - **250** | incomparable | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement specifies the ring $\mathbb{Z}[x_1, x_2, \ldots]/(x_1 x_2, x_3 x_4, x_5 x_6, \ldots)$ where the generators are **disjoint pairs** of variables: $(x_1,x_2), (x_3,x_4), (x_5,x_6),
 
-- **254** | stronger | provable=false | error=adding_extra_case
-  - The informal statement asserts that for all positive integers n (n ∈ ℤ⁺, hence n ≥ 1), ℝⁿ ≅ ℝ as ℚ-vector spaces. This is true since dim_ℚ(ℝ) = 2^ℵ₀ and dim_ℚ(ℝⁿ) = n · 2^ℵ₀ = 2^ℵ₀ for n ≥ 1.
-
-The ORI
+- **254** | stronger | provable=false | error=missing_premise
+  - The informal statement explicitly requires a positive integer n in ℝ^n≅ℝ as ℚ-vector spaces. The original replaces this with an arbitrary finite index type ι but omits the corresponding Nonempty ι pre
 
 - **256** | weaker | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement requires a POSITIVE integer n such that a^n = e. The original formalization uses `∃ (n : ℕ), a ^ n = 1`, but in Lean/Mathlib ℕ includes 0, so this is trivially satisfied by n = 
+  - The informal statement requires a POSITIVE integer n such that a^n = e. The original formalization uses `∃ (n : ℕ), a ^ n = 1`, but in Lean/Mathlib ℕ includes 0, so this is trivially satisfied by n =
 
 - **257** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement clearly refers to "three consecutive integers", which is the standard Herstein exercise 2.2.3 and is mathematically unambiguous. The ORIGINAL formalization uses `ℕ` (natural num
@@ -487,7 +480,7 @@ The ORI
   - The informal statement claims $ax + xa$ commutes with $a$, i.e., $a(ax+xa) = (ax+xa)a$, which is true since both sides equal $axa$ when $a^2=0$. The CORRECTED formalization states exactly this: `a * (
 
 - **272** | incomparable | provable=false | error=misunderstanding_of_informal_statement
-  - The ORIGINAL formalization has a fundamental structural error. In the informal statement, each element q in the set S should satisfy (or fail to satisfy) the QR property "∃ x, x^2 = q". The CORRECTED 
+  - The ORIGINAL formalization has a fundamental structural error. In the informal statement, each element q in the set S should satisfy (or fail to satisfy) the QR property "∃ x, x^2 = q". The CORRECTED
 
 - **275** | stronger | provable=true | error=missing_premise
   - The informal statement says "any positive integer n". The corrected formalization captures this as `hn : n > 0`. The original drops this hypothesis entirely, allowing n = 0. Regarding the p-hypothesis
@@ -524,16 +517,16 @@ The ORI
 The key diff
 
 - **288** | stronger | provable=false | error=misunderstanding_of_lean
-  - The original uses `sin (pi/12)` with `open Real`, but `Real.pi` is `protected`, so `open Real` does NOT bring `pi` into scope. Lean's auto-bound implicit system treats `pi` as a free variable, making 
+  - The original uses sin (pi/12), but Real.pi is protected, so open Real does not resolve the bare identifier pi to the real constant π. Lean's auto-implicit mechanism introduces a free real parameter in
 
 - **289** | stronger | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement asks to show that T_inf does not need to be a topology, i.e., ∃ X such that T_inf fails to satisfy the topology axioms (contains univ, closed under arbitrary unions, closed unde
 
 - **290** | incomparable | provable=false | error=misunderstanding_of_informal_statement
-  - The informal statement asks about unions ($\bigcup$) of topologies not necessarily being a topology. The CORRECTED formalization correctly uses `⋃ i : I, T i` (union). The ORIGINAL uses `⋂ i : I, T i`
+  - The original is false because it asserts that some intersection of topologies is not a topology. Arbitrary intersections of topologies are always topologies, including the empty-index intersection. GT
 
 - **291** | incomparable | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement asks for the unique LARGEST topology contained in all T_α (the intersection ∩ T_α). The CORRECTED formalization correctly captures this with `T'' ⊆ T'` (T' is the maximum). The 
+  - The informal statement asks for the unique LARGEST topology contained in all T_α (the intersection ∩ T_α). The CORRECTED formalization correctly captures this with `T'' ⊆ T'` (T' is the maximum). The
 
 - **292** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The ORIGINAL adds `[t : TopologicalSpace X]` and `(hA : t = generateFrom A)` as extra premises not required by the informal statement. The informal says 'if A is a subbasis for a topology on X, then t
@@ -556,20 +549,23 @@ The key diff
 - **302** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement uses $\{A_\alpha\}$ to denote a collection indexed by an arbitrary (unspecified) index set α. The CORRECTED formalization reflects this by introducing a general type `α` and tak
 
-- **305** | stronger | provable=false | error=adding_extra_case
-  - The informal statement is the 1D Brouwer fixed point theorem (continuous self-map of [0,1] has a fixed point), which is classically true and unambiguous. The CORRECTED formalization uses `I : Set ℝ :=
+- **305** | stronger | provable=false | error=misunderstanding_of_lean
+  - The original is stronger than the informal fixed-point theorem and false. The type I is the real unit interval, but the explicit [TopologicalSpace I] binder supplies an arbitrary local topology rather
 
 - **307** | stronger | provable=false | error=missing_premise
   - The informal statement describes a perfect map, which requires p to be closed, continuous, surjective, with compact fibers. The ORIGINAL formalization omits the `IsClosedMap p` hypothesis that is pres
 
 - **308** | stronger | provable=false | error=misunderstanding_of_mathlib
-  - The informal statement (Munkres Thm 28.2) is a well-known true theorem and is unambiguous: for T_1 spaces, countable compactness is equivalent to limit point compactness (every infinite subset has a l
+  - The original is stronger than the intended equivalence and false. Its helper limit_point_compact asks, for every infinite U, for x∈U with ClusterPt x (𝓟 U). Such an x is automatically a cluster point
 
 - **309** | weaker | provable=true | error=misunderstanding_of_informal_statement
   - The informal statement asks to show both that f is bijective AND that f is a homeomorphism. In Mathlib, `IsHomeomorph` is defined as the conjunction of `Continuous f`, `IsOpenMap f`, and `Bijective f`
 
 - **310** | incomparable | provable=false | error=misunderstanding_of_mathlib
   - The informal statement (Munkres 29.4) is a standard, true, and unambiguous theorem: [0,1]^ω is not locally compact in the uniform topology (metric ρ(x,y) = sup_n |x_n - y_n|). The CORRECTED version us
+
+- **311** | weaker | provable=true | error=misunderstanding_of_informal_statement
+  - The original is provable but weaker: it covers only ℕ-indexed products, omitting finite and other countable index types from the statement. Here countable includes finite, even the empty index type; i
 
 - **312** | stronger | provable=false | error=missing_implicit_premise
   - The informal statement is from Munkres Exercise 31.1. In Munkres's convention, "regular" includes T1 (one-point sets closed), and "pair of points" implicitly means distinct points. The informal statem
@@ -590,7 +586,7 @@ The key diff
   - The informal statement is Cantor's intersection theorem for nested decreasing compact sets — a standard true theorem in the implicit T2/metric-space context of Pugh's textbook. The CORRECTED formaliza
 
 - **324** | incomparable | provable=true | error=misunderstanding_of_informal_statement
-  - The informal statement asks for convergence of the series ∑ 1/(k·(log k)^p) for p>1, which is the classical summability result. The CORRECTED formalization uses `Summable` with a (k+2) shift to avoid 
+  - Faithfulness is incomparable under the project's logical abstraction. The original concludes ∃ l, Tendsto f atTop (𝓝 l), while the correction concludes Summable for the displayed sequence shifted by k
 
 - **325** | incomparable | provable=false | error=misunderstanding_of_informal_statement
   - The informal statement is about a single function f : [a,b] → ℝ being uniformly continuous iff it admits a modulus of continuity μ (continuous, strictly increasing, positive-valued, tending to 0 at 0+
@@ -607,7 +603,7 @@ The CORRECTED fo
   - The original formalization has multiple errors compared to the corrected version: (1) `hx0 : x 0 = a` is wrong — the informal statement clearly says $x_0 = 1$, not $x_0 = a$; (2) the premise `x 2 = a`
 
 - **333** | nl_ambiguous | provable=true | error=nl_ambiguous
-  - The informal statement specifies a "total ordered set", which in Mathlib corresponds to `LinearOrder` (which extends `PartialOrder` with the totality axiom `le_total`). The ORIGINAL uses `PartialOrder
+  - The original informal statement says 'an ordered set', leaving partial versus total order unspecified; the verified wording explicitly says 'a total ordered set'. The human-reviewed primary classifica
 
 - **334** | stronger | provable=false | error=misunderstanding_of_informal_statement
   - The informal statement asks about "ordered field" — meaning there is no linear order on ℂ compatible with its field operations. The CORRECTED formalization captures this correctly via `IsStrictOrdered
@@ -616,7 +612,7 @@ The CORRECTED fo
   - The informal statement asserts: for every nonzero x ∈ ℝ, there is no nonzero y with x·y = 0. The corrected formalization captures this with `∀ x, x ≠ 0 → ¬ ∃ y, y ≠ 0 ∧ x*y = 0`. The original, `¬ ∀ x,
 
 - **338** | stronger | provable=true | error=adding_extra_conclusion
-  - The informal statement asks to prove that disjoint closed sets A and B in a metric space are "separated" in Rudin's sense (Definition 2.45), meaning A ∩ closure(B) = ∅ and closure(A) ∩ B = ∅. This is 
+  - The informal statement asks to prove that disjoint closed sets A and B in a metric space are "separated" in Rudin's sense (Definition 2.45), meaning A ∩ closure(B) = ∅ and closure(A) ∩ B = ∅. This is
 
 - **340** | incomparable | provable=false | error=misunderstanding_of_informal_statement
   - The informal statement (Rudin Ex 2.27b) is standard and unambiguous: condensation points are points where every neighborhood contains uncountably many points of E. The corrected version correctly form
@@ -634,13 +630,13 @@ The CORRECTED fo
   - The informal statement asserts that if a_n ≥ 0 and Σa_n converges, then Σ √(a_n)/n converges. The CORRECTED formalization faithfully encodes this as the series Σ_{i∈range n} sqrt(a i)/(i+1) with the n
 
 - **345** | incomparable | provable=false | error=misunderstanding_of_informal_statement
-  - The informal statement is the classical theorem that the Cauchy product of two absolutely convergent series is absolutely convergent — true and unambiguous. The CORRECTED formalization expresses this 
+  - The informal statement is the classical theorem that the Cauchy product of two absolutely convergent series is absolutely convergent — true and unambiguous. The CORRECTED formalization expresses this
 
 - **346** | incomparable | provable=false | error=missing_premise
   - The informal statement (Rudin Exercise 3.21) is a classical true theorem requiring closed, nonempty, bounded sets in a complete metric space, nested, with diameter tending to 0. The ORIGINAL formaliza
 
 - **349** | nl_ambiguous | provable=true | error=nl_ambiguous
-  - The formal statements are identical between original and corrected. The only difference is in the informal comment: the original says 'let $E$ be a dense subset' but then refers to '$p \in P$' — incon
+  - The formal statements match: continuous maps f and g between metric spaces that agree on a dense set are equal, and GT proves the original. The original informal wording, however, declares a dense set
 
 - **353** | stronger | provable=false | error=misunderstanding_of_informal_statement
   - The informal statement says "every continuous open mapping of R^1 into R^1 is monotonic." In standard mathematical usage, "monotonic" means either monotone increasing or monotone decreasing. The corre
@@ -652,7 +648,7 @@ The CORRECTED fo
   - The informal statement asserts that for some positive threshold of ε, f(x) = x + εg(x) is injective. The corrected formalization properly encodes this with `∃ N > 0, ∀ ε > 0, ε < N → Function.Injectiv
 
 - **357** | incomparable | provable=false | error=misunderstanding_of_informal_statement
-  - The informal statement asks to prove g(x) → 0 as x → +∞. The CORRECTED formalization correctly uses `Tendsto (λ x => f (x + 1) - f x) atTop (𝓝 0)`. The ORIGINAL instead writes `Tendsto (λ x => f (x + 
+  - The informal statement asks to prove g(x) → 0 as x → +∞. The CORRECTED formalization correctly uses `Tendsto (λ x => f (x + 1) - f x) atTop (𝓝 0)`. The ORIGINAL instead writes `Tendsto (λ x => f (x +
 
 - **358** | incomparable | provable=false | error=misunderstanding_of_informal_statement
   - The informal statement is L'Hôpital's rule (0/0 form) at point x, which is a true and unambiguous classical result. The original formalization has two significant errors: (1) All hypotheses use the po

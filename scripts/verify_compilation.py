@@ -130,9 +130,9 @@ def write_log(result: dict, log_dir: Path) -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dir', default='proofnet-verified',
+    parser.add_argument('--dir', default='proofnet-verified-latest',
                         help='Folder under repo root containing .lean files '
-                             '(default: proofnet-verified)')
+                             '(default: proofnet-verified-latest)')
     parser.add_argument('--jobs', type=int, default=48,
                         help='Number of parallel workers (default 48)')
     parser.add_argument('--timeout', type=int, default=1200,

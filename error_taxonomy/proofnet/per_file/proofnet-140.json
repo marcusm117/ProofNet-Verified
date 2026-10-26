@@ -5,5 +5,8 @@
   "q2_faithfulness": "nl_ambiguous",
   "q3_provability": "true",
   "q4_error_type": "nl_ambiguous",
-  "reasoning": "The original informal statement says 'Prove that √(n+1) − √n → 0 as n → ∞' without specifying whether n ranges over ℕ or ℝ. The corrected NL adds 'the real function' to clarify n ∈ ℝ. The original formal has a phantom `(n : ℕ)` parameter (unused, shadowed by the lambda) and leaves the lambda's type implicit, while the corrected explicitly uses `fun n : ℝ => ...`. Although the phantom parameter doesn't change the logical content (∀ (n : ℕ), P is equivalent to P when P doesn't mention n), the ambiguity in the informal about whether this is a real or natural number limit is a genuine NL issue that needed correction."
+  "reasoning": "The original informal statement says 'Prove that \u221a(n+1) \u2212 \u221an \u2192 0 as n \u2192 \u221e' without specifying whether n ranges over \u2115 or \u211d. The corrected NL adds 'the real function' to clarify n \u2208 \u211d. The original formal has a phantom `(n : \u2115)` parameter (unused, shadowed by the lambda) and leaves the lambda's type implicit, while the corrected explicitly uses `fun n : \u211d => ...`. Although the phantom parameter doesn't change the logical content (\u2200 (n : \u2115), P is equivalent to P when P doesn't mention n), the ambiguity in the informal about whether this is a real or natural number limit is a genuine NL issue that needed correction.",
+  "duration_ms": 382438,
+  "cost_usd": 1.2422004999999998,
+  "human_override": true
 }

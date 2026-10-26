@@ -4,6 +4,8 @@
   "q1_informal_status": "true_and_unambiguous",
   "q2_faithfulness": "stronger",
   "q3_provability": "false",
-  "q4_error_type": "adding_extra_case",
-  "reasoning": "The informal statement asserts that for all positive integers n (n ∈ ℤ⁺, hence n ≥ 1), ℝⁿ ≅ ℝ as ℚ-vector spaces. This is true since dim_ℚ(ℝ) = 2^ℵ₀ and dim_ℚ(ℝⁿ) = n · 2^ℵ₀ = 2^ℵ₀ for n ≥ 1.\n\nThe ORIGINAL formalization uses `{ι : Type*} [Fintype ι]` which includes ι = Empty (Mathlib provides `instance : Fintype Empty` in Mathlib/Data/Fintype/OfMap.lean). When ι = Empty, (ι → ℝ) is the zero vector space (a singleton), which is NOT linearly equivalent to ℝ as a ℚ-vector space (ℝ has nontrivial elements). So the original statement is provably FALSE.\n\nThe CORRECTED formalization uses `{n : ℕ+}` (where `PNat := {n : ℕ // 0 < n}`), correctly enforcing n ≥ 1 and using Fin n, which matches the informal constraint n ∈ ℤ⁺.\n\nThe original is stronger than the informal (quantifies over all Fintypes, which includes the Empty type case absent from the informal statement), making it false. The error is adding the extra case ι = Empty that was excluded by the positivity constraint n ∈ ℤ⁺ in the informal statement. The `Nonempty (...)` wrapper in the corrected version is mathematically equivalent since classically an equivalence exists iff we can construct one."
+  "q4_error_type": "missing_premise",
+  "reasoning": "The informal statement explicitly requires a positive integer n in ℝ^n≅ℝ as ℚ-vector spaces. The original replaces this with an arbitrary finite index type ι but omits the corresponding Nonempty ι premise, admitting ι=Empty. Then (ι→ℝ) is the zero vector space and cannot be linearly equivalent to ℝ, so the stronger original is false. The correction uses n : ℕ+ and Fin n, enforcing the stated positivity. The root cause is the missing explicit positive-dimension/nonempty-index premise, not merely a generic additional-case category.",
+  "duration_ms": 599589,
+  "cost_usd": 0.41594975
 }

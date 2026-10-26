@@ -2,8 +2,8 @@
   "file": "proofnet-356.lean",
   "stem": "proofnet-356",
   "q1_informal_status": "true_and_unambiguous",
-  "q2_faithfulness": "incomparable",
-  "q3_provability": "false",
-  "q4_error_type": "missing_implicit_premise",
-  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Missing premise, Misunderstanding of informal math\nRelation to GT: incomparable\nIf NL has Implicit Premises: No\nMissing Premises: (hgDiff : Differentiable ℝ g)\nComment: Even though NL statement mentions the derivative of g, it doesn't explicitly state that g is differentiable everywhere on R. "
+  "q2_faithfulness": "weaker",
+  "q3_provability": "true",
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement asserts that for some positive threshold of ε, f(x) = x + εg(x) is injective. The corrected formalization properly encodes this with `∃ N > 0, ∀ ε > 0, ε < N → Function.Injective ...`. The original drops the `N > 0` constraint, writing just `∃ N, ...`. This makes the statement trivially provable by taking `N = 0` (or any N ≤ 0), because then `∀ ε > 0, ε < N → ...` is vacuously true (no such ε exists). Thus the original is strictly weaker than the informal claim — it fails to assert the existence of a genuine positive threshold. Additionally, the hypothesis `Continuous g` instead of `Differentiable ℝ g` is inappropriate (since g' doesn't make sense for merely continuous functions, and Mathlib's `deriv` returns 0 at non-differentiable points, making `|deriv g x| ≤ M` trivially satisfied). However, the primary semantic weakening is the missing `N > 0`. The original is provable (trivially by N=0), so Q3 is \"true\". The root error is a misreading of \"small enough ε\" which implicitly requires a positive threshold. Consistency audit: the ProofNet# original declaration and informal statement match ProofNet item 356, ignoring theorem names, comments and whitespace; its four labels are aligned with that reviewed record."
 }

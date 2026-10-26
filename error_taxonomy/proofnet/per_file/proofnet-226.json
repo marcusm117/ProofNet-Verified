@@ -4,6 +4,8 @@
   "q1_informal_status": "true_and_unambiguous",
   "q2_faithfulness": "weaker",
   "q3_provability": "true",
-  "q4_error_type": "adding_extra_case",
-  "reasoning": "The informal statement is the standard Fermat's Little Theorem in the form a^p ≡ a (mod p) for all a ∈ ℤ, which holds without any coprimality assumption. The corrected formalization reflects this exactly with `a : ℤ` and no additional premise. The original formalization makes two restrictive changes: (1) it uses `a : ℕ` instead of `a : ℤ`, and (2) it adds `Nat.Coprime a p →` as a hypothesis. Both changes make the statement strictly weaker than the informal claim — the original only covers natural numbers coprime to p, missing the case where p divides a (where both sides are ≡ 0 mod p). The weaker version is still provably true (it's a direct corollary of full FLT). The primary error is adding an extraneous coprimality hypothesis that is not present in the informal statement; this corresponds to adding_extra_case."
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal Fermat's Little Theorem states a^p≡a mod p for every integer a and prime p, without a coprimality assumption. The original restricts a to ℕ and additionally assumes Nat.Coprime a p. The correction quantifies over a : ℤ with no such restriction, also covering p dividing a. The original is still provable but weaker because it proves only this restricted special case. The root cause is misunderstanding the intended mathematical statement and confusing the unrestricted a^p≡a form with a version requiring coprimality.",
+  "duration_ms": 107665,
+  "cost_usd": 0.3265265
 }

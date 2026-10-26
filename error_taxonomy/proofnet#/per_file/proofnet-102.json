@@ -4,6 +4,6 @@
   "q1_informal_status": "true_and_unambiguous",
   "q2_faithfulness": "stronger",
   "q3_provability": "false",
-  "q4_error_type": "missing_implicit_premise",
-  "reasoning": "1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Implicit Premise\nIf NL has Implicit Premies: Yes\nImplicit Premises:  (hp : Nat.Prime p) \nComment: The NL doesn't specify positive prime. The wrong attempt allows negative primes. The final version is wrong because it's true for p = 2 or p = 3 but for trivial reasons.\n\n"
+  "q4_error_type": "misunderstanding_of_mathlib",
+  "reasoning": "The informal statement conventionally refers to positive prime divisors, and the claim is a classical true result. The CORRECTED version uses `p : ℕ` with `Nat.Prime p`, faithfully capturing this. The ORIGINAL uses `p : ℤ` with `Prime p`. In Mathlib, `Prime` on ℤ admits negative integers (since `Int.prime_iff_natAbs_prime : Prime k ↔ Nat.Prime k.natAbs` in `Mathlib/RingTheory/Int/Basic.lean`). This makes the ORIGINAL provably false: take `x = 2`, so `x^4 - x^2 + 1 = 13`; then `p = -13` is Prime in ℤ, divides 13, but `-13 ≢ 1 [ZMOD 12]` (since `12 ∤ 14`). Logically, the original implies the informal (specializing to positive primes) but not vice versa, so it is STRONGER. The error is using Mathlib's `Prime` on ℤ, which does not match the informal's implicit convention of positive primes — a misunderstanding of the Mathlib API for `Prime` on integers. Consistency audit: the ProofNet# original declaration and informal statement match ProofNet item 102, ignoring theorem names, comments and whitespace; its four labels are aligned with that reviewed record."
 }

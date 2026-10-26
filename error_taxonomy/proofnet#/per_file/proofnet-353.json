@@ -2,8 +2,8 @@
   "file": "proofnet-353.lean",
   "stem": "proofnet-353",
   "q1_informal_status": "true_and_unambiguous",
-  "q2_faithfulness": "weaker",
+  "q2_faithfulness": "stronger",
   "q3_provability": "false",
-  "q4_error_type": "misunderstanding_of_mathlib",
-  "reasoning": " 1. negation ✅\n2. reasoning ✅\n3. correction ❌\n\nError Type: Wrong formalization, Misunderstanding of Mathlib\nIf NL has Implicit Premises: No\nImplicit Premises:   NO\nComment: Monotone in Lean means only monotonically increasing while the NL version states it could be either. However, the corrected formalization replaces this with a weaker notion entirely."
+  "q4_error_type": "misunderstanding_of_informal_statement",
+  "reasoning": "The informal statement says \"every continuous open mapping of R^1 into R^1 is monotonic.\" In standard mathematical usage, \"monotonic\" means either monotone increasing or monotone decreasing. The corrected formalization correctly captures this as `Monotone f ∨ Antitone f`. The original formalization only requires `Monotone f` (which in Mathlib strictly means monotone increasing, per `Mathlib/Order/Monotone/Defs.lean`). This asserts strictly more than the informal claim (it implies `Monotone f ∨ Antitone f` but not vice versa), making it \"stronger\". However, the stronger claim is provably false: the function f(x) = -x is continuous and open (it's a homeomorphism) but is antitone, not monotone (increasing). Thus the original is a misinterpretation of what \"monotonic\" means in the informal statement. Consistency audit: the ProofNet# original declaration and informal statement match ProofNet item 353, ignoring theorem names, comments and whitespace; its four labels are aligned with that reviewed record."
 }

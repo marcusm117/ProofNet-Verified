@@ -25,7 +25,7 @@ Based on ProofNet and ProofNet#, we made the following modifications:
 
 2. Upgrade the formal statements to be compatible with `Lean v4.28.0`, so that more automated proof search tools like [Grind](https://lean-lang.org/doc/reference/latest/The--grind--tactic/), [Canonical](https://github.com/chasenorman/CanonicalLean), and [Lean-SMT](https://github.com/ufmg-smite/lean-smt) are available.
 
-3. Audit the benchmark for both errors in the ground-truth formalizations and ambiguity in the informal statements, identifying **204/367 (55.6%)** errors in **ProofNet** and **97/367 (26.4%)** errors in **ProofNet#**.
+3. Audit the benchmark for both errors in the ground-truth formalizations and ambiguity in the informal statements, identifying **205/367 (55.9%)** errors in **ProofNet** and **99/367 (27.0%)** errors in **ProofNet#**.
 
 4. Confirm each error by proving the negation of incorrect formalizations, providing trivialized proofs of formalization that are provably true but unfaithful to the informal statement, or giving detailed reasoning for why a formalization is unfaithful or an informal statement is ambiguous.
 
@@ -59,30 +59,46 @@ If you find the **ProofNet-Verified** benchmark useful for your research, please
 
 | | ProofNet | ProofNet# |
 |---|---|---|
-| Faithful | 163 (44.4%) | 270 (73.6%) |
-| Unfaithful | 194 (52.9%) | 88 (24.0%) |
-| Ambiguous NL | 9 (2.5%) | 8 (2.2%) |
-| Wrong NL | 1 (0.3%) | 1 (0.3%) |
-| **Total Errors** | **204 (55.6%)** | **97 (26.4%)** |
+| Faithful | 162 (44.1%) | 268 (73.0%) |
+| Unfaithful | 195 (53.1%) | 90 (24.5%) |
+| NL Source Ambiguous | 9 (2.5%) | 8 (2.2%) |
+| NL Source Incorrect | 1 (0.3%) | 1 (0.3%) |
+| **Total Errors** | **205 (55.9%)** | **99 (27.0%)** |
 | **Total** | **367** | **367** |
 
-### Unfaithful Error Type Breakdown
+The **Unfaithful** row counts the `stronger`, `weaker`, and `incomparable` faithfulness labels; ambiguous and incorrect natural-language sources are counted separately. Percentages use all 367 problems in each benchmark.
 
-| Unfaithful Error Type | ProofNet | ProofNet# |
+The audit tracks three dimensions: **Provability**, **Faithfulness**, and **Root Cause**. Faithfulness compares logical structure with the relevant mathematical formulas treated as opaque, rather than identifying statements because they are mathematically provable.
+
+### Root Cause Breakdown
+
+| Root Cause | ProofNet | ProofNet# |
 |---|---|---|
-| Misunderstanding of informal statement | 94 (25.6%) | 27 (7.4%) |
-| Missing premise | 30 (8.2%) | 3 (0.8%) |
-| Misunderstanding of Mathlib | 26 (7.1%) | 31 (8.4%) |
-| Missing implicit premise | 18 (4.9%) | 18 (4.9%) |
-| Misunderstanding of Lean | 10 (2.7%) | 8 (2.2%) |
-| Adding extra case | 9 (2.5%) | 0 (0.0%) |
-| Adding extra conclusion | 7 (1.9%) | 1 (0.3%) |
-| **Total Unfaithful** | **194 (52.9%)** | **88 (24.0%)** |
+| NL Source Ambiguous | 9 (2.5%) | 8 (2.2%) |
+| NL Source Incorrect | 1 (0.3%) | 1 (0.3%) |
+| Implicit Premise | 18 (4.9%) | 17 (4.6%) |
+| Missing Premise | 31 (8.4%) | 6 (1.6%) |
+| Adding Extra Conclusion | 7 (1.9%) | 3 (0.8%) |
+| Misunderstanding of Informal Math | 95 (25.9%) | 30 (8.2%) |
+| Misunderstanding of Mathlib | 28 (7.6%) | 24 (6.5%) |
+| Misunderstanding of Lean | 16 (4.4%) | 10 (2.7%) |
+| **Total Errors** | **205 (55.9%)** | **99 (27.0%)** |
 
+These are the eight root-cause categories. Faithful formalizations use `none`, meaning **no formalization error / not applicable**, not an unknown cause or a ninth error category.
+
+## Dataset Files
+
+| Resource | Location |
+|---|---|
+| Latest Lean statements | [`proofnet-verified-latest/`](proofnet-verified-latest/) |
+| Latest JSONL dataset | [`data/proofnet-verified-latest.jsonl`](data/proofnet-verified-latest.jsonl) |
+| Archived Lean 4.28 statements | [`data/archive/proofnet-verified-4.28/`](data/archive/proofnet-verified-4.28/) |
+| Archived Lean 4.28 JSONL dataset | [`data/archive/proofnet-verified-4.28.jsonl`](data/archive/proofnet-verified-4.28.jsonl) |
+| Archived Lean 4.28 proofs | [`data/archive/proofnet-verified_gt-4.28.zip`](data/archive/proofnet-verified_gt-4.28.zip) |
 
 ## Dataset Format
 
-Each entry in [proofnet-verified.jsonl](data/proofnet-verified.jsonl) contains:
+Each entry in [proofnet-verified-latest.jsonl](data/proofnet-verified-latest.jsonl) contains:
 
 | Field | Description |
 |---|---|
@@ -94,7 +110,7 @@ Each entry in [proofnet-verified.jsonl](data/proofnet-verified.jsonl) contains:
 | `informal_stmt` | Natural language theorem statement |
 | `formal_stmt` | Lean 4 formal statement (ends with `sorry`) |
 | `informal_proof` | Natural language proof |
-| `formal_proof` | [Zipped](data/proofnet-verified_gt.zip) to avoid data contamination |
+| `formal_proof` | Proofs for the Lean 4.28 snapshot are [zipped](data/archive/proofnet-verified_gt-4.28.zip) to avoid data contamination |
 
 ### Example Entry
 
@@ -137,14 +153,26 @@ lake update
 
 ### Compiling All Statements
 
-To type-check all 367 formal statements in parallel:
+To type-check all 367 formal statements in `proofnet-verified-latest/` in parallel:
 
 ```bash
 uv sync
 uv run python scripts/verify_compilation.py
 ```
 
-This runs `lake env lean` on each file with 48 parallel workers (configurable via `--jobs`).
+This runs `lake env lean` on each file with 48 parallel workers (configurable via `--jobs`, e.g. `--jobs 64`). Use `--dir data/archive/proofnet-verified-4.28` for the archived statements or `--dir data/proofnet/proofnet-4.28` for the original formalizations.
+
+### Regenerating JSONL
+
+Run these commands from the repository root to regenerate the latest dataset, the archived Lean 4.28 dataset, and the original ProofNet dataset:
+
+```bash
+uv run python scripts/generate_jsonl.py --source-dir proofnet-verified-latest --output data/proofnet-verified-latest.jsonl
+uv run python scripts/generate_jsonl.py --source-dir data/archive/proofnet-verified-4.28 --output data/archive/proofnet-verified-4.28.jsonl
+uv run python scripts/generate_jsonl.py --source-dir data/proofnet/proofnet-4.28 --output data/proofnet/proofnet-4.28.jsonl
+```
+
+The exporter preserves `informal_proof` and `formal_proof` from the existing output. For a new output file, pass `--metadata` with an existing corresponding JSONL dataset. Add `--check` to validate an export without rewriting it.
 
 ### Python Environment
 
@@ -162,11 +190,11 @@ uv run python scripts/verify_compilation.py
 
 ### For Theorem Proving Evaluation
 
-The `proofnet-verified/` directory contains 367 Lean files, each with a single theorem statement ending in `sorry`. Replace `sorry` with a valid proof to solve the problem. We recommend using [Lean Comparator](https://github.com/leanprover/comparator) as a rigorous proof checker.
+The `proofnet-verified-latest/` directory contains 367 Lean files, each with a single theorem statement ending in `sorry`. Replace `sorry` with a valid proof to solve the problem. We recommend using [Lean Comparator](https://github.com/leanprover/comparator) as a rigorous proof checker.
 
 ### For Autoformalization Evaluation
 
-Each entry in `proofnet-verified.jsonl` pairs an `informal_stmt` with a `formal_stmt`. We recommend using symbolic checkers like [BEq+](https://github.com/augustepoiroux/LeanInteract/blob/main/examples/beq_plus.py) over LLM-as-a-Judge to compare the ground truth `formal_stmt` with the generated candidate formalizations.
+Each entry in [`data/proofnet-verified-latest.jsonl`](data/proofnet-verified-latest.jsonl) pairs an `informal_stmt` with a `formal_stmt`. We recommend using symbolic checkers like [BEq+](https://github.com/augustepoiroux/LeanInteract/blob/main/examples/beq_plus.py) over LLM-as-a-Judge to compare the ground truth `formal_stmt` with the generated candidate formalizations.
 
 ### For Error Analysis
 

@@ -5,5 +5,7 @@
   "q2_faithfulness": "faithful",
   "q3_provability": "true",
   "q4_error_type": "none",
-  "reasoning": "The theorem statements in the ORIGINAL and CORRECTED formalizations are character-for-character identical. The only differences between the two files are non-semantic: the CORRECTED version adds `set_option maxHeartbeats 400000` (a configuration option for proof elaboration) and some additional blank lines. The theorem signature, hypotheses (hf defining f as the power series ∑' (c i) * x^i, hc constraining each c n to be 0 or 1, hf1 asserting f(2/3) = 3/2), and conclusion (Irrational (f (1/2))) are all exactly the same. The formalization faithfully captures the informal Putnam 2017 B3 statement."
+  "reasoning": "The theorem statements in the ORIGINAL and CORRECTED formalizations are character-for-character identical. The only differences between the two files are non-semantic: the CORRECTED version adds `set_option maxHeartbeats 400000` (a configuration option for proof elaboration) and some additional blank lines. The theorem signature, hypotheses (hf defining f as the power series ∑' (c i) * x^i, hc constraining each c n to be 0 or 1, hf1 asserting f(2/3) = 3/2), and conclusion (Irrational (f (1/2))) are all exactly the same. The formalization faithfully captures the informal Putnam 2017 B3 statement.",
+  "duration_ms": 35108,
+  "cost_usd": 0.11425825
 }

@@ -5,5 +5,7 @@
   "q2_faithfulness": "faithful",
   "q3_provability": "true",
   "q4_error_type": "none",
-  "reasoning": "The ORIGINAL and CORRECTED formalizations are logically identical. The only differences are: (1) the bound variable name (`a` vs `p`), (2) whitespace around `+`, and (3) cosmetic parentheses around the exponent `p.2`. The mathematical content — ∃! pair of positive naturals (a, n) with a^(n+1) - (a+1)^n = 2001 — is exactly the same. Both use ℕ × ℕ and natural subtraction identically. The informal statement asks for unique positive integers a, n such that a^(n+1)-(a+1)^n=2001, which is a classic Putnam 2001 A5 problem with unique solution (a=13, n=2) giving 2197-196=2001. The ORIGINAL is faithful to the informal statement."
+  "reasoning": "The current original, GT original, and verified theorem statements match exactly, including the existential pair binder a and the expression a.1^(a.2+1) - (a.1+1)^a.2 = 2001. They ask for a unique pair of positive natural numbers, faithfully representing the informal positive-integer problem. GT proves the original; the unique solution is (13,2). The former pair-binder and exponent-parenthesis differences have been removed.",
+  "duration_ms": 27638,
+  "cost_usd": 0.07029275
 }

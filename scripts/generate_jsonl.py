@@ -120,9 +120,22 @@ def build_records(source_dir: Path, metadata_path: Path) -> list[dict]:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--source-dir", type=Path, required=True)
-    parser.add_argument("--output", type=Path, required=True)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        epilog=(
+            "Example: python scripts/generate_jsonl.py "
+            "--source-dir proofnet-verified-latest "
+            "--output data/proofnet-verified-latest.jsonl"
+        ),
+    )
+    parser.add_argument(
+        "--source-dir", type=Path, required=True,
+        help="Folder containing proofnet-*.lean statements",
+    )
+    parser.add_argument(
+        "--output", type=Path, required=True,
+        help="Destination JSONL; also supplies proof metadata unless --metadata is set",
+    )
     parser.add_argument(
         "--metadata", type=Path,
         help="Existing JSONL supplying proof metadata; defaults to --output",

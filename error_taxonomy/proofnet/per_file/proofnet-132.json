@@ -5,5 +5,7 @@
   "q2_faithfulness": "faithful",
   "q3_provability": "true",
   "q4_error_type": "none",
-  "reasoning": "The informal statement is the classical theorem (Munkres 32.3) that every locally compact Hausdorff space is regular — true and unambiguous. The original and corrected formalizations have identical theorem statements: `{X : Type*} [TopologicalSpace X] (hX : LocallyCompactSpace X) (hX' : T2Space X) : RegularSpace X`. The only differences are cosmetic: `open Topology` vs `open scoped Topology` (both make scoped notations available; neither is used in this particular statement), and the presence of `noncomputable section` (irrelevant for a Prop). All Mathlib APIs used (`LocallyCompactSpace`, `T2Space`, `RegularSpace`) are correct. The original is faithful to the informal statement."
+  "reasoning": "The informal statement is the classical theorem (Munkres 32.3) that every locally compact Hausdorff space is regular — true and unambiguous. The original and corrected formalizations have identical theorem statements: `{X : Type*} [TopologicalSpace X] (hX : LocallyCompactSpace X) (hX' : T2Space X) : RegularSpace X`. The only differences are cosmetic: `open Topology` vs `open scoped Topology` (both make scoped notations available; neither is used in this particular statement), and the presence of `noncomputable section` (irrelevant for a Prop). All Mathlib APIs used (`LocallyCompactSpace`, `T2Space`, `RegularSpace`) are correct. The original is faithful to the informal statement.",
+  "duration_ms": 49649,
+  "cost_usd": 0.19209525000000002
 }
