@@ -38,7 +38,7 @@ If you find the **ProofNet-Verified** benchmark useful for your research, please
 ```bibtex
 @inproceedings{
   an2026ground,
-  title={Ground False: Uncovering Errors in Formal Mathematics Benchmarks},
+  title={Ground False: Dissecting and Repairing Errors in Formal Mathematics Benchmarks},
   author={One An$^{*}$ and Marcus J. Min$^{*}$ and Xujie Si and Osbert Bastani},
   booktitle={The Fortieth Annual Conference on Neural Information Processing Systems Evaluations and Datasets Track},
   year={2026},
