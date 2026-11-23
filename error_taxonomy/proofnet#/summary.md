@@ -6,32 +6,32 @@ Source: `data/proofnet#/proofnet#.jsonl`, matched to the 367 retained problem in
 
 | verdict | count |
 |---|---|
-| faithful | 265 |
-| weaker | 19 |
+| faithful | 264 |
+| weaker | 20 |
 | stronger | 39 |
 | incomparable | 35 |
 | nl_ambiguous | 8 |
 | nl_wrong | 1 |
 | **total** | **367** |
 
-## Error Types (102 items with audit errors)
+## Error Types (103 items with audit errors)
 
 | error type | count |
 |---|---|
 | misunderstanding_of_informal_statement | 30 |
 | misunderstanding_of_mathlib | 24 |
 | missing_implicit_premise | 17 |
-| misunderstanding_of_lean | 13 |
+| misunderstanding_of_lean | 14 |
 | nl_ambiguous | 8 |
 | missing_premise | 6 |
 | adding_extra_conclusion | 3 |
 | nl_mathematically_wrong | 1 |
 
-## Provability (102 items with audit errors)
+## Provability (103 items with audit errors)
 
 | provability | count |
 |---|---|
-| true | 39 |
+| true | 40 |
 | false | 63 |
 
 ## Items with Audit Errors
@@ -228,6 +228,9 @@ Note: Trivially true because A is going to be in the intersection
 
 Mathlib's `IsTopologicalBasis` includes the condition `eq_generateFrom : ‹TopologicalSpace α› =
 generateFrom T`, which (since ℝ carries the standard Euclidean topol
+
+- **115** | weaker | provable=true | error=misunderstanding_of_lean
+  - In Munkres 21.6(a), Lean infers `Icc 0 1` as a subset of ℕ. The formal statement covers the endpoints 0 and 1 and makes no claim about interior points of the real unit interval. At either endpoint x, the sequence xⁿ equals x for all n ≥ 1, so it converges. This proves only the endpoint cases of the requested pointwise convergence.
 
 - **119** | incomparable | provable=false | error=misunderstanding_of_mathlib
   - 1. negation ✅

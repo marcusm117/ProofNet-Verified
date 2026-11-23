@@ -1,7 +1,7 @@
 # ProofNet-Verified
 
 **Resource Links:**
- - Paper: https://openreview.net/forum?id=5c0RSYyIWW, https://openreview.net/forum?id=NjgaeXNit3
+ - Papers: [Ground False (NeurIPS 2026)](https://openreview.net/forum?id=l0dHSybfie) and [Divide and Abstract (ICLR 2026)](https://openreview.net/forum?id=NjgaeXNit3)
  - GitHub: https://github.com/marcusm117/ProofNet-Verified
  - HuggingFace: https://huggingface.co/datasets/marcusm117/ProofNet-Verified
  - Visualization: https://marcusm117.github.io/ProofNet-Verified/
@@ -25,7 +25,7 @@ Based on ProofNet and ProofNet#, we made the following modifications:
 
 2. Upgrade the project environment to `Lean v4.34.0`, so that more automated proof search tools like [Grind](https://lean-lang.org/doc/reference/latest/The--grind--tactic/), [Canonical](https://github.com/chasenorman/CanonicalLean), and [Lean-SMT](https://github.com/ufmg-smite/lean-smt) are available.
 
-3. Audit the benchmark for both errors in the ground-truth formalizations and ambiguity in the informal statements, identifying **205/367 (55.9%)** errors in **ProofNet** and **102/367 (27.8%)** errors in **ProofNet#**.
+3. Audit the benchmark for both errors in the ground-truth formalizations and ambiguity in the informal statements, identifying **205/367 (55.9%)** errors in **ProofNet** and **103/367 (28.1%)** errors in **ProofNet#**.
 
 4. Confirm each error by proving the negation of incorrect formalizations, providing trivialized proofs of formalization that are provably true but unfaithful to the informal statement, or giving detailed reasoning for why a formalization is unfaithful or an informal statement is ambiguous.
 
@@ -59,11 +59,11 @@ If you find the **ProofNet-Verified** benchmark useful for your research, please
 
 | | ProofNet | ProofNet# |
 |---|---|---|
-| Faithful | 162 (44.1%) | 265 (72.2%) |
-| Unfaithful | 195 (53.1%) | 93 (25.3%) |
+| Faithful | 162 (44.1%) | 264 (71.9%) |
+| Unfaithful | 195 (53.1%) | 94 (25.6%) |
 | NL Source Ambiguous | 9 (2.5%) | 8 (2.2%) |
 | NL Source Incorrect | 1 (0.3%) | 1 (0.3%) |
-| **Total Errors** | **205 (55.9%)** | **102 (27.8%)** |
+| **Total Errors** | **205 (55.9%)** | **103 (28.1%)** |
 | **Total** | **367** | **367** |
 
 The **Unfaithful** row counts the `stronger`, `weaker`, and `incomparable` faithfulness labels; ambiguous and incorrect natural-language sources are counted separately. Percentages use all 367 problems in each benchmark.
@@ -81,8 +81,8 @@ The audit tracks three dimensions: **Provability**, **Faithfulness**, and **Root
 | Adding Extra Conclusion | 7 (1.9%) | 3 (0.8%) |
 | Misunderstanding of Informal Math | 95 (25.9%) | 30 (8.2%) |
 | Misunderstanding of Mathlib | 28 (7.6%) | 24 (6.5%) |
-| Misunderstanding of Lean | 16 (4.4%) | 13 (3.5%) |
-| **Total Errors** | **205 (55.9%)** | **102 (27.8%)** |
+| Misunderstanding of Lean | 16 (4.4%) | 14 (3.8%) |
+| **Total Errors** | **205 (55.9%)** | **103 (28.1%)** |
 
 These are the eight root-cause categories. Faithful formalizations use `none`, meaning **no formalization error / not applicable**, not an unknown cause or a ninth error category.
 
