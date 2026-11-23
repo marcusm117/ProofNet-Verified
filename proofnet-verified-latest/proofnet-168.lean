@@ -7,11 +7,11 @@ open scoped BigOperators
 
 /-Informal Statement
 
-Let f be a real uniformly continuous function on the bounded set E in $R^{1}$. Prove that f is bounded on E.
+Let $f$ be a real uniformly continuous function on a set $E$ in $\mathbb{R}^{1}$. Show that $f$ need not be bounded on $E$.
 -/
 
 
-theorem Rudin_exercise_4_8a
-  (E : Set ℝ) (h : Bornology.IsBounded E) :
-  ∀ f : ℝ → ℝ, UniformContinuousOn f E → Bornology.IsBounded (Set.image f E) := by
+theorem Rudin_exercise_4_8b :
+    ∃ (E : Set ℝ) (f : ℝ → ℝ),
+      UniformContinuousOn f E ∧ ¬ Bornology.IsBounded (Set.image f E) := by
   sorry
