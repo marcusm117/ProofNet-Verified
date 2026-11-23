@@ -328,17 +328,7 @@ the problem itself doesn't say anything about whether we are working with R or C
 wrong copy-paste
 
 - **168** | nl_wrong | provable=false | error=nl_mathematically_wrong
-  -  1. negation ✅
-2. reasoning ✅
-3. correction ❌
-
-Error Type: NL Wrong
-If NL has Implicit Premises: NA
-Implicit Premises:   NA
-Comment: NA
-
-
-wrong copy-paste
+  - The benchmark transcription asks for an unbounded image on a bounded subset of ℝ. Every such set is totally bounded, and a uniformly continuous function has totally bounded, hence bounded, image there. The ProofNet# statement explicitly assumes E is bounded, so the same argument refutes it. Rudin’s second sentence asks what happens when boundedness of the domain is omitted. The identity on all of ℝ gives the required counterexample because it is uniformly continuous and has unbounded image.
 
 - **170** | stronger | provable=false | error=missing_premise
   - The informal IVP condition "if f(a) < c < f(b), then f(x)=c for some x between a and b" is conventionally symmetric under swapping a and b (since "between a and b" is unordered). The CORRECTED formali
