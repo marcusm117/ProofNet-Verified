@@ -6,35 +6,35 @@ Source: `data/proofnet#/proofnet#.jsonl`, matched to the 367 retained problem in
 
 | verdict | count |
 |---|---|
-| faithful | 268 |
+| faithful | 265 |
 | weaker | 19 |
 | stronger | 39 |
-| incomparable | 32 |
+| incomparable | 35 |
 | nl_ambiguous | 8 |
 | nl_wrong | 1 |
 | **total** | **367** |
 
-## Error Types (unfaithful only)
+## Error Types (102 items with audit errors)
 
 | error type | count |
 |---|---|
 | misunderstanding_of_informal_statement | 30 |
 | misunderstanding_of_mathlib | 24 |
 | missing_implicit_premise | 17 |
-| misunderstanding_of_lean | 10 |
+| misunderstanding_of_lean | 13 |
 | nl_ambiguous | 8 |
 | missing_premise | 6 |
 | adding_extra_conclusion | 3 |
 | nl_mathematically_wrong | 1 |
 
-## Provability (unfaithful only)
+## Provability (102 items with audit errors)
 
 | provability | count |
 |---|---|
 | true | 39 |
-| false | 60 |
+| false | 63 |
 
-## Unfaithful Entries
+## Items with Audit Errors
 
 - **4** | stronger | provable=true | error=missing_premise
   - The informal statement specifies that V is spanned by a "countably infinite" set, meaning the spanning set S must be both countable AND infinite. The CORRECTED formalization captures this via two hypo
@@ -219,6 +219,9 @@ Comment: There is also wrong formalizatio
   - Error Type: Misunderstanding of Informal Math
 Relation to GT: incomparable
 Note: Trivially true because A is going to be in the intersection
+
+- **109** | incomparable | provable=false | error=misunderstanding_of_lean
+  - In Munkres 13.6, Lean evaluates `1 / 0` as 0, so K contains the positive reciprocals and their limit point 0. This K is closed in the usual topology. Removing it from an open interval leaves a usual open set, and every usual open set is lower-limit-open. This contradicts the theorem's second noncontainment claim. The intended K contains only positive reciprocals.
 
 - **110** | stronger | provable=true | error=adding_extra_conclusion
   - (true, stronger, Extra Conclusion)
@@ -584,10 +587,16 @@ If NL has Implicit Premises: No
 Implicit Premises:   NO
 Comment: The wrong formalization says that every member of S is a
 
+- **299** | incomparable | provable=false | error=misunderstanding_of_lean
+  - In Munkres 21.6(b), Lean infers `Icc 0 1` as a subset of ℕ. On {0, 1}, xⁿ = x for every n ≥ 1, so the sequence is eventually the identity function and converges uniformly. The exercise asks about powers on the real unit interval.
+
 - **301** | stronger | provable=true | error=misunderstanding_of_informal_statement
   - The original formalization proves `IsOpenMap (p ∘ Subtype.val : A → Y)`, i.e., images of
 open sets in A are open in Y. The informal statement asks for something slightly weaker:
 that the restricted ma
+
+- **305** | incomparable | provable=false | error=misunderstanding_of_lean
+  - In Munkres 24.3(a), Lean infers `Icc 0 1` as a subset of ℕ. The two-point interval has the discrete topology, so swapping 0 and 1 gives a continuous map with no fixed point. The exercise asks about continuous self-maps of the real unit interval.
 
 - **308** | stronger | provable=false | error=misunderstanding_of_mathlib
   -  1. negation ✅
