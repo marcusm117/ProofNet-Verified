@@ -295,7 +295,7 @@ The corr
   - The informal statement explicitly says "X is a nonempty complete metric space." The original formalization omits the `[Nonempty X]` typeclass, while the corrected version includes it. Without nonempti
 
 - **168** | nl_wrong | provable=false | error=nl_mathematically_wrong
-  - The original informal comment is mathematically wrong: it asks, for bounded E⊆ℝ, for a uniformly continuous real function that is unbounded on E. Uniform continuity on a bounded subset of ℝ implies bo
+  - The benchmark transcription asks for an unbounded image on a bounded subset of ℝ. Every such set is totally bounded, and a uniformly continuous function has totally bounded, hence bounded, image there. The original Lean statement quantifies over every set E. Taking E = ∅ refutes it because every image of ∅ is bounded. Rudin’s second sentence asks what happens when boundedness of the domain is omitted. The identity on all of ℝ gives the required counterexample because it is uniformly continuous and has unbounded image.
 
 - **170** | stronger | provable=false | error=missing_premise
   - The informal IVP condition "if f(a) < c < f(b), then f(x)=c for some x between a and b" is conventionally symmetric under swapping a and b (since "between a and b" is unordered). The CORRECTED formali

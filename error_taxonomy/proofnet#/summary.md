@@ -6,35 +6,35 @@ Source: `data/proofnet#/proofnet#.jsonl`, matched to the 367 retained problem in
 
 | verdict | count |
 |---|---|
-| faithful | 268 |
-| weaker | 19 |
+| faithful | 264 |
+| weaker | 20 |
 | stronger | 39 |
-| incomparable | 32 |
+| incomparable | 35 |
 | nl_ambiguous | 8 |
 | nl_wrong | 1 |
 | **total** | **367** |
 
-## Error Types (unfaithful only)
+## Error Types (103 items with audit errors)
 
 | error type | count |
 |---|---|
 | misunderstanding_of_informal_statement | 30 |
 | misunderstanding_of_mathlib | 24 |
 | missing_implicit_premise | 17 |
-| misunderstanding_of_lean | 10 |
+| misunderstanding_of_lean | 14 |
 | nl_ambiguous | 8 |
 | missing_premise | 6 |
 | adding_extra_conclusion | 3 |
 | nl_mathematically_wrong | 1 |
 
-## Provability (unfaithful only)
+## Provability (103 items with audit errors)
 
 | provability | count |
 |---|---|
-| true | 39 |
-| false | 60 |
+| true | 40 |
+| false | 63 |
 
-## Unfaithful Entries
+## Items with Audit Errors
 
 - **4** | stronger | provable=true | error=missing_premise
   - The informal statement specifies that V is spanned by a "countably infinite" set, meaning the spanning set S must be both countable AND infinite. The CORRECTED formalization captures this via two hypo
@@ -220,11 +220,17 @@ Comment: There is also wrong formalizatio
 Relation to GT: incomparable
 Note: Trivially true because A is going to be in the intersection
 
+- **109** | incomparable | provable=false | error=misunderstanding_of_lean
+  - In Munkres 13.6, Lean evaluates `1 / 0` as 0, so K contains the positive reciprocals and their limit point 0. This K is closed in the usual topology. Removing it from an open interval leaves a usual open set, and every usual open set is lower-limit-open. This contradicts the theorem's second noncontainment claim. The intended K contains only positive reciprocals.
+
 - **110** | stronger | provable=true | error=adding_extra_conclusion
   - (true, stronger, Extra Conclusion)
 
 Mathlib's `IsTopologicalBasis` includes the condition `eq_generateFrom : ‹TopologicalSpace α› =
 generateFrom T`, which (since ℝ carries the standard Euclidean topol
+
+- **115** | weaker | provable=true | error=misunderstanding_of_lean
+  - In Munkres 21.6(a), Lean infers `Icc 0 1` as a subset of ℕ. The formal statement covers the endpoints 0 and 1 and makes no claim about interior points of the real unit interval. At either endpoint x, the sequence xⁿ equals x for all n ≥ 1, so it converges. This proves only the endpoint cases of the requested pointwise convergence.
 
 - **119** | incomparable | provable=false | error=misunderstanding_of_mathlib
   - 1. negation ✅
@@ -325,17 +331,7 @@ the problem itself doesn't say anything about whether we are working with R or C
 wrong copy-paste
 
 - **168** | nl_wrong | provable=false | error=nl_mathematically_wrong
-  -  1. negation ✅
-2. reasoning ✅
-3. correction ❌
-
-Error Type: NL Wrong
-If NL has Implicit Premises: NA
-Implicit Premises:   NA
-Comment: NA
-
-
-wrong copy-paste
+  - The benchmark transcription asks for an unbounded image on a bounded subset of ℝ. Every such set is totally bounded, and a uniformly continuous function has totally bounded, hence bounded, image there. The ProofNet# statement explicitly assumes E is bounded, so the same argument refutes it. Rudin’s second sentence asks what happens when boundedness of the domain is omitted. The identity on all of ℝ gives the required counterexample because it is uniformly continuous and has unbounded image.
 
 - **170** | stronger | provable=false | error=missing_premise
   - The informal IVP condition "if f(a) < c < f(b), then f(x)=c for some x between a and b" is conventionally symmetric under swapping a and b (since "between a and b" is unordered). The CORRECTED formali
@@ -584,10 +580,16 @@ If NL has Implicit Premises: No
 Implicit Premises:   NO
 Comment: The wrong formalization says that every member of S is a
 
+- **299** | incomparable | provable=false | error=misunderstanding_of_lean
+  - In Munkres 21.6(b), Lean infers `Icc 0 1` as a subset of ℕ. On {0, 1}, xⁿ = x for every n ≥ 1, so the sequence is eventually the identity function and converges uniformly. The exercise asks about powers on the real unit interval.
+
 - **301** | stronger | provable=true | error=misunderstanding_of_informal_statement
   - The original formalization proves `IsOpenMap (p ∘ Subtype.val : A → Y)`, i.e., images of
 open sets in A are open in Y. The informal statement asks for something slightly weaker:
 that the restricted ma
+
+- **305** | incomparable | provable=false | error=misunderstanding_of_lean
+  - In Munkres 24.3(a), Lean infers `Icc 0 1` as a subset of ℕ. The two-point interval has the discrete topology, so swapping 0 and 1 gives a continuous map with no fixed point. The exercise asks about continuous self-maps of the real unit interval.
 
 - **308** | stronger | provable=false | error=misunderstanding_of_mathlib
   -  1. negation ✅

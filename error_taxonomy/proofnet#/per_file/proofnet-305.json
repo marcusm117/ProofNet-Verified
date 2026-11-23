@@ -2,8 +2,8 @@
   "file": "proofnet-305.lean",
   "stem": "proofnet-305",
   "q1_informal_status": "true_and_unambiguous",
-  "q2_faithfulness": "faithful",
-  "q3_provability": "true",
-  "q4_error_type": "none",
-  "reasoning": "ProofNet# formalization matches the corrected ground truth."
+  "q2_faithfulness": "incomparable",
+  "q3_provability": "false",
+  "q4_error_type": "misunderstanding_of_lean",
+  "reasoning": "In Munkres 24.3(a), Lean infers `Icc 0 1` as a subset of ℕ. The two-point interval has the discrete topology, so swapping 0 and 1 gives a continuous map with no fixed point. The exercise asks about continuous self-maps of the real unit interval."
 }
